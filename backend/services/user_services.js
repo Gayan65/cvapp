@@ -2,9 +2,7 @@ import mySqlPool from "../models/db.js";
 
 export const getAllUsers = async () => {
   const sqlQuery = "SELECT * FROM users";
-  const [rows] = await mySqlPool
-    .query(sqlQuery)
-    .catch((err) => console.log(err));
+  const [rows] = await mySqlPool.query(sqlQuery);
 
   return rows;
 };

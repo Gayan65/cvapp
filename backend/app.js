@@ -1,4 +1,5 @@
 import express from "express";
+import "express-async-errors";
 import "dotenv/config";
 import mySqlPool from "./models/db.js";
 import userRouter from "./controllers/user_controller.js";
@@ -6,8 +7,16 @@ import userRouter from "./controllers/user_controller.js";
 const port = process.env.PORT;
 const app = express();
 
-app.use(userRouter);
+//middleware
+app.use("/api/user", userRouter);
 
+//Global error handler middleware
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(err.status || 500).send("Something went wrong in server side!");
+});
+
+//DB connection and server
 mySqlPool
   .query("SELECT 1")
   .then((data) => {
