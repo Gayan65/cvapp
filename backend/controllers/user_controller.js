@@ -7,9 +7,8 @@ const userRouter = express.Router();
 userRouter.use(bodyParser.urlencoded({ extended: false }));
 
 userRouter.post("/create", async (req, res) => {
-  const email = req.body.email;
-  const password = req.body.password;
-  const newUser = await createUser(email, password);
+  const { email, password, fname, lname } = req.body;
+  const newUser = await createUser(email, password, fname, lname);
   res.send(newUser);
 });
 

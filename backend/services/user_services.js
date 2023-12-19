@@ -7,10 +7,11 @@ export const getAllUsers = async () => {
   return rows;
 };
 
-export const createUser = async (email, password) => {
-  const sqlQuery = "INSERT INTO users (email, password) VALUES (?,?)";
+export const createUser = async (email, password, fname, lname) => {
+  const sqlQuery =
+    "INSERT INTO users (email, password, fname, lname) VALUES (?,?,?,?)";
   const rows = await mySqlPool
-    .query(sqlQuery, [email, password])
+    .query(sqlQuery, [email, password, fname, lname])
     .catch((err) => console.log(err));
 
   return rows;

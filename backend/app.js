@@ -3,12 +3,14 @@ import "express-async-errors";
 import "dotenv/config";
 import mySqlPool from "./models/db.js";
 import userRouter from "./controllers/user_controller.js";
+import tableRouter from "./controllers/table_controllers.js";
 
 const port = process.env.PORT;
 const app = express();
 
 //middleware
 app.use("/api/user", userRouter);
+app.use("/api/table", tableRouter);
 
 //Global error handler middleware
 app.use((err, req, res, next) => {
