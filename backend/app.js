@@ -4,6 +4,7 @@ import "dotenv/config";
 import mySqlPool from "./models/db.js";
 import userRouter from "./controllers/user_controller.js";
 import tableRouter from "./controllers/table_controllers.js";
+import personalRouter from "./controllers/personal_controller.js";
 
 const port = process.env.PORT;
 const app = express();
@@ -11,6 +12,7 @@ const app = express();
 //middleware
 app.use("/api/user", userRouter);
 app.use("/api/table", tableRouter);
+app.use("/api/personal", personalRouter);
 
 //Global error handler middleware
 app.use((err, req, res, next) => {
