@@ -1,6 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
-import { getAllUsers, createUser } from "../services/user_services.js";
+import { getAllUsers, createUser, getUser } from "../services/user_services.js";
 
 const userRouter = express.Router();
 userRouter.use(bodyParser.urlencoded({ extended: false }));
@@ -16,5 +16,11 @@ userRouter.post("/create", async (req, res) => {
 userRouter.get("/all", async (req, res) => {
   const users = await getAllUsers();
   res.send(users);
+});
+
+//Getting a user from the user ID
+userRouter.get("/:id", async (req, res) => {
+  const user = await getUser(req.params.id);
+  res.send(user);
 });
 export default userRouter;
