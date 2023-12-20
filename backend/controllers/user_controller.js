@@ -6,6 +6,7 @@ import {
   getUser,
   userProfile,
   userDelete,
+  userUpdate,
 } from "../services/user_services.js";
 
 const userRouter = express.Router();
@@ -40,5 +41,12 @@ userRouter.get("/profile/:id", async (req, res) => {
 userRouter.delete("/delete/:id", async (req, res) => {
   const deletedUser = await userDelete(req.params.id);
   res.send(deletedUser);
+});
+
+//Updating a user from the id
+userRouter.put("/update/:id", async (req, res) => {
+  const { password, fname, lname } = req.body;
+  const updatedUser = await userUpdate(password, fname, lname, req.params.id);
+  res.send(updatedUser);
 });
 export default userRouter;
