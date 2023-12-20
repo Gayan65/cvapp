@@ -29,3 +29,10 @@ export const userProfile = async (user_id) => {
   const [rows] = await mySqlPool.query(sqlQuery, [user_id]);
   return rows;
 };
+
+// Deleting a user from the user ID SQl
+export const userDelete = async (user_id) => {
+  const sqlQuery = "DELETE FROM users WHERE user_id = ?";
+  const [rows] = await mySqlPool.query(sqlQuery, [user_id]);
+  return rows;
+};

@@ -5,6 +5,7 @@ import {
   createUser,
   getUser,
   userProfile,
+  userDelete,
 } from "../services/user_services.js";
 
 const userRouter = express.Router();
@@ -33,5 +34,11 @@ userRouter.get("/:id", async (req, res) => {
 userRouter.get("/profile/:id", async (req, res) => {
   const profile = await userProfile(req.params.id);
   res.send(profile);
+});
+
+//Deleting a user from the id
+userRouter.delete("/delete/:id", async (req, res) => {
+  const deletedUser = await userDelete(req.params.id);
+  res.send(deletedUser);
 });
 export default userRouter;
