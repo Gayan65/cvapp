@@ -21,3 +21,16 @@ export const createPersonal = async (user_id, moto, description, image) => {
 
   return rows;
 };
+
+// Updating a personal from the user ID SQl
+export const personalUpdate = async (moto, description, image, user_id) => {
+  const sqlQuery =
+    "UPDATE personal SET moto = ?, description = ?, image = ? WHERE user_id = ?;";
+  const [rows] = await mySqlPool.query(sqlQuery, [
+    moto,
+    description,
+    image,
+    user_id,
+  ]);
+  return rows;
+};
