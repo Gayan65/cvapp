@@ -1,6 +1,11 @@
 import express from "express";
 import bodyParser from "body-parser";
-import { getAllUsers, createUser, getUser } from "../services/user_services.js";
+import {
+  getAllUsers,
+  createUser,
+  getUser,
+  userProfile,
+} from "../services/user_services.js";
 
 const userRouter = express.Router();
 userRouter.use(bodyParser.urlencoded({ extended: false }));
@@ -22,5 +27,11 @@ userRouter.get("/all", async (req, res) => {
 userRouter.get("/:id", async (req, res) => {
   const user = await getUser(req.params.id);
   res.send(user);
+});
+
+//Getting the entire profile from the id
+userRouter.get("/profile/:id", async (req, res) => {
+  const profile = await userProfile(req.params.id);
+  res.send(profile);
 });
 export default userRouter;
