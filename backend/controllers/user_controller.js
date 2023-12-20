@@ -47,6 +47,11 @@ userRouter.delete("/delete/:id", async (req, res) => {
 userRouter.put("/update/:id", async (req, res) => {
   const { password, fname, lname } = req.body;
   const updatedUser = await userUpdate(password, fname, lname, req.params.id);
-  res.send(updatedUser);
+  console.log(updatedUser.affectedRows);
+  if (updatedUser.affectedRows === 0) {
+    res.send("Nothing to update");
+  } else {
+    res.send(updatedUser);
+  }
 });
 export default userRouter;
