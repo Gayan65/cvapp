@@ -6,19 +6,23 @@ export const createEdu = async (
   program,
   program_name,
   institution,
-  date_start,
-  date_end,
+  s_month,
+  s_year,
+  e_month,
+  e_year,
   about
 ) => {
   const sqlQuery =
-    "INSERT INTO edu (user_id, program, program_name, institution, date_start, date_end, about) VALUES (?,?,?,?,?,?,?)";
+    "INSERT INTO edu (user_id, program, program_name, institution, s_month, s_year, e_month, e_year, about) VALUES (?,?,?,?,?,?,?,?,?)";
   const [rows] = await mySqlPool.query(sqlQuery, [
     user_id,
     program,
     program_name,
     institution,
-    date_start,
-    date_end,
+    s_month,
+    s_year,
+    e_month,
+    e_year,
     about,
   ]);
 

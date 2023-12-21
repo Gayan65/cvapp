@@ -12,8 +12,10 @@ eduRouter.post("/create", async (req, res) => {
     program,
     program_name,
     institution,
-    date_start,
-    date_end,
+    s_month,
+    s_year,
+    e_month,
+    e_year,
     about,
   } = req.body;
   const newEdu = await createEdu(
@@ -21,8 +23,10 @@ eduRouter.post("/create", async (req, res) => {
     program,
     program_name,
     institution,
-    date_start,
-    date_end,
+    s_month,
+    s_year,
+    e_month,
+    e_year,
     about
   );
   res.send(newEdu);

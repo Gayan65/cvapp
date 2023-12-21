@@ -34,6 +34,28 @@ userRouter.get("/:id", async (req, res) => {
 //Getting the entire profile from the id
 userRouter.get("/profile/:id", async (req, res) => {
   const profile = await userProfile(req.params.id);
+  /*
+
+  accessing the edu column in JASON FORMAT
+  let eduArrayString = profile[0].edu_array;
+
+  // Add square brackets to make it a valid JSON array
+  eduArrayString = "[" + eduArrayString + "]";
+
+  // Replace backticks with double quotes for string values
+  eduArrayString = eduArrayString.replace(/`([^`]+)`/g, '"$1"');
+
+  eduArrayString = eduArrayString.replace(
+    /:(\s*)([^\d"'\][{,}\s][^"'\][{,}\s]*)/g,
+    ':"$2"'
+  );
+
+  // Parse the string to a JavaScript array of objects
+  const eduArray = JSON.parse(eduArrayString);
+
+  // Now, eduArray is a valid JSON array of objects
+  console.log(eduArray[1].edu_id);
+  */
   res.send(profile);
 });
 
