@@ -1,6 +1,6 @@
 import mySqlPool from "../models/db.js";
 
-//Getting all users sql
+//Getting all personal sql
 export const getAllPersonal = async () => {
   const sqlQuery = "SELECT * FROM personal";
   const [rows] = await mySqlPool.query(sqlQuery);
@@ -8,7 +8,7 @@ export const getAllPersonal = async () => {
   return rows;
 };
 
-//Creating user sql
+//Creating personal sql
 export const createPersonal = async (user_id, moto, description, image) => {
   const sqlQuery =
     "INSERT INTO personal (user_id, moto, description, image) VALUES (?,?,?,?)";

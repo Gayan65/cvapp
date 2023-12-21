@@ -6,6 +6,7 @@ import userRouter from "./controllers/user_controller.js";
 import tableRouter from "./controllers/table_controllers.js";
 import personalRouter from "./controllers/personal_controller.js";
 import contactRouter from "./controllers/contact_controller.js";
+import eduRouter from "./controllers/education_controller.js";
 
 const port = process.env.PORT;
 const app = express();
@@ -15,6 +16,7 @@ app.use("/api/user", userRouter);
 app.use("/api/table", tableRouter);
 app.use("/api/personal", personalRouter);
 app.use("/api/contact", contactRouter);
+app.use("/api/edu", eduRouter);
 
 //Global error handler middleware
 app.use((err, req, res, next) => {
@@ -32,44 +34,3 @@ mySqlPool
     });
   })
   .catch((err) => console.log("DB connection error \n" + err));
-
-/*
-
-app.get("/", async (req, res) => {
-  const users = await usersSchema.getAllUsers();
-  res.json(users);
-});
-
-
-
-
-
-
-
-//database connection
-//const con = mysql.createConnection(url);
-
-/*
-//table creating function
-con.connect(function (err) {
-  if (err) throw err;
-  console.log("Connected!");
-  var sql =
-    "CREATE TABLE users (id INT AUTO_INCREMENT PRIMARY KEY, email VARCHAR(50), password VARCHAR(50))";
-  con.query(sql, function (err, result) {
-    if (err) throw err;
-    console.log("Table created");
-  });
-});
-
-
-//Table deleting function
-con.connect(function (err) {
-  if (err) throw err;
-  var sql = "DROP TABLE userTbl";
-  con.query(sql, function (err, result) {
-    if (err) throw err;
-    console.log("Table deleted");
-  });
-});
-*/
