@@ -34,7 +34,7 @@ export const deletePersonalTable = async () => {
   return rows;
 };
 
-//creating contact table function
+//creating edu table function
 export const createContactTable = async () => {
   const sqlQuery =
     "CREATE TABLE contact (contact_id INT AUTO_INCREMENT PRIMARY KEY, user_id INT, m_code VARCHAR(10), m_number VARCHAR(15), w_code VARCHAR(10), w_number VARCHAR(15), address_lane VARCHAR(255), city VARCHAR(55), post_code VARCHAR(15), country VARCHAR(30), INDEX `idx_user` (user_id), CONSTRAINT `fk_character_user_contacts` FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE)";
@@ -43,9 +43,26 @@ export const createContactTable = async () => {
   return rows;
 };
 
-//deleting contact table function
+//deleting edu table function
 export const deleteContactTable = async () => {
   const sqlQuery = "DROP TABLE contact";
+  const [rows] = await mySqlPool.query(sqlQuery);
+
+  return rows;
+};
+
+//creating contact table function
+export const createEduTable = async () => {
+  const sqlQuery =
+    "CREATE TABLE edu (edu_id INT AUTO_INCREMENT PRIMARY KEY, user_id INT, program VARCHAR(55), program_name VARCHAR(255), institution VARCHAR(500), date_start DATE, date_end DATE, about VARCHAR(1000), INDEX `idx_user` (user_id), CONSTRAINT `fk_character_user_edu` FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE)";
+  const [rows] = await mySqlPool.query(sqlQuery);
+
+  return rows;
+};
+
+//deleting contact table function
+export const deleteEduTable = async () => {
+  const sqlQuery = "DROP TABLE edu";
   const [rows] = await mySqlPool.query(sqlQuery);
 
   return rows;

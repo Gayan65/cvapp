@@ -6,6 +6,8 @@ import {
   deletePersonalTable,
   createContactTable,
   deleteContactTable,
+  createEduTable,
+  deleteEduTable,
 } from "../services/table_services.js";
 
 const tableRouter = express.Router();
@@ -45,4 +47,17 @@ tableRouter.delete("/contact/delete", async (req, res) => {
   const newTable = await deleteContactTable();
   res.send(newTable);
 });
+
+//creating edu table
+tableRouter.post("/edu/create", async (req, res) => {
+  const newTable = await createEduTable();
+  res.send(newTable);
+});
+
+//deleting edu table
+tableRouter.delete("/edu/delete", async (req, res) => {
+  const newTable = await deleteEduTable();
+  res.send(newTable);
+});
+
 export default tableRouter;
