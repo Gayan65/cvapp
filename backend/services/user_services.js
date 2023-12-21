@@ -25,7 +25,7 @@ export const getUser = async (user_id) => {
 // Getting a full profile from the user ID SQl
 export const userProfile = async (user_id) => {
   const sqlQuery =
-    "SELECT * FROM users LEFT JOIN personal ON users.user_id = personal.user_id WHERE users.user_id = ?";
+    "SELECT * FROM users LEFT JOIN personal ON users.user_id = personal.user_id LEFT JOIN contact ON users.user_id = contact.user_id WHERE users.user_id = ?";
   const [rows] = await mySqlPool.query(sqlQuery, [user_id]);
   return rows;
 };
