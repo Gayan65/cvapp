@@ -37,7 +37,7 @@ export const deletePersonalTable = async () => {
 //creating contact table function
 export const createContactTable = async () => {
   const sqlQuery =
-    "CREATE TABLE contact (personal_id INT AUTO_INCREMENT PRIMARY KEY, user_id INT, m_code VARCHAR(10), m_number VARCHAR(15), w_code VARCHAR(10), w_number VARCHAR(15), address_lane VARCHAR(255), city VARCHAR(55), post_code VARCHAR(15), country VARCHAR(30), INDEX `idx_user` (user_id), CONSTRAINT `fk_character_user_contacts` FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE)";
+    "CREATE TABLE contact (contact_id INT AUTO_INCREMENT PRIMARY KEY, user_id INT, m_code VARCHAR(10), m_number VARCHAR(15), w_code VARCHAR(10), w_number VARCHAR(15), address_lane VARCHAR(255), city VARCHAR(55), post_code VARCHAR(15), country VARCHAR(30), INDEX `idx_user` (user_id), CONSTRAINT `fk_character_user_contacts` FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE)";
   const [rows] = await mySqlPool.query(sqlQuery);
 
   return rows;
