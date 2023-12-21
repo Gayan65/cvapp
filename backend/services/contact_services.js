@@ -35,3 +35,31 @@ export const getAllContact = async () => {
   const [rows] = await mySqlPool.query(sqlQuery);
   return rows;
 };
+
+// Updating a contact from the user ID SQl
+export const contactUpdate = async (
+  m_code,
+  m_number,
+  w_code,
+  w_number,
+  address_lane,
+  city,
+  post_code,
+  country,
+  user_id
+) => {
+  const sqlQuery =
+    "UPDATE contact SET m_code = ?, m_number = ?, w_code = ?, w_number = ?, address_lane = ?, city = ?, post_code = ?, country = ? WHERE user_id = ?;";
+  const [rows] = await mySqlPool.query(sqlQuery, [
+    m_code,
+    m_number,
+    w_code,
+    w_number,
+    address_lane,
+    city,
+    post_code,
+    country,
+    user_id,
+  ]);
+  return rows;
+};
