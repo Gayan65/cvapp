@@ -1,6 +1,11 @@
 import express from "express";
 import bodyParser from "body-parser";
-import { createExp, getAllExp, expUpdate } from "../services/exp_services.js";
+import {
+  createExp,
+  getAllExp,
+  expUpdate,
+  expDelete,
+} from "../services/exp_services.js";
 
 const expRouter = express.Router();
 expRouter.use(bodyParser.urlencoded({ extended: false }));
@@ -65,4 +70,9 @@ expRouter.put("/update/:id", async (req, res) => {
   res.send(updatedExp);
 });
 
+//Deleting a exp from the exp_id
+expRouter.delete("/delete/:id", async (req, res) => {
+  const deletedExp = await expDelete(req.params.id);
+  res.send(deletedExp);
+});
 export default expRouter;

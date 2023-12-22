@@ -64,3 +64,10 @@ export const expUpdate = async (
   ]);
   return rows;
 };
+
+// Deleting a exp from the exp_id SQl
+export const expDelete = async (exp_id) => {
+  const sqlQuery = "DELETE FROM exp WHERE exp_id = ?";
+  const [rows] = await mySqlPool.query(sqlQuery, [exp_id]);
+  return rows;
+};
