@@ -1,6 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
-import { createExp, getAllExp } from "../services/exp_services.js";
+import { createExp, getAllExp, expUpdate } from "../services/exp_services.js";
 
 const expRouter = express.Router();
 expRouter.use(bodyParser.urlencoded({ extended: false }));
@@ -38,6 +38,31 @@ expRouter.get("/all", async (req, res) => {
   res.send(allExp);
 });
 
-// user_id, position, employer, address, s_month, s_year, e_month, e_year, task
+//Updating exp info from exp ID
+expRouter.put("/update/:id", async (req, res) => {
+  const id = req.params.id;
+  const {
+    position,
+    employer,
+    address,
+    s_month,
+    s_year,
+    e_month,
+    e_year,
+    task,
+  } = req.body;
+  const updatedExp = await expUpdate(
+    position,
+    employer,
+    address,
+    s_month,
+    s_year,
+    e_month,
+    e_year,
+    task,
+    id
+  );
+  res.send(updatedExp);
+});
 
 export default expRouter;

@@ -36,3 +36,31 @@ export const getAllExp = async () => {
 
   return rows;
 };
+
+// Updating a exp from the EXP ID SQl
+export const expUpdate = async (
+  position,
+  employer,
+  address,
+  s_month,
+  s_year,
+  e_month,
+  e_year,
+  task,
+  exp_id
+) => {
+  const sqlQuery =
+    "UPDATE exp SET position = ?, employer = ?, address = ?, s_month = ?, s_year = ?, e_month = ?, e_year = ?, task = ? WHERE exp_id = ?;";
+  const [rows] = await mySqlPool.query(sqlQuery, [
+    position,
+    employer,
+    address,
+    s_month,
+    s_year,
+    e_month,
+    e_year,
+    task,
+    exp_id,
+  ]);
+  return rows;
+};
