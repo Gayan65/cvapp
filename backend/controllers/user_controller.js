@@ -35,8 +35,7 @@ userRouter.get("/:id", async (req, res) => {
 userRouter.get("/profile/:id", async (req, res) => {
   const profile = await userProfile(req.params.id);
   /*
-
-  accessing the edu column in JASON FORMAT
+  //accessing the edu column in JASON FORMAT
   let eduArrayString = profile[0].edu_array;
 
   // Add square brackets to make it a valid JSON array
@@ -55,7 +54,7 @@ userRouter.get("/profile/:id", async (req, res) => {
 
   // Now, eduArray is a valid JSON array of objects
   console.log(eduArray[1].edu_id);
-  */
+*/
   res.send(profile);
 });
 
