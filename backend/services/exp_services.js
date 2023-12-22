@@ -28,3 +28,11 @@ export const createExp = async (
 
   return rows;
 };
+
+//Getting all exp sql
+export const getAllExp = async () => {
+  const sqlQuery = "SELECT * FROM exp";
+  const [rows] = await mySqlPool.query(sqlQuery);
+
+  return rows;
+};

@@ -7,6 +7,7 @@ import tableRouter from "./controllers/table_controllers.js";
 import personalRouter from "./controllers/personal_controller.js";
 import contactRouter from "./controllers/contact_controller.js";
 import eduRouter from "./controllers/education_controller.js";
+import expRouter from "./controllers/exp_controller.js";
 
 const port = process.env.PORT;
 const app = express();
@@ -17,6 +18,7 @@ app.use("/api/table", tableRouter);
 app.use("/api/personal", personalRouter);
 app.use("/api/contact", contactRouter);
 app.use("/api/edu", eduRouter);
+app.use("/api/exp", expRouter);
 
 //Global error handler middleware
 app.use((err, req, res, next) => {
