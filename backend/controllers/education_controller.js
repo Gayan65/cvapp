@@ -1,6 +1,10 @@
 import express from "express";
 import bodyParser from "body-parser";
-import { createEdu, getAllEdu } from "../services/education_service.js";
+import {
+  createEdu,
+  getAllEdu,
+  eduUpdate,
+} from "../services/education_service.js";
 
 const eduRouter = express.Router();
 eduRouter.use(bodyParser.urlencoded({ extended: false }));
@@ -38,5 +42,31 @@ eduRouter.get("/all", async (req, res) => {
   res.send(allEdu);
 });
 
+//Updating edu info from EDU ID
+eduRouter.put("/update/:id", async (req, res) => {
+  const id = req.params.id;
+  const {
+    program,
+    program_name,
+    institution,
+    s_month,
+    s_year,
+    e_month,
+    e_year,
+    about,
+  } = req.body;
+  const updatedEdu = await eduUpdate(
+    program,
+    program_name,
+    institution,
+    s_month,
+    s_year,
+    e_month,
+    e_year,
+    about,
+    id
+  );
+  res.send(updatedEdu);
+});
+
 export default eduRouter;
-//  user_id, program, program_name, institution, date_start, date_end, about,

@@ -36,3 +36,31 @@ export const getAllEdu = async () => {
 
   return rows;
 };
+
+// Updating a edu from the EDU ID SQl
+export const eduUpdate = async (
+  program,
+  program_name,
+  institution,
+  s_month,
+  s_year,
+  e_month,
+  e_year,
+  about,
+  edu_id
+) => {
+  const sqlQuery =
+    "UPDATE edu SET program = ?, program_name = ?, institution = ?, s_month = ?, s_year = ?, e_month = ?, e_year = ?, about = ? WHERE edu_id = ?;";
+  const [rows] = await mySqlPool.query(sqlQuery, [
+    program,
+    program_name,
+    institution,
+    s_month,
+    s_year,
+    e_month,
+    e_year,
+    about,
+    edu_id,
+  ]);
+  return rows;
+};
