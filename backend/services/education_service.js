@@ -64,3 +64,10 @@ export const eduUpdate = async (
   ]);
   return rows;
 };
+
+// Deleting a edu from the edu_id SQl
+export const eduDelete = async (edu_id) => {
+  const sqlQuery = "DELETE FROM edu WHERE edu_id = ?";
+  const [rows] = await mySqlPool.query(sqlQuery, [edu_id]);
+  return rows;
+};

@@ -4,6 +4,7 @@ import {
   createEdu,
   getAllEdu,
   eduUpdate,
+  eduDelete,
 } from "../services/education_service.js";
 
 const eduRouter = express.Router();
@@ -67,6 +68,12 @@ eduRouter.put("/update/:id", async (req, res) => {
     id
   );
   res.send(updatedEdu);
+});
+
+//Deleting a edu from the edu_id
+eduRouter.delete("/delete/:id", async (req, res) => {
+  const deletedEdu = await eduDelete(req.params.id);
+  res.send(deletedEdu);
 });
 
 export default eduRouter;
