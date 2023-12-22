@@ -67,3 +67,20 @@ export const deleteEduTable = async () => {
 
   return rows;
 };
+
+//creating exp table function
+export const createExpTable = async () => {
+  const sqlQuery =
+    "CREATE TABLE exp (exp_id INT AUTO_INCREMENT PRIMARY KEY, user_id INT, position VARCHAR(100), employer VARCHAR(150), address VARCHAR(255), s_month VARCHAR(10), s_year VARCHAR(10), e_month VARCHAR(10), e_year VARCHAR(10), task VARCHAR(2000), INDEX `idx_user` (user_id), CONSTRAINT `fk_character_user_exp` FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE)";
+  const [rows] = await mySqlPool.query(sqlQuery);
+
+  return rows;
+};
+
+//deleting exp table function
+export const deleteExpTable = async () => {
+  const sqlQuery = "DROP TABLE exp";
+  const [rows] = await mySqlPool.query(sqlQuery);
+
+  return rows;
+};

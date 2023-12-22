@@ -1,6 +1,6 @@
 import mySqlPool from "../models/db.js";
 
-//Creating user sql
+//Creating edu sql
 export const createEdu = async (
   user_id,
   program,

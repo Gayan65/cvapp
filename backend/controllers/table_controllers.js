@@ -8,6 +8,8 @@ import {
   deleteContactTable,
   createEduTable,
   deleteEduTable,
+  createExpTable,
+  deleteExpTable,
 } from "../services/table_services.js";
 
 const tableRouter = express.Router();
@@ -57,6 +59,18 @@ tableRouter.post("/edu/create", async (req, res) => {
 //deleting edu table
 tableRouter.delete("/edu/delete", async (req, res) => {
   const newTable = await deleteEduTable();
+  res.send(newTable);
+});
+
+//creating exp table
+tableRouter.post("/exp/create", async (req, res) => {
+  const newTable = await createExpTable();
+  res.send(newTable);
+});
+
+//deleting exp table
+tableRouter.delete("/exp/delete", async (req, res) => {
+  const newTable = await deleteExpTable();
   res.send(newTable);
 });
 
