@@ -6,6 +6,7 @@ export const createEdu = async (
   program,
   program_name,
   institution,
+  address,
   s_month,
   s_year,
   e_month,
@@ -13,12 +14,13 @@ export const createEdu = async (
   about
 ) => {
   const sqlQuery =
-    "INSERT INTO edu (user_id, program, program_name, institution, s_month, s_year, e_month, e_year, about) VALUES (?,?,?,?,?,?,?,?,?)";
+    "INSERT INTO edu (user_id, program, program_name, institution, address, s_month, s_year, e_month, e_year, about) VALUES (?,?,?,?,?,?,?,?,?,?)";
   const [rows] = await mySqlPool.query(sqlQuery, [
     user_id,
     program,
     program_name,
     institution,
+    address,
     s_month,
     s_year,
     e_month,
@@ -42,6 +44,7 @@ export const eduUpdate = async (
   program,
   program_name,
   institution,
+  address,
   s_month,
   s_year,
   e_month,
@@ -50,11 +53,12 @@ export const eduUpdate = async (
   edu_id
 ) => {
   const sqlQuery =
-    "UPDATE edu SET program = ?, program_name = ?, institution = ?, s_month = ?, s_year = ?, e_month = ?, e_year = ?, about = ? WHERE edu_id = ?;";
+    "UPDATE edu SET program = ?, program_name = ?, institution = ?, address = ?, s_month = ?, s_year = ?, e_month = ?, e_year = ?, about = ? WHERE edu_id = ?;";
   const [rows] = await mySqlPool.query(sqlQuery, [
     program,
     program_name,
     institution,
+    address,
     s_month,
     s_year,
     e_month,
