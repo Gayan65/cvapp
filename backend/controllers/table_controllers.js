@@ -10,6 +10,8 @@ import {
   deleteEduTable,
   createExpTable,
   deleteExpTable,
+  createLanTable,
+  deleteLanTable,
 } from "../services/table_services.js";
 
 const tableRouter = express.Router();
@@ -74,4 +76,15 @@ tableRouter.delete("/exp/delete", async (req, res) => {
   res.send(newTable);
 });
 
+//creating language table
+tableRouter.post("/lan/create", async (req, res) => {
+  const newTable = await createLanTable();
+  res.send(newTable);
+});
+
+//deleting language table
+tableRouter.delete("/lan/delete", async (req, res) => {
+  const newTable = await deleteLanTable();
+  res.send(newTable);
+});
 export default tableRouter;
