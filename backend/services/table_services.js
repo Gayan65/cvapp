@@ -84,3 +84,20 @@ export const deleteExpTable = async () => {
 
   return rows;
 };
+
+//creating language table function
+export const createLanTable = async () => {
+  const sqlQuery =
+    "CREATE TABLE lan (lan_id INT AUTO_INCREMENT PRIMARY KEY, user_id INT, l_name VARCHAR(20), l_pro VARCHAR(20), INDEX `idx_user` (user_id), CONSTRAINT `fk_character_user_lan` FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE)";
+  const [rows] = await mySqlPool.query(sqlQuery);
+
+  return rows;
+};
+
+//deleting language table function
+export const deleteLanTable = async () => {
+  const sqlQuery = "DROP TABLE lan";
+  const [rows] = await mySqlPool.query(sqlQuery);
+
+  return rows;
+};
