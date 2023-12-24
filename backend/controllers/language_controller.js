@@ -4,6 +4,7 @@ import {
   createLanguage,
   getAllLanguage,
   deleteLanguage,
+  lanUpdate,
 } from "../services/language_services.js";
 
 const lanRouter = express.Router();
@@ -27,5 +28,13 @@ lanRouter.delete("/delete/:id", async (req, res) => {
   const id = req.params.id;
   const deletedLan = await deleteLanguage(id);
   res.send(deletedLan);
+});
+
+//Updating language info from LAN ID
+lanRouter.put("/update/:id", async (req, res) => {
+  const id = req.params.id;
+  const { l_name, l_pro } = req.body;
+  const updateLan = await lanUpdate(l_name, l_pro, id);
+  res.send(updateLan);
 });
 export default lanRouter;
