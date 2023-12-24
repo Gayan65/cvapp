@@ -23,8 +23,6 @@ export const deleteLanguage = async (lan_id) => {
   return rows;
 };
 
-//lan_id, user_id, l_name, l_pro,
-
 // Updating a lan from the LAN ID SQl
 export const lanUpdate = async (l_name, l_pro, lan_id) => {
   const sqlQuery = "UPDATE lan SET l_name = ?, l_pro = ? WHERE lan_id = ?;";
