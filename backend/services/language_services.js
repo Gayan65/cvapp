@@ -16,4 +16,11 @@ export const createLanguage = async (user_id, l_name, l_pro) => {
   return rows;
 };
 
+//Deleting Language sql
+export const deleteLanguage = async (lan_id) => {
+  const sqlQuery = "DELETE FROM lan WHERE lan_id = ?";
+  const [rows] = await mySqlPool.query(sqlQuery, [lan_id]);
+  return rows;
+};
+
 //lan_id, user_id, l_name, l_pro,

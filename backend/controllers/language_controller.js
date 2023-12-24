@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import {
   createLanguage,
   getAllLanguage,
+  deleteLanguage,
 } from "../services/language_services.js";
 
 const lanRouter = express.Router();
@@ -21,4 +22,10 @@ lanRouter.get("/all", async (req, res) => {
   res.send(users);
 });
 
+//Deleting a Language
+lanRouter.delete("/delete/:id", async (req, res) => {
+  const id = req.params.id;
+  const deletedLan = await deleteLanguage(id);
+  res.send(deletedLan);
+});
 export default lanRouter;
