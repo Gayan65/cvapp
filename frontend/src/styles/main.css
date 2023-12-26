@@ -1,3 +1,37 @@
-.test {
-  color: blue;
+/* Custom font color*/
+.font-custom-color {
+  color: #241916 !important;
+}
+
+/* Custom font color*/
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+/* Custom button primary color*/
+.btn-primary {
+  background-color: #0000ff;
+  border-radius: 2px;
+  border: solid #0000ff 1px;
+}
+
+.btn-primary:active {
+  background-color: #f55c3d !important;
+  border: solid #f55c3d 1px !important;
+}
+
+/* Custom button secondary outline color*/
+.btn-outline-secondary {
+  border-radius: 2px;
+  color: #0000ff;
+  border: solid #0000ff 1px;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #0000ff;
+}
+
+.btn-outline-secondary:active {
+  background-color: #f55c3d !important;
+  border: solid #f55c3d 1px !important;
 }
