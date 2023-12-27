@@ -23,15 +23,15 @@ const Start = () => {
             experiences in a way that stands out.
           </p>
           <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            <button type="button" className="btn btn-primary btn-lg px-4 gap-3">
+            <a className="btn btn-primary btn-lg px-4 gap-3" href="/login">
               Login
-            </button>
-            <button
-              type="button"
+            </a>
+            <a
               className="btn btn-outline-secondary btn-lg px-4"
+              href="/register"
             >
               Register
-            </button>
+            </a>
           </div>
         </div>
       </div>
