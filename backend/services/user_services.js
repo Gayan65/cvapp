@@ -56,6 +56,13 @@ export const userUpdate = async (password, fname, lname, user_id) => {
   return rows;
 };
 
+//Find User from email
+export const userFind = async (email) => {
+  const sqlQuery = "SELECT * FROM users WHERE email = ?";
+  const [rows] = await mySqlPool.query(sqlQuery, [email]);
+  return rows;
+};
+
 //User Login from SQL
 export const userLogin = async (email, password) => {
   const sqlQuery = "SELECT * FROM users WHERE email = ? AND password = ?";

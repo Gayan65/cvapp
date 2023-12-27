@@ -7,6 +7,7 @@ import {
   userProfile,
   userDelete,
   userUpdate,
+  userFind,
   userLogin,
 } from "../services/user_services.js";
 
@@ -16,8 +17,13 @@ userRouter.use(bodyParser.urlencoded({ extended: false }));
 //Creating user
 userRouter.post("/create", async (req, res) => {
   const { email, password, fname, lname, admin } = req.body;
-  const newUser = await createUser(email, password, fname, lname, admin);
-  res.send(newUser);
+  const existingUser = await userFind(email);
+  if (existingUser.length > 0) {
+    res.send("Existing User");
+  } else {
+    const newUser = await createUser(email, password, fname, lname, admin);
+    res.send(newUser);
+  }
 });
 
 //Getting all users
