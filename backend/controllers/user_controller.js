@@ -15,8 +15,8 @@ userRouter.use(bodyParser.urlencoded({ extended: false }));
 
 //Creating user
 userRouter.post("/create", async (req, res) => {
-  const { email, password, fname, lname } = req.body;
-  const newUser = await createUser(email, password, fname, lname);
+  const { email, password, fname, lname, admin } = req.body;
+  const newUser = await createUser(email, password, fname, lname, admin);
   res.send(newUser);
 });
 
