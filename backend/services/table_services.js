@@ -3,7 +3,7 @@ import mySqlPool from "../models/db.js";
 //creating user table function
 export const createUserTable = async () => {
   const sqlQuery =
-    "CREATE TABLE users (user_id INT AUTO_INCREMENT PRIMARY KEY, email VARCHAR(50) NOT NULL, password VARCHAR(150) NOT NULL, fname VARCHAR(50) NOT NULL, lname VARCHAR(50) NOT NULL, admin BOOLEAN NOT NULL)";
+    "CREATE TABLE users (user_id INT AUTO_INCREMENT PRIMARY KEY, email VARCHAR(50) NOT NULL, hash VARCHAR(150) NOT NULL, fname VARCHAR(50) NOT NULL, lname VARCHAR(50) NOT NULL, admin BOOLEAN NOT NULL)";
   const [rows] = await mySqlPool.query(sqlQuery);
 
   return rows;

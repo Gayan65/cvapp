@@ -1,5 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
+import bcrypt from "bcrypt";
 import {
   getAllUsers,
   createUser,
@@ -14,16 +15,27 @@ import {
 const userRouter = express.Router();
 userRouter.use(bodyParser.urlencoded({ extended: false }));
 
+const saltRounds = 10;
+
 //Creating user
 userRouter.post("/create", async (req, res) => {
   const { email, password, fname, lname, admin } = req.body;
-  const existingUser = await userFind(email);
-  if (existingUser.length > 0) {
-    res.send("Existing User");
-  } else {
-    const newUser = await createUser(email, password, fname, lname, admin);
-    res.send(newUser);
-  }
+  bcrypt.hash(password, saltRounds, async function (err, hash) {
+    const existingUser = await userFind(email);
+    if (existingUser.length > 0) {
+      res.status(200).json({
+        success: false,
+        message: "Email already exists!",
+      });
+    } else {
+      const newUser = await createUser(email, hash, fname, lname, admin);
+      res.status(200).json({
+        success: true,
+        message: "User Created successful!",
+        user: newUser,
+      });
+    }
+  });
 });
 
 //Getting all users
@@ -86,13 +98,22 @@ userRouter.put("/update/:id", async (req, res) => {
 //Login user
 userRouter.post("/login", async (req, res) => {
   const { email, password } = req.body;
-  const userLoginStatus = await userLogin(email, password);
-
-  if (userLoginStatus.length > 0) {
-    res.status(200).json({
-      success: true,
-      message: "User login successful!",
-      user: userLoginStatus[0],
+  const existingUser = await userFind(email);
+  if (existingUser.length > 0) {
+    const hashedPw = existingUser[0].hash;
+    bcrypt.compare(password, hashedPw, function (err, result) {
+      if (result) {
+        res.status(200).json({
+          success: true,
+          message: "User login successful!",
+          user: existingUser[0],
+        });
+      } else {
+        res.status(200).json({
+          success: false,
+          message: "Invalid credentials!",
+        });
+      }
     });
   } else {
     res.status(200).json({

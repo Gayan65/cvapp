@@ -8,12 +8,12 @@ export const getAllUsers = async () => {
 };
 
 //Creating user sql
-export const createUser = async (email, password, fname, lname, admin) => {
+export const createUser = async (email, hash, fname, lname, admin) => {
   const sqlQuery =
-    "INSERT INTO users (email, password, fname, lname, admin) VALUES (?,?,?,?,?)";
+    "INSERT INTO users (email, hash, fname, lname, admin) VALUES (?,?,?,?,?)";
   const rows = await mySqlPool.query(sqlQuery, [
     email,
-    password,
+    hash,
     fname,
     lname,
     admin,
