@@ -7,6 +7,7 @@ import {
   userProfile,
   userDelete,
   userUpdate,
+  userLogin,
 } from "../services/user_services.js";
 
 const userRouter = express.Router();
@@ -73,6 +74,25 @@ userRouter.put("/update/:id", async (req, res) => {
     res.send("Nothing to update");
   } else {
     res.send(updatedUser);
+  }
+});
+
+//Login user
+userRouter.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+  const userLoginStatus = await userLogin(email, password);
+
+  if (userLoginStatus.length > 0) {
+    res.status(200).json({
+      success: true,
+      message: "User login successful!",
+      user: userLoginStatus[0],
+    });
+  } else {
+    res.status(200).json({
+      success: false,
+      message: "Invalid credentials!",
+    });
   }
 });
 export default userRouter;
