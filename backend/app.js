@@ -1,6 +1,7 @@
 import express from "express";
 import "express-async-errors";
 import "dotenv/config";
+import cors from "cors";
 import mySqlPool from "./models/db.js";
 import userRouter from "./controllers/user_controller.js";
 import tableRouter from "./controllers/table_controllers.js";
@@ -14,6 +15,7 @@ const port = process.env.PORT;
 const app = express();
 
 //middleware
+app.use(cors());
 app.use("/api/user", userRouter);
 app.use("/api/table", tableRouter);
 app.use("/api/personal", personalRouter);

@@ -1,8 +1,15 @@
 import React, { useState } from "react";
+import axios from "axios";
+import qs from "qs";
+import { useNavigate } from "react-router-dom";
 import loginLogo from "../images/logos/LogoSmall.png";
 
 const Login = () => {
-  const [inputData, setInputData] = useState();
+  const [inputData, setInputData] = useState({
+    email: "",
+    password: "",
+  });
+  const navigate = useNavigate();
 
   //Handling inputs
   const handleInputChange = (event) => {
@@ -14,9 +21,23 @@ const Login = () => {
   };
 
   //Submit data
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(inputData);
+    const data = qs.stringify(inputData);
+    await axios
+      .post("http://localhost:4000/api/user/login", data)
+      .then((response) => {
+        if (response.data.success) {
+          navigate("/home");
+        }
+      })
+      .catch((err) => console.log(err));
+
+    //Clear inputs after submitting the form
+    setInputData({
+      email: "",
+      password: "",
+    });
   };
 
   return (
@@ -28,12 +49,13 @@ const Login = () => {
 
           <div className="form-floating">
             <input
-              type="email"
+              type="text"
               className="form-control mb-3"
               id="floatingInput"
               placeholder="name@example.com"
               onChange={handleInputChange}
               name="email"
+              value={inputData.email}
               required
             />
             <label htmlFor="floatingInput">Email address</label>
@@ -47,6 +69,7 @@ const Login = () => {
               required
               name="password"
               onChange={handleInputChange}
+              value={inputData.password}
             />
             <label htmlFor="floatingPassword">Password</label>
           </div>
