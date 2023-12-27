@@ -41,7 +41,7 @@ const NavBar = () => {
             </ul>
 
             <button className="btn btn-outline-secondary" type="Login">
-              Search
+              Login
             </button>
           </div>
         </div>

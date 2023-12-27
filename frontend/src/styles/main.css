@@ -6,6 +6,7 @@
 /* Custom font color*/
 body {
   font-family: "Open Sans", sans-serif;
+  color: #241916 !important;
 }
 
 /* Custom button primary color*/
@@ -34,4 +35,31 @@ body {
 .btn-outline-secondary:active {
   background-color: #f55c3d !important;
   border: solid #f55c3d 1px !important;
+}
+
+/* custom css for the login form element */
+.form-signin {
+  max-width: 330px;
+  padding: 1rem;
+}
+.m-auto {
+  margin: auto !important;
+}
+.w-100 {
+  width: 100% !important;
+}
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+/*custom css for the input elements*/
+.form-control {
+  border: solid #4a4af79f 1px;
+}
+
+.form-control:focus {
+  border: rgb(245, 92, 61) 1px solid !important;
+  box-shadow: 0 0 10px rgba(245, 92, 61, 0.5) !important;
 }
