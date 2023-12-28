@@ -9,6 +9,7 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const [apiResponse, setApiResponse] = useState("");
   const navigate = useNavigate();
 
   //Clear the session storage
@@ -35,6 +36,8 @@ const Login = () => {
         if (response.data.success) {
           sessionStorage.setItem("token", response.data.token);
           navigate("/home");
+        } else {
+          setApiResponse(response.data);
         }
       })
       .catch((err) => console.log(err));
@@ -97,6 +100,12 @@ const Login = () => {
           <p className="mt-5 mb-3 text-body-secondary">
             Craft Your Success Story with Us..
           </p>
+
+          {apiResponse.success === false && (
+            <div className="alert alert-danger mt-3" role="alert">
+              {apiResponse.message}
+            </div>
+          )}
         </form>
       </main>
     </div>
