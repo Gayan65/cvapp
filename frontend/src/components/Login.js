@@ -35,7 +35,10 @@ const Login = () => {
       .then((response) => {
         if (response.data.success) {
           sessionStorage.setItem("token", response.data.token);
+          sessionStorage.setItem("user", JSON.stringify(response.data.user));
           navigate("/home");
+          //Updating the state of the Navbar component (User status)
+          window.location.reload();
         } else {
           setApiResponse(response.data);
         }

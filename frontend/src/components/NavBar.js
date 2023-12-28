@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import navLogo from "../images/logos/Logo.png";
+import NavUser from "./NavUser";
 
 const NavBar = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // Check session storage for the user
+    const userFromSession = sessionStorage.getItem("user");
+    const user = JSON.parse(userFromSession);
+
+    // Update the state based on whether the user exists
+    setIsLoggedIn(!!user);
+  }, []); // The empty dependency array ensures this effect runs only once on mount
+
+  console.log("Is User Logged In:", isLoggedIn);
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -40,9 +54,13 @@ const NavBar = () => {
               </li>
             </ul>
 
-            <button className="btn btn-outline-secondary" type="Login">
-              Login
-            </button>
+            {isLoggedIn === false ? (
+              <button className="btn btn-outline-secondary" type="Login">
+                Login
+              </button>
+            ) : (
+              <NavUser />
+            )}
           </div>
         </div>
       </nav>
