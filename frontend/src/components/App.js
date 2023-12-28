@@ -7,20 +7,15 @@ import NavBar from "./NavBar";
 import Home from "./app_components/Home";
 
 function App() {
-  const user = localStorage.getItem("token");
   return (
     <div>
       <BrowserRouter>
         <NavBar />
         <Routes>
+          <Route path="/home" element={<Home />}></Route>
           <Route path="/" element={<Start />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
-          {user && <Route path="/home" element={<Home />}></Route>}
-          <Route
-            path="/home"
-            element={<Navigate replace to={"/login"} />}
-          ></Route>
         </Routes>
       </BrowserRouter>
     </div>

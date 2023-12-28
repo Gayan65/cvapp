@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import qs from "qs";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +10,11 @@ const Login = () => {
     password: "",
   });
   const navigate = useNavigate();
+
+  //Clear the session storage
+  useEffect(() => {
+    sessionStorage.clear();
+  }, []);
 
   //Handling inputs
   const handleInputChange = (event) => {
@@ -28,7 +33,7 @@ const Login = () => {
       .post("http://localhost:4000/api/user_login/login", data)
       .then((response) => {
         if (response.data.success) {
-          localStorage.setItem("token", response.data.token);
+          sessionStorage.setItem("token", response.data.token);
           navigate("/home");
         }
       })
