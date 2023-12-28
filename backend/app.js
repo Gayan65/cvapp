@@ -10,15 +10,18 @@ import contactRouter from "./controllers/contact_controller.js";
 import eduRouter from "./controllers/education_controller.js";
 import expRouter from "./controllers/exp_controller.js";
 import lanRouter from "./controllers/language_controller.js";
+import userLoginRouter from "./controllers/user_login_controller.js";
+import { auth } from "./middleware/auth.js";
 
 const port = process.env.PORT;
 const app = express();
 
 //middleware
 app.use(cors());
+app.use("/api/user_login", userLoginRouter);
 app.use("/api/user", userRouter);
 app.use("/api/table", tableRouter);
-app.use("/api/personal", personalRouter);
+app.use("/api/personal", auth, personalRouter);
 app.use("/api/contact", contactRouter);
 app.use("/api/edu", eduRouter);
 app.use("/api/exp", expRouter);
