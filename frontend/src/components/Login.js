@@ -29,6 +29,7 @@ const Login = () => {
       .then((response) => {
         if (response.data.success) {
           navigate("/home");
+          console.log(response.data);
         }
       })
       .catch((err) => console.log(err));
