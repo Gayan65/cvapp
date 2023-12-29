@@ -49,6 +49,34 @@ const Profile = () => {
         </div>
         <div className="col-md-7 col-lg-8">
           <h4 className="mb-3">Edit Your Profile</h4>
+
+          <form className="needs-validation">
+            <div className="row g-3 mb-3 ">
+              <div className="col-sm-6">
+                <label htmlFor="firstName" className="form-label">
+                  First name
+                </label>
+                <input type="text" className="form-control" id="firstName" />
+                <div className="invalid-feedback">
+                  Valid first name is required.
+                </div>
+              </div>
+
+              <div className="col-sm-6">
+                <label htmlFor="lastName" className="form-label">
+                  Last name
+                </label>
+                <input type="text" className="form-control" id="lastName" />
+                <div className="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
+            </div>
+
+            <button className="btn btn-primary btn" type="submit">
+              Save
+            </button>
+          </form>
         </div>
       </div>
     </div>
