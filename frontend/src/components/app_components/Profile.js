@@ -1,9 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import logoImg from "../../images/logos/LogoSmall.png";
 
 const Profile = () => {
   const userFromSession = sessionStorage.getItem("user");
   const user = JSON.parse(userFromSession);
+
+  const [inputData, setInputData] = useState({
+    fname: user.fname,
+    lname: user.lname,
+  });
+
+  //Handling inputs
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setInputData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  // Handling form submit
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(inputData);
+  };
   return (
     <div className=" container ">
       <div className="py-5 text-center">
@@ -50,13 +70,20 @@ const Profile = () => {
         <div className="col-md-7 col-lg-8">
           <h4 className="mb-3">Edit Your Profile</h4>
 
-          <form className="needs-validation">
+          <form className="needs-validation" onSubmit={handleSubmit}>
             <div className="row g-3 mb-3 ">
               <div className="col-sm-6">
                 <label htmlFor="firstName" className="form-label">
                   First name
                 </label>
-                <input type="text" className="form-control" id="firstName" />
+                <input
+                  type="text"
+                  className="form-control"
+                  id="firstName"
+                  name="fname"
+                  onChange={handleInputChange}
+                  value={inputData.fname}
+                />
                 <div className="invalid-feedback">
                   Valid first name is required.
                 </div>
@@ -66,7 +93,14 @@ const Profile = () => {
                 <label htmlFor="lastName" className="form-label">
                   Last name
                 </label>
-                <input type="text" className="form-control" id="lastName" />
+                <input
+                  type="text"
+                  className="form-control"
+                  id="lastName"
+                  name="lname"
+                  onChange={handleInputChange}
+                  value={inputData.lname}
+                />
                 <div className="invalid-feedback">
                   Valid last name is required.
                 </div>
