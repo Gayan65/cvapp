@@ -16,8 +16,8 @@ const NavUser = () => {
       </button>
       <ul className="dropdown-menu">
         <li>
-          <a className="dropdown-item" href="#">
-            Action
+          <a className="dropdown-item" href="/profile">
+            profile
           </a>
         </li>
         <li>
