@@ -1,7 +1,58 @@
 import React from "react";
+import logoImg from "../../images/logos/LogoSmall.png";
 
 const Profile = () => {
-  return <div>Profile</div>;
+  const userFromSession = sessionStorage.getItem("user");
+  const user = JSON.parse(userFromSession);
+  return (
+    <div className=" container ">
+      <div className="py-5 text-center">
+        <img
+          className="d-block mx-auto mb-4"
+          src={logoImg}
+          alt="Logo"
+          width="72"
+          height="72"
+        />
+        <h2>User Profile</h2>
+        <p className="lead">
+          This profile page is a dedicated space that provides a personalized
+          and customizable view of own information and typically serves as a
+          central hub for to manage your account settings within this platform.
+        </p>
+      </div>
+      <div className="row g-5">
+        <div className="col-md-5 col-lg-4 order-md-last">
+          <h4 className="d-flex justify-content-between align-items-center mb-3">
+            <span className="text-primary">Your Profile Settings</span>
+          </h4>
+          <ul className="list-group mb-3">
+            <li className="list-group-item d-flex justify-content-between lh-sm p-3">
+              <div>
+                <h6 className="my-0">Email Address</h6>
+              </div>
+              <span className="text-body-secondary">{user.email}</span>
+            </li>
+            <li className="list-group-item d-flex justify-content-between lh-sm p-3">
+              <div>
+                <h6 className="my-0">First Name</h6>
+              </div>
+              <span className="text-body-secondary">{user.fname}</span>
+            </li>
+            <li className="list-group-item d-flex justify-content-between lh-sm p-3">
+              <div>
+                <h6 className="my-0">Last Name</h6>
+              </div>
+              <span className="text-body-secondary">{user.lname}</span>
+            </li>
+          </ul>
+        </div>
+        <div className="col-md-7 col-lg-8">
+          <h4 className="mb-3">Edit Your Profile</h4>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Profile;
