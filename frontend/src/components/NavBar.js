@@ -55,9 +55,9 @@ const NavBar = () => {
             </ul>
 
             {isLoggedIn === false ? (
-              <button className="btn btn-outline-secondary" type="Login">
+              <a className="btn btn-outline-secondary" href="/login">
                 Login
-              </button>
+              </a>
             ) : (
               <NavUser />
             )}

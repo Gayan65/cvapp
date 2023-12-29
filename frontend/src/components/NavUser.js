@@ -31,8 +31,8 @@ const NavUser = () => {
           </a>
         </li>
         <li>
-          <a className="dropdown-item" href="#">
-            Separated link
+          <a className="dropdown-item" href="/login">
+            Logout
           </a>
         </li>
       </ul>
