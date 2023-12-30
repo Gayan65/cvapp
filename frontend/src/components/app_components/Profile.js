@@ -1,12 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logoImg from "../../images/logos/LogoSmall.png";
 import qs from "qs";
 import axios from "axios";
 
 const Profile = () => {
   const userFromSession = sessionStorage.getItem("user");
+  const tokenFromSession = sessionStorage.getItem("token"); // Need to get an axios call and fetch the data to go forward
   const user = JSON.parse(userFromSession);
+  const [fetchUser, setFetchUser] = useState("");
+  //const token = JSON.parse(tokenFromSession);
 
+  axios
+    .get(`http://localhost:4000/api/user/find/${tokenFromSession}`)
+    .then((response) => {
+      setFetchUser(response.data.user[0]);
+    })
+    .catch((error) => {
+      // Handle errors
+      console.error("Error fetching user data:", error);
+    });
+
+  //console.log(fetchUser);
   const [inputData, setInputData] = useState({
     fname: user.fname,
     lname: user.lname,
@@ -61,19 +75,19 @@ const Profile = () => {
               <div>
                 <h6 className="my-0">Email Address</h6>
               </div>
-              <span className="text-body-secondary">{user.email}</span>
+              <span className="text-body-secondary">{fetchUser.email}</span>
             </li>
             <li className="list-group-item d-flex justify-content-between lh-sm p-3">
               <div>
                 <h6 className="my-0">First Name</h6>
               </div>
-              <span className="text-body-secondary">{user.fname}</span>
+              <span className="text-body-secondary">{fetchUser.fname}</span>
             </li>
             <li className="list-group-item d-flex justify-content-between lh-sm p-3">
               <div>
                 <h6 className="my-0">Last Name</h6>
               </div>
-              <span className="text-body-secondary">{user.lname}</span>
+              <span className="text-body-secondary">{fetchUser.lname}</span>
             </li>
           </ul>
         </div>
