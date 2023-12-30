@@ -44,15 +44,9 @@ export const userDelete = async (user_id) => {
 };
 
 // Updating a user from the user ID SQl
-export const userUpdate = async (password, fname, lname, user_id) => {
-  const sqlQuery =
-    "UPDATE users SET password = ?, fname = ?, lname = ? WHERE user_id = ?;";
-  const [rows] = await mySqlPool.query(sqlQuery, [
-    password,
-    fname,
-    lname,
-    user_id,
-  ]);
+export const userUpdate = async (fname, lname, user_id) => {
+  const sqlQuery = "UPDATE users SET fname = ?, lname = ? WHERE user_id = ?;";
+  const [rows] = await mySqlPool.query(sqlQuery, [fname, lname, user_id]);
   return rows;
 };
 

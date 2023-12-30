@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import logoImg from "../../images/logos/LogoSmall.png";
+import qs from "qs";
+import axios from "axios";
 
 const Profile = () => {
   const userFromSession = sessionStorage.getItem("user");
@@ -20,10 +22,18 @@ const Profile = () => {
   };
 
   // Handling form submit
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(inputData);
+    console.log("Hi", user.user_id);
+    const data = qs.stringify(inputData);
+    await axios
+      .put(`http://localhost:4000/api/user/update/${user.user_id}`, data)
+      .then((response) => {
+        console.log(response);
+      });
   };
+
   return (
     <div className=" container ">
       <div className="py-5 text-center">
