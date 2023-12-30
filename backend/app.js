@@ -19,7 +19,7 @@ const app = express();
 //middleware
 app.use(cors());
 app.use("/api/user_login", userLoginRouter);
-app.use("/api/user", userRouter);
+app.use("/api/user", auth, userRouter);
 app.use("/api/table", tableRouter);
 app.use("/api/personal", auth, personalRouter);
 app.use("/api/contact", contactRouter);

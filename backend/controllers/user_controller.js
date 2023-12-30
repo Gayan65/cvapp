@@ -1,5 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
+import jwt from "jsonwebtoken";
 import "dotenv/config";
 import {
   getAllUsers,
@@ -7,6 +8,7 @@ import {
   userProfile,
   userDelete,
   userUpdate,
+  userFindById,
 } from "../services/user_services.js";
 
 const userRouter = express.Router();
@@ -69,4 +71,14 @@ userRouter.put("/update/:id", async (req, res) => {
   }
 });
 
+//find a user from the id
+userRouter.get("/find/:id", async (req, res) => {
+  const jwtId = req.params.id;
+  const decodedToken = jwt.verify(jwtId, process.env.JWT_KEY);
+  const foundUser = await userFindById(decodedToken.userId);
+  res.status(200).json({
+    success: true,
+    user: foundUser,
+  });
+});
 export default userRouter;

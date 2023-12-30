@@ -18,9 +18,9 @@ userLoginRouter.post("/login", async (req, res) => {
     const hashedPw = existingUser[0].hash;
     bcrypt.compare(password, hashedPw, function (err, result) {
       if (result) {
-        const payLoad = { id: existingUser[0].id };
-        const token = jwt.sign(payLoad, process.env.JWT_KEY, {
-          expiresIn: 60,
+        const userId = existingUser[0].user_id;
+        const token = jwt.sign({ userId }, process.env.JWT_KEY, {
+          expiresIn: 60 * 60,
         });
         res.status(200).json({
           success: true,
