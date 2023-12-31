@@ -6,14 +6,17 @@ import axios from "axios";
 
 const Profile = () => {
   const navigate = useNavigate();
+  //Getting token
   const token = sessionStorage.getItem("token");
+  //Start state of the component
   const [fetchUser, setFetchUser] = useState({
     fname: "",
     lname: "",
   });
+  //set state for the API response
+  const [message, setMessage] = useState(null);
 
-  console.log("this is fetch user", fetchUser.fname);
-
+  // Fetching the user data from the backend via token
   useEffect(() => {
     if (token === "" || token === null) {
       navigate("/login");
@@ -44,13 +47,11 @@ const Profile = () => {
   // Handling form submit
   const handleSubmit = async (event) => {
     event.preventDefault();
-    //console.log(inputData);
-    console.log("Hi", fetchUser.user_id);
     const data = qs.stringify(fetchUser);
     await axios
       .put(`http://localhost:4000/api/user/update/${fetchUser.user_id}`, data)
       .then((response) => {
-        console.log(response);
+        setMessage(response.data.message);
       });
   };
 
@@ -141,6 +142,11 @@ const Profile = () => {
               Save
             </button>
           </form>
+          {message && (
+            <div className="alert alert-primary mt-3" role="alert">
+              {message}
+            </div>
+          )}
         </div>
       </div>
     </div>

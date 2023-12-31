@@ -63,11 +63,16 @@ userRouter.delete("/delete/:id", async (req, res) => {
 userRouter.put("/update/:id", async (req, res) => {
   const { fname, lname } = req.body;
   const updatedUser = await userUpdate(fname, lname, req.params.id);
-  console.log(updatedUser.affectedRows);
   if (updatedUser.affectedRows === 0) {
-    res.send("Nothing to update");
+    res.status(200).json({
+      success: false,
+      message: "profile can not be found, and not updated!",
+    });
   } else {
-    res.send(updatedUser);
+    res.status(200).json({
+      success: true,
+      message: "Profile updated successfully!",
+    });
   }
 });
 
