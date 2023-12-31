@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
 import "dotenv/config";
 import {
   getAllUsers,
@@ -61,19 +62,21 @@ userRouter.delete("/delete/:id", async (req, res) => {
 
 //Updating a user from the id
 userRouter.put("/update/:id", async (req, res) => {
-  const { fname, lname } = req.body;
-  const updatedUser = await userUpdate(fname, lname, req.params.id);
-  if (updatedUser.affectedRows === 0) {
-    res.status(200).json({
-      success: false,
-      message: "profile can not be found, and not updated!",
-    });
-  } else {
-    res.status(200).json({
-      success: true,
-      message: "Profile updated successfully!",
-    });
-  }
+  const { fname, lname, password } = req.body;
+  bcrypt.hash(password, 10, async function (err, hash) {
+    const updatedUser = await userUpdate(fname, lname, hash, req.params.id);
+    if (updatedUser.affectedRows === 0) {
+      res.status(200).json({
+        success: false,
+        message: "profile can not be found, and not updated!",
+      });
+    } else {
+      res.status(200).json({
+        success: true,
+        message: "Profile updated successfully!",
+      });
+    }
+  });
 });
 
 //find a user from the id
