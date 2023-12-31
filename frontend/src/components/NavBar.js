@@ -7,11 +7,10 @@ const NavBar = () => {
 
   useEffect(() => {
     // Check session storage for the user
-    const userFromSession = sessionStorage.getItem("user");
-    const user = JSON.parse(userFromSession);
+    const token = sessionStorage.getItem("token");
 
     // Update the state based on whether the user exists
-    setIsLoggedIn(!!user);
+    setIsLoggedIn(!!token);
   }, []); // The empty dependency array ensures this effect runs only once on mount
 
   console.log("Is User Logged In:", isLoggedIn);
