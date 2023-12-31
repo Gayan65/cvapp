@@ -4,32 +4,32 @@ import qs from "qs";
 import axios from "axios";
 
 const Profile = () => {
-  const userFromSession = sessionStorage.getItem("user");
-  const tokenFromSession = sessionStorage.getItem("token"); // Need to get an axios call and fetch the data to go forward
-  const user = JSON.parse(userFromSession);
-  const [fetchUser, setFetchUser] = useState("");
-  //const token = JSON.parse(tokenFromSession);
-
-  axios
-    .get(`http://localhost:4000/api/user/find/${tokenFromSession}`)
-    .then((response) => {
-      setFetchUser(response.data.user[0]);
-    })
-    .catch((error) => {
-      // Handle errors
-      console.error("Error fetching user data:", error);
-    });
-
-  //console.log(fetchUser);
-  const [inputData, setInputData] = useState({
-    fname: user.fname,
-    lname: user.lname,
+  const tokenFromSession = sessionStorage.getItem("token");
+  const [fetchUser, setFetchUser] = useState({
+    fname: "",
+    lname: "",
   });
+
+  console.log("this is fetch user", fetchUser.fname);
+
+  useEffect(() => {
+    console.log("from use Effect");
+    axios
+      .get(`http://localhost:4000/api/user/find/${tokenFromSession}`)
+      .then((response) => {
+        setFetchUser(response.data.user[0]);
+      })
+      .catch((error) => {
+        // Handle errors
+        console.error("Error fetching user data:", error);
+      });
+    // eslint-disable-next-line
+  }, []);
 
   //Handling inputs
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setInputData((prevData) => ({
+    setFetchUser((prevData) => ({
       ...prevData,
       [name]: value,
     }));
@@ -38,11 +38,11 @@ const Profile = () => {
   // Handling form submit
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(inputData);
-    console.log("Hi", user.user_id);
-    const data = qs.stringify(inputData);
+    //console.log(inputData);
+    console.log("Hi", fetchUser.user_id);
+    const data = qs.stringify(fetchUser);
     await axios
-      .put(`http://localhost:4000/api/user/update/${user.user_id}`, data)
+      .put(`http://localhost:4000/api/user/update/${fetchUser.user_id}`, data)
       .then((response) => {
         console.log(response);
       });
@@ -106,7 +106,7 @@ const Profile = () => {
                   id="firstName"
                   name="fname"
                   onChange={handleInputChange}
-                  value={inputData.fname}
+                  value={fetchUser.fname}
                 />
                 <div className="invalid-feedback">
                   Valid first name is required.
@@ -123,7 +123,7 @@ const Profile = () => {
                   id="lastName"
                   name="lname"
                   onChange={handleInputChange}
-                  value={inputData.lname}
+                  value={fetchUser.lname}
                 />
                 <div className="invalid-feedback">
                   Valid last name is required.
