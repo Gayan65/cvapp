@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import logoImg from "../../images/logos/LogoSmall.png";
 import qs from "qs";
 import axios from "axios";
+import PasswordChange from "../PasswordChange";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -147,6 +148,9 @@ const Profile = () => {
               {message}
             </div>
           )}
+
+          <h4 className="my-3">Privacy</h4>
+          <PasswordChange userId={fetchUser.user_id} />
         </div>
       </div>
     </div>

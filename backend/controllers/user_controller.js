@@ -79,6 +79,7 @@ userRouter.put("/update/:id", async (req, res) => {
   }
 });
 
+//Updating a user from the id (ONLY UPDATES PASSWORD)
 userRouter.put("/change_pw/:id", (req, res) => {
   const { password } = req.body;
   const id = req.params.id;
