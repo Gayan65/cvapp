@@ -10,6 +10,7 @@ import {
   userDelete,
   userUpdate,
   userFindById,
+  passwordUpdate,
 } from "../services/user_services.js";
 
 const userRouter = express.Router();
@@ -61,12 +62,29 @@ userRouter.delete("/delete/:id", async (req, res) => {
   res.send(deletedUser);
 });
 
-//Updating a user from the id
+//Updating a user from the id (ONLY UPDATES FNAME AND LNAME)
 userRouter.put("/update/:id", async (req, res) => {
-  const { fname, lname, password } = req.body;
+  const { fname, lname } = req.body;
+  const updatedUser = await userUpdate(fname, lname, req.params.id);
+  if (updatedUser.affectedRows === 0) {
+    res.status(200).json({
+      success: false,
+      message: "profile can not be found, and not updated!",
+    });
+  } else {
+    res.status(200).json({
+      success: true,
+      message: "Profile updated successfully!",
+    });
+  }
+});
+
+userRouter.put("/change_pw/:id", (req, res) => {
+  const { password } = req.body;
+  const id = req.params.id;
   bcrypt.hash(password, saltRounds, async function (err, hash) {
-    const updatedUser = await userUpdate(fname, lname, hash, req.params.id);
-    if (updatedUser.affectedRows === 0) {
+    const pwUpdatedUser = await passwordUpdate(hash, id);
+    if (pwUpdatedUser.affectedRows === 0) {
       res.status(200).json({
         success: false,
         message: "profile can not be found, and not updated!",
@@ -74,7 +92,7 @@ userRouter.put("/update/:id", async (req, res) => {
     } else {
       res.status(200).json({
         success: true,
-        message: "Profile updated successfully!",
+        message: "Password updated successfully!",
       });
     }
   });
