@@ -8,7 +8,7 @@ import { userFind, createUser } from "../services/user_services.js";
 const userLoginRouter = express.Router();
 userLoginRouter.use(bodyParser.urlencoded({ extended: false }));
 
-const saltRounds = 10;
+const saltRounds = parseInt(process.env.SALT);
 
 //Login user
 userLoginRouter.post("/login", async (req, res) => {

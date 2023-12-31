@@ -14,6 +14,7 @@ import {
 
 const userRouter = express.Router();
 userRouter.use(bodyParser.urlencoded({ extended: false }));
+const saltRounds = parseInt(process.env.SALT);
 
 //Getting all users
 userRouter.get("/all", async (req, res) => {
@@ -63,7 +64,7 @@ userRouter.delete("/delete/:id", async (req, res) => {
 //Updating a user from the id
 userRouter.put("/update/:id", async (req, res) => {
   const { fname, lname, password } = req.body;
-  bcrypt.hash(password, 10, async function (err, hash) {
+  bcrypt.hash(password, saltRounds, async function (err, hash) {
     const updatedUser = await userUpdate(fname, lname, hash, req.params.id);
     if (updatedUser.affectedRows === 0) {
       res.status(200).json({
