@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import logoImg from "../../images/logos/LogoSmall.png";
 import qs from "qs";
 import axios from "axios";
 
 const Profile = () => {
-  const tokenFromSession = sessionStorage.getItem("token");
+  const navigate = useNavigate();
+  const token = sessionStorage.getItem("token");
   const [fetchUser, setFetchUser] = useState({
     fname: "",
     lname: "",
@@ -13,16 +15,20 @@ const Profile = () => {
   console.log("this is fetch user", fetchUser.fname);
 
   useEffect(() => {
-    console.log("from use Effect");
-    axios
-      .get(`http://localhost:4000/api/user/find/${tokenFromSession}`)
-      .then((response) => {
-        setFetchUser(response.data.user[0]);
-      })
-      .catch((error) => {
-        // Handle errors
-        console.error("Error fetching user data:", error);
-      });
+    if (token === "" || token === null) {
+      navigate("/login");
+    } else {
+      axios
+        .get(`http://localhost:4000/api/user/find/${token}`)
+        .then((response) => {
+          setFetchUser(response.data.user[0]);
+        })
+        .catch((error) => {
+          // Handle errors
+          console.error("Error fetching user data:", error);
+        });
+    }
+
     // eslint-disable-next-line
   }, []);
 
