@@ -21,6 +21,11 @@ body {
   border: solid #f55c3d 1px !important;
 }
 
+/* Custom button danger color*/
+.btn-danger {
+  border-radius: 2px;
+}
+
 /* Custom button secondary outline color*/
 .btn-outline-secondary {
   border-radius: 2px;
