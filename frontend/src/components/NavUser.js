@@ -12,7 +12,7 @@ const NavUser = () => {
 
   //Making the header
   const headers = {
-    Authorization: token,
+    Authorization: `bearer ${token}`,
     "Content-Type": "application/x-www-form-urlencoded",
   };
 
