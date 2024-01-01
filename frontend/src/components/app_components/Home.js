@@ -1,16 +1,39 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logoImg from "../../images/logos/LogoSmall.png";
+import axios from "axios";
 
 const Home = () => {
   //window.location.reload(false);
   const navigate = useNavigate();
   const token = sessionStorage.getItem("token");
 
+  //Start state of the component
+  const [fetchUser, setFetchUser] = useState({
+    fname: "",
+    lname: "",
+  });
+
+  //Making the header
+  const headers = {
+    Authorization: `bearer ${token}`,
+    "Content-Type": "application/x-www-form-urlencoded",
+  };
+
   //Checking user has logged
   useEffect(() => {
     if (token === "" || token === null) {
       navigate("/login");
+    } else {
+      axios
+        .get(`http://localhost:4000/api/user/find/${token}`, { headers })
+        .then((response) => {
+          setFetchUser(response.data.user[0]);
+        })
+        .catch((error) => {
+          // Handle errors
+          console.error("Error fetching user data:", error);
+        });
     }
     // eslint-disable-next-line
   }, []);
@@ -20,7 +43,9 @@ const Home = () => {
       <section className="py-5 text-center container">
         <div className="row py-lg-5">
           <div className="col-lg-6 col-md-8 mx-auto">
-            <h1 className="fw-light">Hi Full Name, </h1>
+            <h1 className="fw-light">
+              Hi {`${fetchUser.fname} ${fetchUser.lname}`},
+            </h1>
             <p className="lead text-body-secondary">
               Welcome to the INSTARESUME, click "Start" button to navigate each
               section and, make sure to follow all the instructions carefully,
@@ -55,8 +80,8 @@ const Home = () => {
               </div>
               <div className="offcanvas-body">
                 <div className="text-start mb-5">
-                  Dear First Name, Visit each section and fill all the details
-                  appropriately.
+                  Dear {fetchUser.fname}, Visit each section and fill all the
+                  details appropriately.
                 </div>
                 <p className=" text-start mb-1">
                   <a
