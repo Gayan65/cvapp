@@ -10,10 +10,16 @@ const NavUser = () => {
     fname: "",
   });
 
+  //Making the header
+  const headers = {
+    Authorization: token,
+    "Content-Type": "application/x-www-form-urlencoded",
+  };
+
   // Fetching the user data from the backend via token
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/api/user/find/${token}`)
+      .get(`http://localhost:4000/api/user/find/${token}`, { headers })
       .then((response) => {
         setFetchUser(response.data.user[0]);
       })

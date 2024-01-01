@@ -9,13 +9,21 @@ const Profile = () => {
   const navigate = useNavigate();
   //Getting token
   const token = sessionStorage.getItem("token");
+
   //Start state of the component
   const [fetchUser, setFetchUser] = useState({
     fname: "",
     lname: "",
   });
+
   //set state for the API response
   const [message, setMessage] = useState(null);
+
+  //Making the header
+  const headers = {
+    Authorization: token,
+    "Content-Type": "application/x-www-form-urlencoded",
+  };
 
   // Fetching the user data from the backend via token
   useEffect(() => {
@@ -23,7 +31,7 @@ const Profile = () => {
       navigate("/login");
     } else {
       axios
-        .get(`http://localhost:4000/api/user/find/${token}`)
+        .get(`http://localhost:4000/api/user/find/${token}`, { headers })
         .then((response) => {
           setFetchUser(response.data.user[0]);
         })
@@ -50,7 +58,9 @@ const Profile = () => {
     event.preventDefault();
     const data = qs.stringify(fetchUser);
     await axios
-      .put(`http://localhost:4000/api/user/update/${fetchUser.user_id}`, data)
+      .put(`http://localhost:4000/api/user/update/${fetchUser.user_id}`, data, {
+        headers,
+      })
       .then((response) => {
         setMessage(response.data.message);
       });

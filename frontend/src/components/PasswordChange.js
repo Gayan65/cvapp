@@ -7,10 +7,18 @@ const PasswordChange = (props) => {
   const [user, setUser] = useState({
     hash: "",
   });
-  //console.log(user);
 
   //set state for the API response
   const [message, setMessage] = useState(null);
+
+  //Getting token
+  const token = sessionStorage.getItem("token");
+
+  //Making the header
+  const headers = {
+    Authorization: token,
+    "Content-Type": "application/x-www-form-urlencoded",
+  };
 
   //Handling inputs
   const handlePaaswordInputChange = (event) => {
@@ -26,7 +34,11 @@ const PasswordChange = (props) => {
     event.preventDefault();
     const userData = qs.stringify(user);
     await axios
-      .put(`http://localhost:4000/api/user/change_pw/${props.userId}`, userData)
+      .put(
+        `http://localhost:4000/api/user/change_pw/${props.userId}`,
+        userData,
+        { headers }
+      )
       .then((response) => {
         setMessage(response.data.message);
       });
