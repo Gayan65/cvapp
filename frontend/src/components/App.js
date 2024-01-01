@@ -6,6 +6,7 @@ import Register from "./Register";
 import NavBar from "./NavBar";
 import Home from "./app_components/Home";
 import Profile from "./app_components/Profile";
+import Personal_Info from "./cv_components/Personal_Info";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
+          <Route path="/personal_info" element={<Personal_Info />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
