@@ -1,10 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Personal_Info = () => {
   const navigate = useNavigate();
   const token = sessionStorage.getItem("token");
+  const [fetchPersonal, setFetchPersonal] = useState({
+    user_id: "",
+    moto: "",
+    description: "",
+    image: "",
+  });
 
   //Making the header
   const headers = {
@@ -18,9 +24,11 @@ const Personal_Info = () => {
       navigate("/login");
     } else {
       axios
-        .get(`http://localhost:4000/api/user/find/${token}`, { headers })
+        .get(`http://localhost:4000/api/personal/find/${token}`, { headers })
         .then((response) => {
-          console.log(response.data.user[0]);
+          const personal = response.data.personal;
+          console.log(personal.image);
+          setFetchPersonal(personal);
         })
         .catch((error) => {
           // Handle errors
@@ -47,12 +55,8 @@ const Personal_Info = () => {
           />
         </div>
         <div className="col-md-7 order-md-2">
-          <h2 className="fs-3 text-body-secondary">Oh yeah, it’s that good.</h2>
-          <p className="lead">
-            Another featurette? Of course. More placeholder content here to give
-            you an idea of how this layout would work with some actual
-            real-world content in place.
-          </p>
+          <h2 className="fs-3 text-body-secondary">{fetchPersonal.moto}</h2>
+          <p className="lead">{fetchPersonal.description}</p>
         </div>
         {/* Renders the profile info end */}
       </div>

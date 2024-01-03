@@ -1,5 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
+import "dotenv/config";
+import jwt from "jsonwebtoken";
 import {
   createPersonal,
   getAllPersonal,
@@ -40,9 +42,10 @@ personalRouter.put("/update/:id", async (req, res) => {
 });
 
 //Get a personal from a user id
-personalRouter.get("/personal_dtl", async (req, res) => {
-  const { user_id } = req.body;
-  const getPersonal = await personalGetPerson(user_id);
+personalRouter.get("/find/:id", async (req, res) => {
+  const jwtId = req.params.id;
+  const decodedToken = jwt.verify(jwtId, process.env.JWT_KEY);
+  const getPersonal = await personalGetPerson(decodedToken.userId);
   if (getPersonal.length > 0) {
     res.status(200).json({
       success: true,
