@@ -50,7 +50,14 @@ personalRouter.get("/find/:id", async (req, res) => {
     res.status(200).json({
       success: true,
       message: "Personal data view successfully!",
-      personal: getPersonal[0],
+
+      //This had only the getPersonal object --- Problem
+      personal: {
+        user_id: getPersonal[0].userid,
+        moto: getPersonal[0].moto,
+        description: getPersonal[0].description,
+        image: Buffer.from(getPersonal[0].image, "binary").toString("base64"),
+      },
     });
   } else {
     res.status(200).json({

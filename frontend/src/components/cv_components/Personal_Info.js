@@ -27,8 +27,10 @@ const Personal_Info = () => {
         .get(`http://localhost:4000/api/personal/find/${token}`, { headers })
         .then((response) => {
           const personal = response.data.personal;
-          console.log(personal.image);
+          const imageUrl = `data:image/png;base64,${personal.image}`;
+          console.log(imageUrl);
           setFetchPersonal(personal);
+          //Image data not being fetched --- problem
         })
         .catch((error) => {
           // Handle errors
