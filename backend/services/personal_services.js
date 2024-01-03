@@ -34,3 +34,10 @@ export const personalUpdate = async (moto, description, image, user_id) => {
   ]);
   return rows;
 };
+
+//Getting personal info from use id
+export const personalGetPerson = async (user_id) => {
+  const sqlQuery = "SELECT * FROM personal WHERE user_id = ?";
+  const [rows] = await mySqlPool.query(sqlQuery, [user_id]);
+  return rows;
+};

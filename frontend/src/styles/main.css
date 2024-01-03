@@ -72,3 +72,7 @@ body {
 .text-primary {
   color: #0000ff !important;
 }
+
+.custom-component-heading {
+  color: #f55c3d;
+}

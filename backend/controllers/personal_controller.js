@@ -4,6 +4,7 @@ import {
   createPersonal,
   getAllPersonal,
   personalUpdate,
+  personalGetPerson,
 } from "../services/personal_services.js";
 
 const personalRouter = express.Router();
@@ -35,6 +36,24 @@ personalRouter.put("/update/:id", async (req, res) => {
     res.send("Nothing to update");
   } else {
     res.send(updatedPersonal);
+  }
+});
+
+//Get a personal from a user id
+personalRouter.get("/personal_dtl", async (req, res) => {
+  const { user_id } = req.body;
+  const getPersonal = await personalGetPerson(user_id);
+  if (getPersonal.length > 0) {
+    res.status(200).json({
+      success: true,
+      message: "Personal data view successfully!",
+      personal: getPersonal[0],
+    });
+  } else {
+    res.status(200).json({
+      success: false,
+      message: "Personal data can not be found!",
+    });
   }
 });
 
