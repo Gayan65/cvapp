@@ -57,6 +57,8 @@ const Personal_Info = () => {
           <p className="lead">{fetchPersonal.description}</p>
         </div>
         {/* Renders the profile info end */}
+
+        {/*Add Form for moto, description, image, user_id will be send as the token and decorded in the server end */}
       </div>
     </div>
   );
