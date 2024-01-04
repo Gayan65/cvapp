@@ -2,6 +2,9 @@ import express from "express";
 import bodyParser from "body-parser";
 import "dotenv/config";
 import jwt from "jsonwebtoken";
+import multer from "multer";
+
+const upload = multer({ storage: multer.memoryStorage() });
 import {
   createPersonal,
   getAllPersonal,
@@ -13,9 +16,10 @@ const personalRouter = express.Router();
 personalRouter.use(bodyParser.urlencoded({ extended: false }));
 
 //Creating personal info
-personalRouter.post("/create", async (req, res) => {
-  const { user_id, moto, description, image } = req.body;
-  const newPersonal = await createPersonal(user_id, moto, description, image);
+personalRouter.post("/create", upload.single("image"), async (req, res) => {
+  const { user_id, moto, description } = req.body;
+  const myImage = req.file.buffer.toString("base64"); // Converting the image file (png) to base 64 string formate
+  const newPersonal = await createPersonal(user_id, moto, description, myImage);
   res.send(newPersonal);
 });
 
@@ -50,14 +54,7 @@ personalRouter.get("/find/:id", async (req, res) => {
     res.status(200).json({
       success: true,
       message: "Personal data view successfully!",
-
-      //This had only the getPersonal object --- Problem
-      personal: {
-        user_id: getPersonal[0].userid,
-        moto: getPersonal[0].moto,
-        description: getPersonal[0].description,
-        image: Buffer.from(getPersonal[0].image, "binary").toString("base64"),
-      },
+      personal: getPersonal,
     });
   } else {
     res.status(200).json({

@@ -20,7 +20,7 @@ export const deleteUserTable = async () => {
 //creating personal table function
 export const createPersonalTable = async () => {
   const sqlQuery =
-    "CREATE TABLE personal (personal_id INT AUTO_INCREMENT PRIMARY KEY, user_id INT, moto VARCHAR(100), description VARCHAR(600) NOT NULL, image LONGBLOB, INDEX `idx_user` (user_id), CONSTRAINT `fk_character_user` FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE)";
+    "CREATE TABLE personal (personal_id INT AUTO_INCREMENT PRIMARY KEY, user_id INT, moto VARCHAR(100), description VARCHAR(600) NOT NULL, image LONGTEXT, INDEX `idx_user` (user_id), CONSTRAINT `fk_character_user` FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE)";
   const [rows] = await mySqlPool.query(sqlQuery);
 
   return rows;

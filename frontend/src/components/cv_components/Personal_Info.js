@@ -26,11 +26,7 @@ const Personal_Info = () => {
       axios
         .get(`http://localhost:4000/api/personal/find/${token}`, { headers })
         .then((response) => {
-          const personal = response.data.personal;
-          const imageUrl = `data:image/png;base64,${personal.image}`;
-          console.log(imageUrl);
-          setFetchPersonal(personal);
-          //Image data not being fetched --- problem
+          setFetchPersonal(response.data.personal[0]);
         })
         .catch((error) => {
           // Handle errors
@@ -52,7 +48,7 @@ const Personal_Info = () => {
             className="bd-placeholder-img bd-placeholder-img-lg img-fluid mx-auto"
             width="300"
             height="300"
-            src="https://freepngimg.com/thumb/the_legend_of_zelda/21540-1-zelda-link-transparent.png"
+            src={`data:image/png;base64,${fetchPersonal.image}`}
             alt="Profile"
           />
         </div>
