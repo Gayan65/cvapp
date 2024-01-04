@@ -59,6 +59,40 @@ const Personal_Info = () => {
         {/* Renders the profile info end */}
 
         {/*Add Form for moto, description, image, user_id will be send as the token and decorded in the server end */}
+        <div>
+          <form>
+            <div className="mb-3">
+              <label htmlFor="exampleFormControlInput1" className="form-label">
+                Add your moto here...
+              </label>
+              <textarea
+                className="form-control"
+                id="exampleFormControlTextarea1"
+                rows="3"
+              ></textarea>
+            </div>
+            <div className="mb-3">
+              <label
+                htmlFor="exampleFormControlTextarea1"
+                className="form-label"
+              >
+                The best way to describe about you..
+              </label>
+              <textarea
+                className="form-control"
+                id="exampleFormControlTextarea1"
+                rows="5"
+              ></textarea>
+            </div>
+            <div className="mb-3">
+              <label htmlFor="formFile" className="form-label">
+                Add your profile image..
+              </label>
+              <input className="form-control" type="file" id="formFile" />
+            </div>
+          </form>
+        </div>
+        {/* form end */}
       </div>
     </div>
   );
