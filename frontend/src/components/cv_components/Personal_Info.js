@@ -43,19 +43,29 @@ const Personal_Info = () => {
         </h1>
 
         {/* Renders the profile info */}
-        <div className="col-md-5 order-md-1">
-          <img
-            className="bd-placeholder-img bd-placeholder-img-lg img-fluid mx-auto"
-            width="300"
-            height="300"
-            src={`data:image/png;base64,${fetchPersonal.image}`}
-            alt="Profile"
-          />
+
+        <div className="mb-3" style={{ maxWidth: "800px" }}>
+          <div className="row g-0">
+            <div className="col-md-4 me-5">
+              <img
+                src={`data:image/png;base64,${fetchPersonal.image}`}
+                className="img-fluid mb-3 img-custom"
+                alt="profile"
+              />
+            </div>
+            <div className="col-md-7">
+              <div className="card-body">
+                <h5 className="card-title mb-3 fw-semibold ">
+                  {fetchPersonal.moto}
+                </h5>
+                <p className="card-text fst-italic mb-3 ">
+                  {fetchPersonal.description}
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="col-md-7 order-md-2">
-          <h2 className="fs-3 text-body-secondary">{fetchPersonal.moto}</h2>
-          <p className="lead">{fetchPersonal.description}</p>
-        </div>
+
         {/* Renders the profile info end */}
 
         {/*Add Form for moto, description, image, user_id will be send as the token and decorded in the server end */}
@@ -69,6 +79,7 @@ const Personal_Info = () => {
                 className="form-control"
                 id="exampleFormControlTextarea1"
                 rows="3"
+                required
               ></textarea>
             </div>
             <div className="mb-3">
@@ -82,13 +93,20 @@ const Personal_Info = () => {
                 className="form-control"
                 id="exampleFormControlTextarea1"
                 rows="5"
+                required
               ></textarea>
             </div>
             <div className="mb-3">
               <label htmlFor="formFile" className="form-label">
                 Add your profile image..
               </label>
-              <input className="form-control" type="file" id="formFile" />
+              <input
+                className="form-control"
+                type="file"
+                id="formFile"
+                required
+              />
+              <button className=" btn btn-primary mt-3 ">Save</button>
             </div>
           </form>
         </div>

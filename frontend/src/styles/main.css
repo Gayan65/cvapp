@@ -76,3 +76,9 @@ body {
 .custom-component-heading {
   color: #f55c3d;
 }
+
+/*custom css for the image profile in personal component*/
+.img-custom {
+  border-radius: 50%;
+  border: solid #f55c3d 3px;
+}
