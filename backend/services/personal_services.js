@@ -22,6 +22,15 @@ export const createPersonal = async (user_id, moto, description, image) => {
   return rows;
 };
 
+// Creating persona without an image
+export const createPersonalWithoutImg = async (user_id, moto, description) => {
+  const sqlQuery =
+    "INSERT INTO personal (user_id, moto, description) VALUES (?,?,?)";
+  const rows = await mySqlPool.query(sqlQuery, [user_id, moto, description]);
+
+  return rows;
+};
+
 // Updating a personal from the user ID SQl
 export const personalUpdate = async (moto, description, image, user_id) => {
   const sqlQuery =

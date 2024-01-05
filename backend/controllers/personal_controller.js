@@ -11,6 +11,7 @@ import {
   personalUpdate,
   personalUpdateWithoutImg,
   personalGetPerson,
+  createPersonalWithoutImg,
 } from "../services/personal_services.js";
 
 const personalRouter = express.Router();
@@ -18,10 +19,28 @@ personalRouter.use(bodyParser.urlencoded({ extended: false }));
 
 //Creating personal info
 personalRouter.post("/create", upload.single("image"), async (req, res) => {
-  const { user_id, moto, description } = req.body;
-  const myImage = req.file.buffer.toString("base64"); // Converting the image file (png) to base 64 string formate
-  const newPersonal = await createPersonal(user_id, moto, description, myImage);
-  res.send(newPersonal);
+  const { user_token, moto, description } = req.body;
+  //Getting user id from the token
+  const decodedToken = jwt.verify(user_token, process.env.JWT_KEY);
+  const id = decodedToken.userId;
+
+  if (req.file === undefined) {
+    const newPersonal = await createPersonalWithoutImg(id, moto, description);
+    res.status(200).json({
+      success: true,
+      message: "Personal information added successfully!",
+      personal: newPersonal,
+    });
+  } else {
+    // Converting the image file (png) to base 64 string formate
+    const myImage = req.file.buffer.toString("base64");
+    const newPersonal = await createPersonal(id, moto, description, myImage);
+    res.status(200).json({
+      success: true,
+      message: "Personal information added successfully!",
+      personal: newPersonal,
+    });
+  }
 });
 
 //Getting all personal info

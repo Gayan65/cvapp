@@ -15,6 +15,8 @@ const Personal_Info = () => {
   const [message, setMessage] = useState(null);
   //When loads the component Temporary image is false
   const [tempImg, setTempImg] = useState(false);
+  //When personal data not exists
+  const [noData, setNoData] = useState(false);
 
   //Making the form data in a relevent manner for the sending as payload
   const formData = new FormData();
@@ -57,7 +59,7 @@ const Personal_Info = () => {
     setTempImg(true);
   };
 
-  //Submit data
+  //Submit data (For Update function)
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(fetchPersonal);
@@ -69,6 +71,17 @@ const Personal_Info = () => {
         setMessage(response.data.message);
         //window.location.reload();
       });
+  };
+
+  //Submit data (For Create function)
+  const handleCreate = (event) => {
+    event.preventDefault();
+    //Getting token to the form data
+    formData.append("user_token", token);
+    axios.post("http://localhost:4000/api/personal/create", formData, {
+      headers,
+    });
+    console.log("Hanle create");
   };
 
   //protecting this route
@@ -83,7 +96,9 @@ const Personal_Info = () => {
         })
         .catch((error) => {
           // Handle errors
-          console.error("Error fetching user data:", error);
+          //console.error("Error fetching user data:", error);
+          setTempImg(true);
+          setNoData(true);
         });
     }
     // eslint-disable-next-line
@@ -132,7 +147,7 @@ const Personal_Info = () => {
 
         {/*Add Form for moto, description, image, user_id will be send as the token and decorded in the server end */}
         <div>
-          <form method="POST" onSubmit={handleSubmit}>
+          <form method="POST" onSubmit={noData ? handleCreate : handleSubmit}>
             <div className="mb-3">
               <label htmlFor="exampleFormControlInput1" className="form-label">
                 Add your moto here...
