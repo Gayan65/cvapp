@@ -157,7 +157,6 @@ const Personal_Info = () => {
                 type="file"
                 id="formFile"
                 onChange={handleFileChange}
-                required
               />
               <button className=" btn btn-primary mt-3 " type="submit">
                 Save

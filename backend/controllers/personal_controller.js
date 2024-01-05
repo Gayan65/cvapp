@@ -9,6 +9,7 @@ import {
   createPersonal,
   getAllPersonal,
   personalUpdate,
+  personalUpdateWithoutImg,
   personalGetPerson,
 } from "../services/personal_services.js";
 
@@ -35,14 +36,30 @@ personalRouter.put("/update/:id", upload.single("image"), async (req, res) => {
   const decodedToken = jwt.verify(jwtId, process.env.JWT_KEY);
   const id = decodedToken.userId;
   const { moto, description } = req.body;
-  const myImage = req.file.buffer.toString("base64");
-  //console.log(id, moto, description, myImage);
-  const updatedPersonal = await personalUpdate(moto, description, myImage, id);
-
-  if (updatedPersonal.affectedRows === 0) {
-    res.send("Nothing to update");
+  if (req.file === undefined) {
+    const updatedPersonal = await personalUpdateWithoutImg(
+      moto,
+      description,
+      id
+    );
+    if (updatedPersonal.affectedRows === 0) {
+      res.send("Nothing to update");
+    } else {
+      res.send(updatedPersonal);
+    }
   } else {
-    res.send(updatedPersonal);
+    const myImage = req.file.buffer.toString("base64");
+    const updatedPersonal = await personalUpdate(
+      moto,
+      description,
+      myImage,
+      id
+    );
+    if (updatedPersonal.affectedRows === 0) {
+      res.send("Nothing to update");
+    } else {
+      res.send(updatedPersonal);
+    }
   }
 });
 
