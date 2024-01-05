@@ -30,14 +30,15 @@ personalRouter.get("/all", async (req, res) => {
 });
 
 //Updating a personal from the user id
-personalRouter.put("/update/:id", async (req, res) => {
-  const { moto, description, image } = req.body;
-  const updatedPersonal = await personalUpdate(
-    moto,
-    description,
-    image,
-    req.params.id
-  );
+personalRouter.put("/update/:id", upload.single("image"), async (req, res) => {
+  const jwtId = req.params.id;
+  const decodedToken = jwt.verify(jwtId, process.env.JWT_KEY);
+  const id = decodedToken.userId;
+  const { moto, description } = req.body;
+  const myImage = req.file.buffer.toString("base64");
+  //console.log(id, moto, description, myImage);
+  const updatedPersonal = await personalUpdate(moto, description, myImage, id);
+
   if (updatedPersonal.affectedRows === 0) {
     res.send("Nothing to update");
   } else {

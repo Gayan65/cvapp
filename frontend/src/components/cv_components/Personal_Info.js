@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import qs from "qs";
 
 const Personal_Info = () => {
   const navigate = useNavigate();
@@ -12,10 +13,16 @@ const Personal_Info = () => {
     image: "",
   });
 
+  //Making the form data in a relevent manner for the sending as payload
+  const formData = new FormData();
+  formData.append("moto", fetchPersonal.moto);
+  formData.append("description", fetchPersonal.description);
+  formData.append("image", fetchPersonal.image); // Assuming fetchPersonal.image is a file object
+
   //Making the header
   const headers = {
     Authorization: `bearer ${token}`,
-    "Content-Type": "application/x-www-form-urlencoded",
+    "Content-Type": "multipart/form-data",
   };
 
   // Handling input change for moto
@@ -36,20 +43,26 @@ const Personal_Info = () => {
     }));
   };
 
-  // Handling file input change
   const handleFileChange = (event) => {
-    const { value } = event.target;
+    const file = event.target.files[0]; // Assuming you only allow a single file
     setFetchPersonal((prevData) => ({
       ...prevData,
-      image: value,
+      image: file,
     }));
   };
 
   //Submit data
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     console.log(fetchPersonal);
+    axios
+      .put(`http://localhost:4000/api/personal/update/${token}`, formData, {
+        headers,
+      })
+      .then((response) => {
+        console.log(response.data);
+        window.location.reload();
+      });
   };
 
   //protecting this route
