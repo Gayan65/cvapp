@@ -18,6 +18,40 @@ const Personal_Info = () => {
     "Content-Type": "application/x-www-form-urlencoded",
   };
 
+  // Handling input change for moto
+  const handleMotoChange = (event) => {
+    const { value } = event.target;
+    setFetchPersonal((prevData) => ({
+      ...prevData,
+      moto: value,
+    }));
+  };
+
+  // Handling input change for description
+  const handleDescriptionChange = (event) => {
+    const { value } = event.target;
+    setFetchPersonal((prevData) => ({
+      ...prevData,
+      description: value,
+    }));
+  };
+
+  // Handling file input change
+  const handleFileChange = (event) => {
+    const { value } = event.target;
+    setFetchPersonal((prevData) => ({
+      ...prevData,
+      image: value,
+    }));
+  };
+
+  //Submit data
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    console.log(fetchPersonal);
+  };
+
   //protecting this route
   useEffect(() => {
     if (token === null || token === "") {
@@ -35,6 +69,7 @@ const Personal_Info = () => {
     }
     // eslint-disable-next-line
   }, []);
+
   return (
     <div className=" container mt-3 ">
       <div className="row">
@@ -70,7 +105,7 @@ const Personal_Info = () => {
 
         {/*Add Form for moto, description, image, user_id will be send as the token and decorded in the server end */}
         <div>
-          <form>
+          <form method="POST" onSubmit={handleSubmit}>
             <div className="mb-3">
               <label htmlFor="exampleFormControlInput1" className="form-label">
                 Add your moto here...
@@ -79,6 +114,8 @@ const Personal_Info = () => {
                 className="form-control"
                 id="exampleFormControlTextarea1"
                 rows="3"
+                onChange={handleMotoChange}
+                value={fetchPersonal.moto}
                 required
               ></textarea>
             </div>
@@ -93,6 +130,8 @@ const Personal_Info = () => {
                 className="form-control"
                 id="exampleFormControlTextarea1"
                 rows="5"
+                onChange={handleDescriptionChange}
+                value={fetchPersonal.description}
                 required
               ></textarea>
             </div>
@@ -104,9 +143,12 @@ const Personal_Info = () => {
                 className="form-control"
                 type="file"
                 id="formFile"
+                onChange={handleFileChange}
                 required
               />
-              <button className=" btn btn-primary mt-3 ">Save</button>
+              <button className=" btn btn-primary mt-3 " type="submit">
+                Save
+              </button>
             </div>
           </form>
         </div>
