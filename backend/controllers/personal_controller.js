@@ -42,10 +42,16 @@ personalRouter.put("/update/:id", upload.single("image"), async (req, res) => {
       description,
       id
     );
-    if (updatedPersonal.affectedRows === 0) {
-      res.send("Nothing to update");
+    if (updatedPersonal.affectedRows > 0) {
+      res.status(200).json({
+        success: true,
+        message: "Information updated Successfully!",
+      });
     } else {
-      res.send(updatedPersonal);
+      res.status(200).json({
+        success: false,
+        message: "Information is not updated",
+      });
     }
   } else {
     const myImage = req.file.buffer.toString("base64");
@@ -55,10 +61,16 @@ personalRouter.put("/update/:id", upload.single("image"), async (req, res) => {
       myImage,
       id
     );
-    if (updatedPersonal.affectedRows === 0) {
-      res.send("Nothing to update");
+    if (updatedPersonal.affectedRows > 0) {
+      res.status(200).json({
+        success: true,
+        message: "Information updated Successfully!",
+      });
     } else {
-      res.send(updatedPersonal);
+      res.status(200).json({
+        success: false,
+        message: "Information is not updated",
+      });
     }
   }
 });

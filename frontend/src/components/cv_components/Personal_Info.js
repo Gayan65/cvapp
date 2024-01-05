@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import qs from "qs";
+import profileImg from "../../images/profile/profile.png";
 
 const Personal_Info = () => {
   const navigate = useNavigate();
@@ -12,6 +12,9 @@ const Personal_Info = () => {
     description: "",
     image: "",
   });
+  const [message, setMessage] = useState(null);
+  //When loads the component Temporary image is false
+  const [tempImg, setTempImg] = useState(false);
 
   //Making the form data in a relevent manner for the sending as payload
   const formData = new FormData();
@@ -43,12 +46,15 @@ const Personal_Info = () => {
     }));
   };
 
+  // Handling input change for image file
   const handleFileChange = (event) => {
     const file = event.target.files[0]; // Assuming you only allow a single file
     setFetchPersonal((prevData) => ({
       ...prevData,
       image: file,
     }));
+    //Setting temporary Image for profile
+    setTempImg(true);
   };
 
   //Submit data
@@ -60,8 +66,8 @@ const Personal_Info = () => {
         headers,
       })
       .then((response) => {
-        console.log(response.data);
-        window.location.reload();
+        setMessage(response.data.message);
+        //window.location.reload();
       });
   };
 
@@ -95,11 +101,19 @@ const Personal_Info = () => {
         <div className="mb-3" style={{ maxWidth: "800px" }}>
           <div className="row g-0">
             <div className="col-md-4 me-5">
-              <img
-                src={`data:image/png;base64,${fetchPersonal.image}`}
-                className="img-fluid mb-3 img-custom"
-                alt="profile"
-              />
+              {tempImg === false ? (
+                <img
+                  src={`data:image/png;base64,${fetchPersonal.image}`}
+                  className="img-fluid mb-3 img-custom"
+                  alt="profile"
+                />
+              ) : (
+                <img
+                  src={profileImg}
+                  className="img-fluid mb-3 img-custom"
+                  alt="profile"
+                />
+              )}
             </div>
             <div className="col-md-7">
               <div className="card-body">
@@ -163,6 +177,7 @@ const Personal_Info = () => {
               </button>
             </div>
           </form>
+          <h1> {message} </h1>
         </div>
         {/* form end */}
       </div>
