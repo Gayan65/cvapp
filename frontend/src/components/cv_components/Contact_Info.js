@@ -1,16 +1,25 @@
-import React, { useEffect } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Contact_Info = () => {
   const token = sessionStorage.getItem("token");
   const navigate = useNavigate();
+  const [mcCode, setMcCode] = useState("");
 
   //protecting this route
   useEffect(() => {
     if (token === null || token === "") {
       navigate("/login");
     } else {
-      console.log("You are fine!");
+      //Getting all country codes
+      axios
+        .get(
+          "https://gist.githubusercontent.com/anubhavshrimal/75f6183458db8c453306f93521e93d37/raw/f77e7598a8503f1f70528ae1cbf9f66755698a16/CountryCodes.json"
+        )
+        .then((response) => {
+          setMcCode(response.data);
+        });
     }
     // eslint-disable-next-line
   }, []);
@@ -72,9 +81,14 @@ const Contact_Info = () => {
                 <label htmlFor="state" className="form-label">
                   Mobile Country code
                 </label>
-                <select className="form-select" id="state" required="">
-                  <option value="">Choose...</option>
-                  <option>California</option>
+                <select className="form-select" id="state" required>
+                  {mcCode ? (
+                    mcCode.map((country, i) => (
+                      <option key={i}>{country.dial_code}</option>
+                    ))
+                  ) : (
+                    <option>Loading</option>
+                  )}
                 </select>
                 <div className="invalid-feedback">
                   Please provide a valid state.
@@ -90,7 +104,6 @@ const Contact_Info = () => {
                   className="form-control"
                   id="lastName"
                   placeholder=""
-                  value=""
                   required=""
                 />
                 <div className="invalid-feedback">
@@ -103,8 +116,13 @@ const Contact_Info = () => {
                   Whatsapp Country code
                 </label>
                 <select className="form-select" id="state" required="">
-                  <option value="">Choose...</option>
-                  <option>California</option>
+                  {mcCode ? (
+                    mcCode.map((country, i) => (
+                      <option key={i}>{country.dial_code}</option>
+                    ))
+                  ) : (
+                    <option>Loading</option>
+                  )}
                 </select>
                 <div className="invalid-feedback">
                   Please provide a valid Whatsapp Country code.
@@ -120,7 +138,6 @@ const Contact_Info = () => {
                   className="form-control"
                   id="lastName"
                   placeholder=""
-                  value=""
                   required=""
                 />
                 <div className="invalid-feedback">
@@ -163,7 +180,6 @@ const Contact_Info = () => {
                   Country
                 </label>
                 <select className="form-select" id="country" required="">
-                  <option value="">Choose...</option>
                   <option>United States</option>
                 </select>
                 <div className="invalid-feedback">
