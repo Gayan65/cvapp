@@ -79,9 +79,13 @@ const Personal_Info = () => {
     event.preventDefault();
     //Getting token to the form data
     formData.append("user_token", token);
-    axios.post("http://localhost:4000/api/personal/create", formData, {
-      headers,
-    });
+    axios
+      .post("http://localhost:4000/api/personal/create", formData, {
+        headers,
+      })
+      .then((response) => {
+        setMessage(response.data.message);
+      });
     console.log("Hanle create");
   };
 
