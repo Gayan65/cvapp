@@ -20,6 +20,8 @@ const Contact_Info = () => {
         .then((response) => {
           setMcCode(response.data);
         });
+
+      //Getting all countries API should be here...
     }
     // eslint-disable-next-line
   }, []);
