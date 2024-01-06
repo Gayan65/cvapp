@@ -42,6 +42,22 @@ body {
   border: solid #f55c3d 1px !important;
 }
 
+/* Custom button success color*/
+.btn-success {
+  border-radius: 2px;
+  border: solid #f55c3d 1px;
+  background-color: #f55c3d;
+}
+
+.btn-success:hover {
+  background-color: #0000ff;
+}
+
+.btn-success:active {
+  background-color: #f55c3d !important;
+  border: solid #f55c3d 1px !important;
+}
+
 /* custom css for the login form element */
 .form-signin {
   max-width: 330px;

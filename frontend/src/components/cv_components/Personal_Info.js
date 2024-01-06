@@ -63,7 +63,6 @@ const Personal_Info = () => {
   //Submit data (For Update function)
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(fetchPersonal);
     axios
       .put(`http://localhost:4000/api/personal/update/${token}`, formData, {
         headers,
@@ -86,7 +85,11 @@ const Personal_Info = () => {
       .then((response) => {
         setMessage(response.data.message);
       });
-    console.log("Hanle create");
+  };
+
+  //Handling Back navigation
+  const handdleBack = () => {
+    navigate("/home");
   };
 
   //protecting this route
@@ -98,7 +101,6 @@ const Personal_Info = () => {
         .get(`http://localhost:4000/api/personal/find/${token}`, { headers })
         .then((response) => {
           setFetchPersonal(response.data.personal[0]);
-          console.log(response.data.personal[0], tempImg);
         })
         .catch((error) => {
           // Handle errors
@@ -209,6 +211,9 @@ const Personal_Info = () => {
         </div>
         {/* form end */}
       </div>
+      <button className=" btn btn-success mt-2 " onClick={handdleBack}>
+        Back
+      </button>
     </div>
   );
 };
