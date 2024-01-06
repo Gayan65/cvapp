@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import profileImg from "../../images/profile/profile.png";
+import Model from "../Model";
 
 const Personal_Info = () => {
   const navigate = useNavigate();
@@ -93,6 +94,7 @@ const Personal_Info = () => {
         .get(`http://localhost:4000/api/personal/find/${token}`, { headers })
         .then((response) => {
           setFetchPersonal(response.data.personal[0]);
+          console.log(response.data.personal[0], tempImg);
         })
         .catch((error) => {
           // Handle errors
@@ -116,15 +118,17 @@ const Personal_Info = () => {
         <div className="mb-3" style={{ maxWidth: "800px" }}>
           <div className="row g-0">
             <div className="col-md-4 me-5">
-              {tempImg === false ? (
+              {tempImg === true ||
+              tempImg === null ||
+              fetchPersonal.image === null ? (
                 <img
-                  src={`data:image/png;base64,${fetchPersonal.image}`}
+                  src={profileImg}
                   className="img-fluid mb-3 img-custom"
                   alt="profile"
                 />
               ) : (
                 <img
-                  src={profileImg}
+                  src={`data:image/png;base64,${fetchPersonal.image}`}
                   className="img-fluid mb-3 img-custom"
                   alt="profile"
                 />
@@ -187,12 +191,17 @@ const Personal_Info = () => {
                 id="formFile"
                 onChange={handleFileChange}
               />
-              <button className=" btn btn-primary mt-3 " type="submit">
+              <button
+                className=" btn btn-primary mt-3 "
+                type="submit"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop"
+              >
                 Save
               </button>
             </div>
           </form>
-          <h1> {message} </h1>
+          <Model title={"Personal information"} message={message} />
         </div>
         {/* form end */}
       </div>
