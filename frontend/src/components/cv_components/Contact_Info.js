@@ -84,7 +84,9 @@ const Contact_Info = () => {
                 <select className="form-select" id="state" required>
                   {mcCode ? (
                     mcCode.map((country, i) => (
-                      <option key={i}>{country.dial_code}</option>
+                      <option key={i}>
+                        {country.dial_code}, {country.name}
+                      </option>
                     ))
                   ) : (
                     <option>Loading</option>
@@ -118,7 +120,9 @@ const Contact_Info = () => {
                 <select className="form-select" id="state" required="">
                   {mcCode ? (
                     mcCode.map((country, i) => (
-                      <option key={i}>{country.dial_code}</option>
+                      <option key={i}>
+                        {country.dial_code}, {country.name}
+                      </option>
                     ))
                   ) : (
                     <option>Loading</option>
