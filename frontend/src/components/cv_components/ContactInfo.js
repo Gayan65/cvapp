@@ -36,6 +36,7 @@ const ContactInfo = () => {
     setFetchContact((prevData) => ({
       ...prevData,
       [name]: value,
+      user_id: token,
     }));
   };
 
