@@ -8,14 +8,14 @@ const ContactInfo = () => {
   const [mcCode, setMcCode] = useState("");
   const [fetchContact, setFetchContact] = useState({
     user_id: "",
-    m_code: "",
+    m_code: "+93",
     m_number: "",
-    w_code: "",
+    w_code: "+93",
     w_number: "",
     address_lane: "",
     city: "",
     post_code: "",
-    country: "",
+    country: "Afghanistan",
   });
   /*
   //Making the form data in a relevant manner for the sending as payload
@@ -167,10 +167,11 @@ const ContactInfo = () => {
                   type="text"
                   className="form-control"
                   id="lastName"
-                  placeholder="12 123 1234"
+                  placeholder="123456789"
                   required
                   name="m_number"
                   onChange={handleInputChange}
+                  pattern="\d{9}"
                 />
                 <div className="invalid-feedback">
                   Valid last name is required.
@@ -211,10 +212,11 @@ const ContactInfo = () => {
                   type="text"
                   className="form-control"
                   id="lastName"
-                  placeholder="12 123 1234"
+                  placeholder="123456789"
                   required
                   name="w_number"
                   onChange={handleInputChange}
+                  pattern="\d{9}"
                 />
                 <div className="invalid-feedback">
                   Valid Whatsapp Number is required.
