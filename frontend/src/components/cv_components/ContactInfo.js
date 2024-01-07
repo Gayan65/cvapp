@@ -107,7 +107,7 @@ const ContactInfo = () => {
                   type="text"
                   className="form-control"
                   id="lastName"
-                  placeholder=""
+                  placeholder="12 123 1234"
                   required=""
                 />
                 <div className="invalid-feedback">
@@ -143,7 +143,7 @@ const ContactInfo = () => {
                   type="text"
                   className="form-control"
                   id="lastName"
-                  placeholder=""
+                  placeholder="12 123 1234"
                   required=""
                 />
                 <div className="invalid-feedback">
@@ -175,7 +175,7 @@ const ContactInfo = () => {
                   type="text"
                   className="form-control"
                   id="address"
-                  placeholder="1234 Main St"
+                  placeholder="City"
                   required=""
                 />
                 <div className="invalid-feedback">Please enter your City.</div>
@@ -186,7 +186,13 @@ const ContactInfo = () => {
                   Country
                 </label>
                 <select className="form-select" id="country" required="">
-                  <option>United States</option>
+                  {mcCode ? (
+                    mcCode.map((country, i) => (
+                      <option key={i}>{country.name}</option>
+                    ))
+                  ) : (
+                    <option>Loading</option>
+                  )}
                 </select>
                 <div className="invalid-feedback">
                   Please select a valid country.
