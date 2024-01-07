@@ -83,31 +83,41 @@ const ContactInfo = () => {
             <li className="list-group-item d-flex justify-content-between lh-sm">
               <div>
                 <h6 className="my-0">Mobile Number</h6>
-                <small className="text-body-secondary">Brief description</small>
+                <small className="text-body-secondary">
+                  {fetchContact.m_code} {fetchContact.m_number}
+                </small>
               </div>
             </li>
             <li className="list-group-item d-flex justify-content-between lh-sm">
               <div>
                 <h6 className="my-0">Whatsapp Number</h6>
-                <small className="text-body-secondary">Brief description</small>
+                <small className="text-body-secondary">
+                  {fetchContact.w_code} {fetchContact.w_number}
+                </small>
               </div>
             </li>
             <li className="list-group-item d-flex justify-content-between lh-sm">
               <div>
                 <h6 className="my-0">Address</h6>
-                <small className="text-body-secondary">Brief description</small>
+                <small className="text-body-secondary">
+                  {fetchContact.address_lane}
+                </small>
               </div>
             </li>
             <li className="list-group-item d-flex justify-content-between lh-sm">
               <div>
                 <h6 className="my-0">Postcode, City</h6>
-                <small className="text-body-secondary">Brief description</small>
+                <small className="text-body-secondary">
+                  {fetchContact.post_code} {fetchContact.city}
+                </small>
               </div>
             </li>
             <li className="list-group-item d-flex justify-content-between lh-sm">
               <div>
                 <h6 className="my-0">Country</h6>
-                <small className="text-body-secondary">Brief description</small>
+                <small className="text-body-secondary">
+                  {fetchContact.country}
+                </small>
               </div>
             </li>
           </ul>
@@ -289,7 +299,7 @@ const ContactInfo = () => {
             </div>
 
             <button className="btn btn-primary mt-3 " type="submit">
-              Continue to checkout
+              Save
             </button>
           </form>
         </div>
