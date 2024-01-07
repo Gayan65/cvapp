@@ -17,12 +17,33 @@ const ContactInfo = () => {
     post_code: "",
     country: "",
   });
+  /*
+  //Making the form data in a relevant manner for the sending as payload
+  const formData = new FormData();
+  formData.append("m_code", fetchContact.m_code);
+  formData.append("m_number", fetchContact.m_number);
+  formData.append("w_code", fetchContact.w_code);
+  formData.append("w_number", fetchContact.w_number);
+  formData.append("address_lane", fetchContact.address_lane);
+  formData.append("city", fetchContact.city);
+  formData.append("post_code", fetchContact.post_code);
+  formData.append("country", fetchContact.country);
+*/
+
+  //Handling inputs
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFetchContact((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
   // Handle Form create
-
   const handleFormCreate = (event) => {
     event.preventDefault();
-    console.log("submitted");
+    console.log("Submitted");
+    console.log(fetchContact);
   };
 
   // Handle Form update
@@ -105,10 +126,16 @@ const ContactInfo = () => {
                 <label htmlFor="state" className="form-label">
                   Mobile Country code
                 </label>
-                <select className="form-select" id="state" required>
+                <select
+                  className="form-select"
+                  id="state"
+                  required
+                  name="m_code"
+                  onChange={handleInputChange}
+                >
                   {mcCode ? (
                     mcCode.map((country, i) => (
-                      <option key={i}>
+                      <option key={i} value={country.dial_code}>
                         {country.dial_code}, {country.name}
                       </option>
                     ))
@@ -131,6 +158,8 @@ const ContactInfo = () => {
                   id="lastName"
                   placeholder="12 123 1234"
                   required
+                  name="m_number"
+                  onChange={handleInputChange}
                 />
                 <div className="invalid-feedback">
                   Valid last name is required.
@@ -141,10 +170,16 @@ const ContactInfo = () => {
                 <label htmlFor="state" className="form-label">
                   Whatsapp Country code
                 </label>
-                <select className="form-select" id="state" required>
+                <select
+                  className="form-select"
+                  id="state"
+                  required
+                  name="w_code"
+                  onChange={handleInputChange}
+                >
                   {mcCode ? (
                     mcCode.map((country, i) => (
-                      <option key={i}>
+                      <option key={i} value={country.dial_code}>
                         {country.dial_code}, {country.name}
                       </option>
                     ))
@@ -167,6 +202,8 @@ const ContactInfo = () => {
                   id="lastName"
                   placeholder="12 123 1234"
                   required
+                  name="w_number"
+                  onChange={handleInputChange}
                 />
                 <div className="invalid-feedback">
                   Valid Whatsapp Number is required.
@@ -183,6 +220,8 @@ const ContactInfo = () => {
                   id="address"
                   placeholder="1234 Main St"
                   required
+                  name="address_lane"
+                  onChange={handleInputChange}
                 />
                 <div className="invalid-feedback">
                   Please enter your address lane.
@@ -199,6 +238,8 @@ const ContactInfo = () => {
                   id="address"
                   placeholder="City"
                   required
+                  name="city"
+                  onChange={handleInputChange}
                 />
                 <div className="invalid-feedback">Please enter your City.</div>
               </div>
@@ -207,10 +248,18 @@ const ContactInfo = () => {
                 <label htmlFor="country" className="form-label">
                   Country
                 </label>
-                <select className="form-select" id="country" required>
+                <select
+                  className="form-select"
+                  id="country"
+                  required
+                  name="country"
+                  onChange={handleInputChange}
+                >
                   {mcCode ? (
                     mcCode.map((country, i) => (
-                      <option key={i}>{country.name}</option>
+                      <option key={i} value={country.name}>
+                        {country.name}
+                      </option>
                     ))
                   ) : (
                     <option>Loading</option>
@@ -231,6 +280,8 @@ const ContactInfo = () => {
                   id="zip"
                   placeholder=""
                   required
+                  name="post_code"
+                  onChange={handleInputChange}
                 />
                 <div className="invalid-feedback">Postcode required.</div>
               </div>
