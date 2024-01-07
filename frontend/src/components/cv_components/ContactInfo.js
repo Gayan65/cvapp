@@ -6,6 +6,26 @@ const ContactInfo = () => {
   const token = sessionStorage.getItem("token");
   const navigate = useNavigate();
   const [mcCode, setMcCode] = useState("");
+  const [fetchContact, setFetchContact] = useState({
+    user_id: "",
+    m_code: "",
+    m_number: "",
+    w_code: "",
+    w_number: "",
+    address_lane: "",
+    city: "",
+    post_code: "",
+    country: "",
+  });
+
+  // Handle Form create
+
+  const handleFormCreate = (event) => {
+    event.preventDefault();
+    console.log("submitted");
+  };
+
+  // Handle Form update
 
   //protecting this route
   useEffect(() => {
@@ -20,8 +40,6 @@ const ContactInfo = () => {
         .then((response) => {
           setMcCode(response.data);
         });
-
-      //Getting all countries API should be here...
     }
     // eslint-disable-next-line
   }, []);
@@ -77,7 +95,11 @@ const ContactInfo = () => {
 
         <div className="col-md-7 col-lg-8">
           <h4 className="mb-3">Contact information here..</h4>
-          <form className="needs-validation" noValidate="">
+          <form
+            className="needs-validation"
+            method="POST"
+            onSubmit={handleFormCreate}
+          >
             <div className="row g-3">
               <div className="col-md-6">
                 <label htmlFor="state" className="form-label">
@@ -108,7 +130,7 @@ const ContactInfo = () => {
                   className="form-control"
                   id="lastName"
                   placeholder="12 123 1234"
-                  required=""
+                  required
                 />
                 <div className="invalid-feedback">
                   Valid last name is required.
@@ -119,7 +141,7 @@ const ContactInfo = () => {
                 <label htmlFor="state" className="form-label">
                   Whatsapp Country code
                 </label>
-                <select className="form-select" id="state" required="">
+                <select className="form-select" id="state" required>
                   {mcCode ? (
                     mcCode.map((country, i) => (
                       <option key={i}>
@@ -144,7 +166,7 @@ const ContactInfo = () => {
                   className="form-control"
                   id="lastName"
                   placeholder="12 123 1234"
-                  required=""
+                  required
                 />
                 <div className="invalid-feedback">
                   Valid Whatsapp Number is required.
@@ -160,7 +182,7 @@ const ContactInfo = () => {
                   className="form-control"
                   id="address"
                   placeholder="1234 Main St"
-                  required=""
+                  required
                 />
                 <div className="invalid-feedback">
                   Please enter your address lane.
@@ -176,7 +198,7 @@ const ContactInfo = () => {
                   className="form-control"
                   id="address"
                   placeholder="City"
-                  required=""
+                  required
                 />
                 <div className="invalid-feedback">Please enter your City.</div>
               </div>
@@ -185,7 +207,7 @@ const ContactInfo = () => {
                 <label htmlFor="country" className="form-label">
                   Country
                 </label>
-                <select className="form-select" id="country" required="">
+                <select className="form-select" id="country" required>
                   {mcCode ? (
                     mcCode.map((country, i) => (
                       <option key={i}>{country.name}</option>
@@ -208,7 +230,7 @@ const ContactInfo = () => {
                   className="form-control"
                   id="zip"
                   placeholder=""
-                  required=""
+                  required
                 />
                 <div className="invalid-feedback">Postcode required.</div>
               </div>
