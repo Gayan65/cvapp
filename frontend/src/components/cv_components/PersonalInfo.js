@@ -4,7 +4,7 @@ import axios from "axios";
 import profileImg from "../../images/profile/profile.png";
 import Model from "../Model";
 
-const Personal_Info = () => {
+const PersonalInfo = () => {
   const navigate = useNavigate();
   const token = sessionStorage.getItem("token");
   const [fetchPersonal, setFetchPersonal] = useState({
@@ -218,4 +218,4 @@ const Personal_Info = () => {
   );
 };
 
-export default Personal_Info;
+export default PersonalInfo;

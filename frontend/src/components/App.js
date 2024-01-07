@@ -6,8 +6,8 @@ import Register from "./Register";
 import NavBar from "./NavBar";
 import Home from "./app_components/Home";
 import Profile from "./app_components/Profile";
-import Personal_Info from "./cv_components/Personal_Info";
-import Contact_Info from "./cv_components/Contact_Info";
+import PersonalInfo from "./cv_components/PersonalInfo";
+import ContactInfo from "./cv_components/ContactInfo";
 
 function App() {
   return (
@@ -20,8 +20,8 @@ function App() {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
-          <Route path="/personal_info" element={<Personal_Info />}></Route>
-          <Route path="/contact_info" element={<Contact_Info />}></Route>
+          <Route path="/personal_info" element={<PersonalInfo />}></Route>
+          <Route path="/contact_info" element={<ContactInfo />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Contact_Info = () => {
+const ContactInfo = () => {
   const token = sessionStorage.getItem("token");
   const navigate = useNavigate();
   const [mcCode, setMcCode] = useState("");
@@ -218,4 +218,4 @@ const Contact_Info = () => {
   );
 };
 
-export default Contact_Info;
+export default ContactInfo;
