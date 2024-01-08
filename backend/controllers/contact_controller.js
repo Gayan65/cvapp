@@ -87,14 +87,13 @@ contactRouter.put("/update/:id", async (req, res) => {
 });
 
 // Getting a specific contact information from a user_id
-contactRouter.get("/:id", async (req, res) => {
+contactRouter.get("/find/:id", async (req, res) => {
   const jwtId = req.params.id;
   //Decoding the jwt token
   const decodedToken = jwt.verify(jwtId, process.env.JWT_KEY);
   const id = decodedToken.userId;
   const contactInfo = await getContact(id);
-
-  if (contactInfo) {
+  if (contactInfo.length > 0) {
     res.status(200).json({
       success: true,
       message: "information found successfully!",

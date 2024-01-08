@@ -18,6 +18,8 @@ const ContactInfo = () => {
     post_code: "",
     country: "Afghanistan",
   });
+  //When contact data not exists
+  const [noData, setNoData] = useState(false);
   /*
   //Making the form data in a relevant manner for the sending as payload
   const formData = new FormData();
@@ -64,6 +66,23 @@ const ContactInfo = () => {
 
   // Handle Form update
 
+  const handleFormUpdate = async (event) => {
+    event.preventDefault();
+    console.log("Updated");
+    /*
+    console.log(fetchContact);
+    const data = qs.stringify(fetchContact);
+    // axios call
+    await axios
+      .post("http://localhost:4000/api/contact/create", data, {
+        headers,
+      })
+      .then((response) => {
+        console.log(response.data);
+      });
+      */
+  };
+
   //protecting this route
   useEffect(() => {
     if (token === null || token === "") {
@@ -76,6 +95,19 @@ const ContactInfo = () => {
         )
         .then((response) => {
           setMcCode(response.data);
+        });
+
+      //Getting existing contact information
+      axios
+        .get(`http://localhost:4000/api/contact/find/${token}`, { headers })
+        .then((response) => {
+          console.log(response.data.contact[0]);
+          setFetchContact(response.data.contact[0]);
+        })
+        .catch((error) => {
+          // Handle errors
+          //console.error("Error fetching user data:", error);
+          setNoData(true);
         });
     }
     // eslint-disable-next-line
@@ -145,7 +177,7 @@ const ContactInfo = () => {
           <form
             className="needs-validation"
             method="POST"
-            onSubmit={handleFormCreate}
+            onSubmit={noData ? handleFormCreate : handleFormUpdate}
           >
             <div className="row g-3">
               <div className="col-md-6">
@@ -158,6 +190,7 @@ const ContactInfo = () => {
                   required
                   name="m_code"
                   onChange={handleInputChange}
+                  value={fetchContact.m_code}
                 >
                   {mcCode ? (
                     mcCode.map((country, i) => (
@@ -187,6 +220,7 @@ const ContactInfo = () => {
                   name="m_number"
                   onChange={handleInputChange}
                   pattern="\d{9}"
+                  value={fetchContact.m_number}
                 />
                 <div className="invalid-feedback">
                   Valid last name is required.
@@ -203,6 +237,7 @@ const ContactInfo = () => {
                   required
                   name="w_code"
                   onChange={handleInputChange}
+                  value={fetchContact.w_code}
                 >
                   {mcCode ? (
                     mcCode.map((country, i) => (
@@ -232,6 +267,7 @@ const ContactInfo = () => {
                   name="w_number"
                   onChange={handleInputChange}
                   pattern="\d{9}"
+                  value={fetchContact.w_number}
                 />
                 <div className="invalid-feedback">
                   Valid Whatsapp Number is required.
@@ -250,6 +286,7 @@ const ContactInfo = () => {
                   required
                   name="address_lane"
                   onChange={handleInputChange}
+                  value={fetchContact.address_lane}
                 />
                 <div className="invalid-feedback">
                   Please enter your address lane.
@@ -268,6 +305,7 @@ const ContactInfo = () => {
                   required
                   name="city"
                   onChange={handleInputChange}
+                  value={fetchContact.city}
                 />
                 <div className="invalid-feedback">Please enter your City.</div>
               </div>
@@ -282,6 +320,7 @@ const ContactInfo = () => {
                   required
                   name="country"
                   onChange={handleInputChange}
+                  value={fetchContact.country}
                 >
                   {mcCode ? (
                     mcCode.map((country, i) => (
@@ -310,6 +349,7 @@ const ContactInfo = () => {
                   required
                   name="post_code"
                   onChange={handleInputChange}
+                  value={fetchContact.post_code}
                 />
                 <div className="invalid-feedback">Postcode required.</div>
               </div>
