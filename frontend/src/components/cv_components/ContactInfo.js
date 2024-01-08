@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import qs from "qs";
 
 const ContactInfo = () => {
   const token = sessionStorage.getItem("token");
@@ -40,11 +41,21 @@ const ContactInfo = () => {
     }));
   };
 
+  //Making the header
+  const headers = {
+    Authorization: `bearer ${token}`,
+  };
+
   // Handle Form create
-  const handleFormCreate = (event) => {
+  const handleFormCreate = async (event) => {
     event.preventDefault();
     console.log("Submitted");
     console.log(fetchContact);
+    const data = qs.stringify(fetchContact);
+    // axios call
+    await axios.post("http://localhost:4000/api/contact/create", data, {
+      headers,
+    });
   };
 
   // Handle Form update

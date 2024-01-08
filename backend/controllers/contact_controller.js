@@ -1,5 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
+import jwt from "jsonwebtoken";
 import {
   createContact,
   getAllContact,
@@ -22,8 +23,13 @@ contactRouter.post("/create", async (req, res) => {
     post_code,
     country,
   } = req.body;
+
+  //Decoding the jwt token
+  const decodedToken = jwt.verify(user_id, process.env.JWT_KEY);
+  const id = decodedToken.userId;
+
   const newcontact = await createContact(
-    user_id,
+    id,
     m_code,
     m_number,
     w_code,
