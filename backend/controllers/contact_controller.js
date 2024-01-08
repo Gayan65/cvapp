@@ -5,6 +5,7 @@ import {
   createContact,
   getAllContact,
   contactUpdate,
+  getContact,
 } from "../services/contact_services.js";
 
 const contactRouter = express.Router();
@@ -92,6 +93,19 @@ contactRouter.get("/:id", async (req, res) => {
   const decodedToken = jwt.verify(jwtId, process.env.JWT_KEY);
   const id = decodedToken.userId;
   const contactInfo = await getContact(id);
+
+  if (contactInfo) {
+    res.status(200).json({
+      success: true,
+      message: "information found successfully!",
+      contact: contactInfo,
+    });
+  } else {
+    res.status(200).json({
+      success: false,
+      message: "information can not be found!",
+    });
+  }
 });
 
 export default contactRouter;

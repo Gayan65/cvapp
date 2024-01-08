@@ -63,3 +63,10 @@ export const contactUpdate = async (
   ]);
   return rows;
 };
+
+//Getting contact info from user id
+export const getContact = async (user_id) => {
+  const sqlQuery = "SELECT * FROM contact WHERE user_id = ?";
+  const [rows] = await mySqlPool.query(sqlQuery, [user_id]);
+  return rows;
+};
