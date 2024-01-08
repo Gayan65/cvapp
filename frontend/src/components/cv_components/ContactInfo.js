@@ -53,9 +53,13 @@ const ContactInfo = () => {
     console.log(fetchContact);
     const data = qs.stringify(fetchContact);
     // axios call
-    await axios.post("http://localhost:4000/api/contact/create", data, {
-      headers,
-    });
+    await axios
+      .post("http://localhost:4000/api/contact/create", data, {
+        headers,
+      })
+      .then((response) => {
+        console.log(response.data);
+      });
   };
 
   // Handle Form update

@@ -39,7 +39,17 @@ contactRouter.post("/create", async (req, res) => {
     post_code,
     country
   );
-  res.send(newcontact);
+  if (newcontact.affectedRows > 0) {
+    res.status(200).json({
+      success: true,
+      message: "Information added Successfully!",
+    });
+  } else {
+    res.status(200).json({
+      success: false,
+      message: "Information is not added!",
+    });
+  }
 });
 
 // Getting all contact info
@@ -73,6 +83,15 @@ contactRouter.put("/update/:id", async (req, res) => {
     id
   );
   res.send(allContacts);
+});
+
+// Getting a specific contact information from a user_id
+contactRouter.get("/:id", async (req, res) => {
+  const jwtId = req.params.id;
+  //Decoding the jwt token
+  const decodedToken = jwt.verify(jwtId, process.env.JWT_KEY);
+  const id = decodedToken.userId;
+  const contactInfo = await getContact(id);
 });
 
 export default contactRouter;

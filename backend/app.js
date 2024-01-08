@@ -16,14 +16,13 @@ import { auth } from "./middleware/auth.js";
 const port = process.env.PORT;
 const app = express();
 
-
 //middleware
 app.use(cors());
 app.use("/api/user_login", userLoginRouter);
 app.use("/api/user", auth, userRouter);
 app.use("/api/table", tableRouter);
 app.use("/api/personal", auth, personalRouter);
-app.use("/api/contact", contactRouter);
+app.use("/api/contact", auth, contactRouter);
 app.use("/api/edu", eduRouter);
 app.use("/api/exp", expRouter);
 app.use("/api/lan", lanRouter);
