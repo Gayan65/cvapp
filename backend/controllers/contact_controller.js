@@ -60,9 +60,9 @@ contactRouter.get("/all", async (req, res) => {
 });
 
 //Updating contact info
-contactRouter.put("/update/:id", async (req, res) => {
-  const id = req.params.id;
+contactRouter.put("/update", async (req, res) => {
   const {
+    user_id,
     m_code,
     m_number,
     w_code,
@@ -72,6 +72,11 @@ contactRouter.put("/update/:id", async (req, res) => {
     post_code,
     country,
   } = req.body;
+
+  //Decoding the jwt token
+  const decodedToken = jwt.verify(user_id, process.env.JWT_KEY);
+  const id = decodedToken.userId;
+
   const allContacts = await contactUpdate(
     m_code,
     m_number,

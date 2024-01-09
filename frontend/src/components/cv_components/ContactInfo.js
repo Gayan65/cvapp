@@ -68,19 +68,18 @@ const ContactInfo = () => {
 
   const handleFormUpdate = async (event) => {
     event.preventDefault();
-    console.log("Updated");
-    /*
-    console.log(fetchContact);
+    // console.log("Updated");
+
+    //console.log(fetchContact);
     const data = qs.stringify(fetchContact);
     // axios call
     await axios
-      .post("http://localhost:4000/api/contact/create", data, {
+      .put("http://localhost:4000/api/contact/update", data, {
         headers,
       })
       .then((response) => {
         console.log(response.data);
       });
-      */
   };
 
   //protecting this route
