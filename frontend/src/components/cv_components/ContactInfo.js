@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import qs from "qs";
+import Model from "../Model";
 
 const ContactInfo = () => {
   const token = sessionStorage.getItem("token");
@@ -20,6 +21,7 @@ const ContactInfo = () => {
   });
   //When contact data not exists
   const [noData, setNoData] = useState(false);
+  const [message, setMessage] = useState(null);
   /*
   //Making the form data in a relevant manner for the sending as payload
   const formData = new FormData();
@@ -60,12 +62,12 @@ const ContactInfo = () => {
         headers,
       })
       .then((response) => {
+        setMessage(response.data.message);
         console.log(response.data);
       });
   };
 
   // Handle Form update
-
   const handleFormUpdate = async (event) => {
     event.preventDefault();
     // console.log("Updated");
@@ -78,6 +80,7 @@ const ContactInfo = () => {
         headers,
       })
       .then((response) => {
+        setMessage(response.data.message);
         console.log(response.data);
       });
   };
@@ -354,10 +357,16 @@ const ContactInfo = () => {
               </div>
             </div>
 
-            <button className="btn btn-primary mt-3 " type="submit">
+            <button
+              className="btn btn-primary mt-3 "
+              type="submit"
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop"
+            >
               Save
             </button>
           </form>
+          <Model title={"Contact information"} message={message} />
         </div>
       </div>
     </div>
