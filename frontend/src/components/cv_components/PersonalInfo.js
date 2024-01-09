@@ -207,7 +207,14 @@ const PersonalInfo = () => {
               </button>
             </div>
           </form>
-          <Model title={"Personal information"} message={message} />
+          <Model
+            title={"Personal information"}
+            message={
+              message
+                ? message
+                : "Fetching Data unsuccessful!, recheck your fields."
+            }
+          />
         </div>
         {/* form end */}
       </div>

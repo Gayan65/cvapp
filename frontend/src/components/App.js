@@ -8,6 +8,7 @@ import Home from "./app_components/Home";
 import Profile from "./app_components/Profile";
 import PersonalInfo from "./cv_components/PersonalInfo";
 import ContactInfo from "./cv_components/ContactInfo";
+import LanguageInfo from "./cv_components/LanguageInfo";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/profile" element={<Profile />}></Route>
           <Route path="/personal_info" element={<PersonalInfo />}></Route>
           <Route path="/contact_info" element={<ContactInfo />}></Route>
+          <Route path="/language_info" element={<LanguageInfo />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
