@@ -74,21 +74,38 @@ contactRouter.put("/update", async (req, res) => {
   } = req.body;
 
   //Decoding the jwt token
-  const decodedToken = jwt.verify(user_id, process.env.JWT_KEY);
-  const id = decodedToken.userId;
+  try {
+    const decodedToken = jwt.verify(user_id, process.env.JWT_KEY);
+    const id = decodedToken.userId;
 
-  const allContacts = await contactUpdate(
-    m_code,
-    m_number,
-    w_code,
-    w_number,
-    address_lane,
-    city,
-    post_code,
-    country,
-    id
-  );
-  res.send(allContacts);
+    const updatedContact = await contactUpdate(
+      m_code,
+      m_number,
+      w_code,
+      w_number,
+      address_lane,
+      city,
+      post_code,
+      country,
+      id
+    );
+    if (updatedContact.affectedRows > 0) {
+      res.status(200).json({
+        success: true,
+        message: "Information updated Successfully!",
+      });
+    } else {
+      res.status(200).json({
+        success: false,
+        message: "Information is not updated!",
+      });
+    }
+  } catch (error) {
+    res.status(200).json({
+      success: false,
+      message: "Nothing to update!",
+    });
+  }
 });
 
 // Getting a specific contact information from a user_id
