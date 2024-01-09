@@ -366,7 +366,14 @@ const ContactInfo = () => {
               Save
             </button>
           </form>
-          <Model title={"Contact information"} message={message} />
+          <Model
+            title={"Contact information"}
+            message={
+              message
+                ? message
+                : "Fetching data unsuccessful!, recheck your fields."
+            }
+          />
         </div>
       </div>
     </div>
