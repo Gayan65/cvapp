@@ -1,17 +1,50 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import qs from "qs";
 
 const LanguageInfo = () => {
   const navigate = useNavigate();
   const token = sessionStorage.getItem("token");
   const [allLanguages, setAllLanguages] = useState();
+  const [languageInfo, setLanguageInfo] = useState({
+    user_id: "",
+    l_name: "Afar",
+    l_pro: "A1 - Beginner",
+  });
+  const [message, setMessage] = useState(null);
+
+  //Making the header
+  const headers = {
+    Authorization: `bearer ${token}`,
+  };
 
   // Handle input change
-  const handleInputChange = () => {};
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setLanguageInfo((prevData) => ({
+      ...prevData,
+      [name]: value,
+      user_id: token,
+    }));
+  };
 
   //Handle form create
-  const handleFormCreate = () => {};
+  const handleFormCreate = async (event) => {
+    event.preventDefault();
+    //console.log(languageInfo);
+    const data = qs.stringify(languageInfo);
+    // axios call
+
+    await axios
+      .post("http://localhost:4000/api/lan/create", data, {
+        headers,
+      })
+      .then((response) => {
+        setMessage(response.data.message);
+        console.log(response.data);
+      });
+  };
 
   //Handle form update
   //const handleFormUpdate = () => {};
@@ -23,7 +56,6 @@ const LanguageInfo = () => {
     } else {
       //getting all languages api to get all languages
       axios.get("http://localhost:4000/api/rest_language").then((response) => {
-        console.log(response.data);
         setAllLanguages(response.data);
       });
     }
@@ -77,7 +109,7 @@ const LanguageInfo = () => {
                   className="form-select"
                   id="state"
                   required
-                  name="l_pro"
+                  name="l_name"
                   onChange={handleInputChange}
                 >
                   {allLanguages ? (
@@ -117,13 +149,8 @@ const LanguageInfo = () => {
               </div>
             </div>
 
-            <button
-              className="btn btn-primary mt-3 "
-              type="submit"
-              data-bs-toggle="modal"
-              data-bs-target="#staticBackdrop"
-            >
-              Save
+            <button className="btn btn-primary mt-3 " type="submit">
+              Add
             </button>
           </form>
         </div>
