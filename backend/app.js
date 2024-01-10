@@ -11,6 +11,7 @@ import eduRouter from "./controllers/education_controller.js";
 import expRouter from "./controllers/exp_controller.js";
 import lanRouter from "./controllers/language_controller.js";
 import userLoginRouter from "./controllers/user_login_controller.js";
+import restLanguageRouter from "./controllers/rest_language.js";
 import { auth } from "./middleware/auth.js";
 
 const port = process.env.PORT;
@@ -26,6 +27,7 @@ app.use("/api/contact", auth, contactRouter);
 app.use("/api/edu", eduRouter);
 app.use("/api/exp", expRouter);
 app.use("/api/lan", lanRouter);
+app.use("/api/rest_language", restLanguageRouter);
 
 //Global error handler middleware
 app.use((err, req, res, next) => {
