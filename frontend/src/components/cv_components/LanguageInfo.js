@@ -56,28 +56,28 @@ const LanguageInfo = () => {
         {/*Form section two */}
 
         <div className="col-md-7 col-lg-8">
-          <h4 className="mb-3">Contact information here..</h4>
+          <h4 className="mb-3">Language information here..</h4>
           <form
             className="needs-validation"
             method="POST"
             onSubmit={handleFormCreate}
           >
             <div className="row g-3">
-              <div className="col-sm-6">
-                <label htmlFor="lastName" className="form-label">
-                  Language
+              <div className="col-md-6">
+                <label htmlFor="state" className="form-label">
+                  Select Language
                 </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="lastName"
-                  placeholder="Language here."
+                <select
+                  className="form-select"
+                  id="state"
                   required
-                  name="l_name"
+                  name="l_pro"
                   onChange={handleInputChange}
-                />
+                >
+                  <option>Proficiency 1</option>
+                </select>
                 <div className="invalid-feedback">
-                  Valid language is required.
+                  Please provide a valid state.
                 </div>
               </div>
               <div className="col-md-6">
@@ -91,7 +91,13 @@ const LanguageInfo = () => {
                   name="l_pro"
                   onChange={handleInputChange}
                 >
-                  <option>Proficiency 1</option>
+                  <option>A1 - Beginner</option>
+                  <option>A2 - Elementary</option>
+                  <option>B1 - Intermediate</option>
+                  <option>B2 - Upper-Intermediate</option>
+                  <option>C1 - Advanced</option>
+                  <option>C2 - Proficient</option>
+                  <option>Native</option>
                 </select>
                 <div className="invalid-feedback">
                   Please provide a valid state.
