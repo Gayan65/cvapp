@@ -7,7 +7,7 @@ restLanguageRouter.use(bodyParser.urlencoded({ extended: false }));
 
 //Sending all languages to the frontend
 restLanguageRouter.get("/", (req, res) => {
-  res.send(isoLangs[0].name);
+  res.send(isoLangs);
 });
 
 export default restLanguageRouter;

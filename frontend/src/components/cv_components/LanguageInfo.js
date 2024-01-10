@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const LanguageInfo = () => {
   const navigate = useNavigate();
   const token = sessionStorage.getItem("token");
+  const [allLanguages, setAllLanguages] = useState();
 
   // Handle input change
   const handleInputChange = () => {};
@@ -12,14 +14,18 @@ const LanguageInfo = () => {
   const handleFormCreate = () => {};
 
   //Handle form update
-  const handleFormUpdate = () => {};
+  //const handleFormUpdate = () => {};
 
   //Protecting route
   useEffect(() => {
     if (token === null || token === "") {
       navigate("/login");
     } else {
-      console.log("Good to go");
+      //getting all languages api to get all languages
+      axios.get("http://localhost:4000/api/rest_language").then((response) => {
+        console.log(response.data);
+        setAllLanguages(response.data);
+      });
     }
     // eslint-disable-next-line
   }, []);
@@ -74,7 +80,13 @@ const LanguageInfo = () => {
                   name="l_pro"
                   onChange={handleInputChange}
                 >
-                  <option>Proficiency 1</option>
+                  {allLanguages ? (
+                    allLanguages.map((language, i) => (
+                      <option key={i}>{language.name}</option>
+                    ))
+                  ) : (
+                    <option>{"Loading"}</option>
+                  )}
                 </select>
                 <div className="invalid-feedback">
                   Please provide a valid state.
