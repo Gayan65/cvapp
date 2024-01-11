@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import qs from "qs";
 import Model from "../Model";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const LanguageInfo = () => {
   const navigate = useNavigate();
@@ -116,7 +118,7 @@ const LanguageInfo = () => {
                     data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop"
                   >
-                    Delete
+                    <FontAwesomeIcon icon={faTrashCan} /> Delete
                   </button>
                 </li>
               ))
@@ -194,7 +196,7 @@ const LanguageInfo = () => {
               data-bs-toggle="modal"
               data-bs-target="#staticBackdrop"
             >
-              Add
+              <FontAwesomeIcon icon={faPlus} /> Add
             </button>
           </form>
           <Model
