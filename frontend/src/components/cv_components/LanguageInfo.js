@@ -13,6 +13,8 @@ const LanguageInfo = () => {
     l_pro: "A1 - Beginner",
   });
   const [message, setMessage] = useState(null);
+  //Setting database laguage data
+  const [languageDataDB, setLanguageDataDB] = useState(null);
 
   //Making the header
   const headers = {
@@ -57,6 +59,15 @@ const LanguageInfo = () => {
       //getting all languages api to get all languages
       axios.get("http://localhost:4000/api/rest_language").then((response) => {
         setAllLanguages(response.data);
+      });
+
+      axios.get("http://localhost:4000/api/lan/all").then((response) => {
+        console.log(response.data);
+        if (response.data) {
+          console.log("Data here");
+        } else {
+          console.log("No data");
+        }
       });
     }
     // eslint-disable-next-line

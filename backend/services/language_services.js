@@ -29,3 +29,10 @@ export const lanUpdate = async (l_name, l_pro, lan_id) => {
   const [rows] = await mySqlPool.query(sqlQuery, [l_name, l_pro, lan_id]);
   return rows;
 };
+
+//
+export const allUserLan = async (user_id) => {
+  const sqlQuery = "SELECT * FROM lan WHERE user_id = ?";
+  const [rows] = await mySqlPool.query(sqlQuery, [user_id]);
+  return rows;
+};

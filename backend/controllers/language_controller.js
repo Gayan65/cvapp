@@ -6,6 +6,7 @@ import {
   getAllLanguage,
   deleteLanguage,
   lanUpdate,
+  allUserLan,
 } from "../services/language_services.js";
 
 const lanRouter = express.Router();
@@ -58,5 +59,23 @@ lanRouter.put("/update/:id", async (req, res) => {
   const { l_name, l_pro } = req.body;
   const updateLan = await lanUpdate(l_name, l_pro, id);
   res.send(updateLan);
+});
+
+//Getting all Languages from a user id
+lanRouter.get("/user/:id", async (req, res) => {
+  const id = req.params.id;
+  const allLan = await allUserLan(id);
+  if (allLan.length > 0) {
+    res.status(200).json({
+      success: true,
+      message: "found languages!",
+      languages: allLan,
+    });
+  } else {
+    res.status(200).json({
+      success: false,
+      message: "not found languages!",
+    });
+  }
 });
 export default lanRouter;
