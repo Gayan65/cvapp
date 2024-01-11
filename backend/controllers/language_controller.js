@@ -50,7 +50,17 @@ lanRouter.get("/all", async (req, res) => {
 lanRouter.delete("/delete/:id", async (req, res) => {
   const id = req.params.id;
   const deletedLan = await deleteLanguage(id);
-  res.send(deletedLan);
+  if (deletedLan.affectedRows > 0) {
+    res.status(200).json({
+      success: true,
+      message: "Language info deleted successfully!",
+    });
+  } else {
+    res.status(200).json({
+      success: false,
+      message: "Language not deleted successfully!",
+    });
+  }
 });
 
 //Updating language info from LAN ID
@@ -81,4 +91,5 @@ lanRouter.get("/user/:id", async (req, res) => {
     });
   }
 });
+
 export default lanRouter;

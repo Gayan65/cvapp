@@ -32,10 +32,19 @@ const LanguageInfo = () => {
     }));
   };
 
+  //Handle Delete
+  const handleDelete = (event) => {
+    const lan_id = event.target.value;
+    axios
+      .delete(`http://localhost:4000/api/lan/delete/${lan_id}`)
+      .then((response) => {
+        setMessage(response.data.message);
+      });
+  };
+
   //Handle form create
   const handleFormCreate = async (event) => {
     event.preventDefault();
-    //console.log(languageInfo);
     const data = qs.stringify(languageInfo);
     // axios call
 
@@ -45,7 +54,6 @@ const LanguageInfo = () => {
       })
       .then((response) => {
         setMessage(response.data.message);
-        console.log(response.data);
       });
   };
 
@@ -65,7 +73,6 @@ const LanguageInfo = () => {
       axios
         .get(`http://localhost:4000/api/lan/user/${token}`)
         .then((response) => {
-          console.log(response.data);
           if (response.data.success) {
             setLanguageDataDB(response.data.languages);
           } else {
@@ -102,6 +109,15 @@ const LanguageInfo = () => {
                       {language.l_pro}
                     </small>
                   </div>
+                  <button
+                    className="btn btn-danger "
+                    value={language.lan_id}
+                    onClick={handleDelete}
+                    data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop"
+                  >
+                    Delete
+                  </button>
                 </li>
               ))
             ) : (
