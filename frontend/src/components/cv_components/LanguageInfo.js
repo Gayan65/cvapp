@@ -38,7 +38,9 @@ const LanguageInfo = () => {
   const handleDelete = (event) => {
     const lan_id = event.target.value;
     axios
-      .delete(`http://localhost:4000/api/lan/delete/${lan_id}`)
+      .delete(`http://localhost:4000/api/lan/delete/${lan_id}`, {
+        headers,
+      })
       .then((response) => {
         setMessage(response.data.message);
       });
@@ -68,12 +70,18 @@ const LanguageInfo = () => {
       navigate("/login");
     } else {
       //getting all languages api to get all languages
-      axios.get("http://localhost:4000/api/rest_language").then((response) => {
-        setAllLanguages(response.data);
-      });
+      axios
+        .get("http://localhost:4000/api/rest_language", {
+          headers,
+        })
+        .then((response) => {
+          setAllLanguages(response.data);
+        });
 
       axios
-        .get(`http://localhost:4000/api/lan/user/${token}`)
+        .get(`http://localhost:4000/api/lan/user/${token}`, {
+          headers,
+        })
         .then((response) => {
           if (response.data.success) {
             setLanguageDataDB(response.data.languages);

@@ -26,7 +26,7 @@ app.use("/api/personal", auth, personalRouter);
 app.use("/api/contact", auth, contactRouter);
 app.use("/api/edu", eduRouter);
 app.use("/api/exp", expRouter);
-app.use("/api/lan", lanRouter);
+app.use("/api/lan", auth, lanRouter);
 app.use("/api/rest_language", restLanguageRouter);
 
 //Global error handler middleware
