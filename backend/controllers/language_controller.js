@@ -64,7 +64,10 @@ lanRouter.put("/update/:id", async (req, res) => {
 //Getting all Languages from a user id
 lanRouter.get("/user/:id", async (req, res) => {
   const id = req.params.id;
-  const allLan = await allUserLan(id);
+  //Decoding the jwt token
+  const decodedToken = jwt.verify(id, process.env.JWT_KEY);
+  const user_id = decodedToken.userId;
+  const allLan = await allUserLan(user_id);
   if (allLan.length > 0) {
     res.status(200).json({
       success: true,

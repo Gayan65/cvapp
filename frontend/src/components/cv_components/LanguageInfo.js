@@ -61,14 +61,16 @@ const LanguageInfo = () => {
         setAllLanguages(response.data);
       });
 
-      axios.get("http://localhost:4000/api/lan/all").then((response) => {
-        console.log(response.data);
-        if (response.data) {
-          console.log("Data here");
-        } else {
-          console.log("No data");
-        }
-      });
+      axios
+        .get(`http://localhost:4000/api/lan/user/${token}`)
+        .then((response) => {
+          console.log(response.data);
+          if (response.data.success) {
+            setLanguageDataDB(response.data.languages);
+          } else {
+            console.log("No data");
+          }
+        });
     }
     // eslint-disable-next-line
   }, []);
@@ -87,18 +89,27 @@ const LanguageInfo = () => {
             <span className="text-primary">Your Language Summery</span>
           </h4>
           <ul className="list-group mb-3">
-            <li className="list-group-item d-flex justify-content-between lh-sm">
-              <div>
-                <h6 className="my-0">Language</h6>
-                <small className="text-body-secondary">{"Hi"}</small>
-              </div>
-            </li>
-            <li className="list-group-item d-flex justify-content-between lh-sm">
-              <div>
-                <h6 className="my-0"> Proficiency Level</h6>
-                <small className="text-body-secondary">{"hi"}</small>
-              </div>
-            </li>
+            {languageDataDB ? (
+              languageDataDB.map((language, i) => (
+                <li
+                  key={i}
+                  className="list-group-item d-flex justify-content-between lh-sm"
+                >
+                  <div>
+                    <h6 className="my-0"> {language.l_name} </h6>
+                    <small className="text-body-secondary">
+                      {language.l_pro}
+                    </small>
+                  </div>
+                </li>
+              ))
+            ) : (
+              <li className="list-group-item d-flex justify-content-between lh-sm">
+                <div>
+                  <h6 className="my-0"> {"No Language proficiency added"} </h6>
+                </div>
+              </li>
+            )}
           </ul>
         </div>
 
