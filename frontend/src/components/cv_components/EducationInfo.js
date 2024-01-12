@@ -218,6 +218,23 @@ const EducationInfo = () => {
                   Valid last name is required.
                 </div>
               </div>
+
+              <div className="col-md-6">
+                <label htmlFor="lastName" className="form-label">
+                  About
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="lastName"
+                  placeholder="Address"
+                  required
+                  name="address"
+                />
+                <div className="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
             </div>
 
             <button
