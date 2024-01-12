@@ -44,12 +44,12 @@ eduRouter.post("/create", async (req, res) => {
   if (newEdu.affectedRows > 0) {
     res.status(200).json({
       success: true,
-      message: "Language Added successfully!",
+      message: "Education information Added successfully!",
     });
   } else {
     res.status(200).json({
       success: false,
-      message: "Language can not be added !",
+      message: "Education information can not be added!",
     });
   }
 });
