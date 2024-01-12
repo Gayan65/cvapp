@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import qs from "qs";
+import axios from "axios";
 
 const EducationInfo = () => {
   const navigate = useNavigate();
   const token = sessionStorage.getItem("token");
-  const [EudInfo, setEduInfo] = useState({
+  const [EduInfo, setEduInfo] = useState({
     user_id: "",
     program: "Primary",
     program_name: "",
@@ -17,14 +19,36 @@ const EducationInfo = () => {
     about: "",
   });
 
+  //Making the header
+  const headers = {
+    Authorization: `bearer ${token}`,
+  };
+
   //Handle Create function
   const handleFormCreate = async (event) => {
     event.preventDefault();
+    const data = qs.stringify(EduInfo);
+    // axios call
+    await axios
+      .post("http://localhost:4000/api/edu/create", data, {
+        headers,
+      })
+      .then((response) => {
+        //setMessage(response.data.message);
+        console.log(response.data);
+      });
     console.log("add clicked");
   };
 
   //Handle Input change function
-  const handleInputChange = (event) => {};
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setEduInfo((prevData) => ({
+      ...prevData,
+      [name]: value,
+      user_id: token,
+    }));
+  };
 
   //protecting this route
   useEffect(() => {
@@ -100,6 +124,7 @@ const EducationInfo = () => {
                   placeholder="Program name"
                   required
                   name="program_name"
+                  onChange={handleInputChange}
                 />
                 <div className="invalid-feedback">
                   Valid last name is required.
@@ -116,6 +141,7 @@ const EducationInfo = () => {
                   placeholder="Institution"
                   required
                   name="institution"
+                  onChange={handleInputChange}
                 />
                 <div className="invalid-feedback">
                   Valid last name is required.
@@ -132,6 +158,7 @@ const EducationInfo = () => {
                   placeholder="Address"
                   required
                   name="address"
+                  onChange={handleInputChange}
                 />
                 <div className="invalid-feedback">
                   Valid last name is required.
@@ -181,6 +208,7 @@ const EducationInfo = () => {
                   placeholder="Address"
                   required
                   name="s_year"
+                  onChange={handleInputChange}
                 />
                 <div className="invalid-feedback">
                   Valid last name is required.
@@ -230,6 +258,7 @@ const EducationInfo = () => {
                   placeholder="Address"
                   required
                   name="e_year"
+                  onChange={handleInputChange}
                 />
                 <div className="invalid-feedback">
                   Valid last name is required.
@@ -247,6 +276,7 @@ const EducationInfo = () => {
                   placeholder="Add your program content "
                   required
                   name="about"
+                  onChange={handleInputChange}
                 />
                 <div className="invalid-feedback">
                   Valid last name is required.

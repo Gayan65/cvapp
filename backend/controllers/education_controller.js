@@ -24,6 +24,20 @@ eduRouter.post("/create", async (req, res) => {
     e_year,
     about,
   } = req.body;
+
+  console.log(
+    user_id,
+    program,
+    program_name,
+    institution,
+    address,
+    s_month,
+    s_year,
+    e_month,
+    e_year,
+    about
+  );
+  /*
   const newEdu = await createEdu(
     user_id,
     program,
@@ -36,7 +50,9 @@ eduRouter.post("/create", async (req, res) => {
     e_year,
     about
   );
+  
   res.send(newEdu);
+  */
 });
 
 // Getting all edu info
