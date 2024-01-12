@@ -64,7 +64,11 @@ const EducationInfo = () => {
                   name="program"
                   onChange={handleInputChange}
                 >
-                  <option>Masters</option>
+                  <option>Primary</option>
+                  <option>Secondary</option>
+                  <option>Bachelor's degree</option>
+                  <option>Master's degree</option>
+                  <option>Doctoral degree</option>
                 </select>
                 <div className="invalid-feedback">
                   Please provide a valid state.
@@ -130,17 +134,18 @@ const EducationInfo = () => {
                   name="s_year"
                   onChange={handleInputChange}
                 >
-                  <option>January</option>
-                  <option>February</option>
-                  <option>March</option>
-                  <option>April</option>
-                  <option>June</option>
-                  <option>July</option>
-                  <option>August</option>
-                  <option>September</option>
-                  <option>October</option>
-                  <option>November</option>
-                  <option>December</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
+                  <option>9</option>
+                  <option>10</option>
+                  <option>11</option>
+                  <option>12</option>
                 </select>
                 <div className="invalid-feedback">
                   Please provide a valid state.
@@ -178,17 +183,18 @@ const EducationInfo = () => {
                   name="e_year"
                   onChange={handleInputChange}
                 >
-                  <option>January</option>
-                  <option>February</option>
-                  <option>March</option>
-                  <option>April</option>
-                  <option>June</option>
-                  <option>July</option>
-                  <option>August</option>
-                  <option>September</option>
-                  <option>October</option>
-                  <option>November</option>
-                  <option>December</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
+                  <option>9</option>
+                  <option>10</option>
+                  <option>11</option>
+                  <option>12</option>
                 </select>
                 <div className="invalid-feedback">
                   Please provide a valid state.
