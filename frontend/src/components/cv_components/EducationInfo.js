@@ -18,8 +18,9 @@ const EducationInfo = () => {
   });
 
   //Handle Create function
-  const handleFormCreate = (event) => {
+  const handleFormCreate = async (event) => {
     event.preventDefault();
+    console.log("add clicked");
   };
 
   //Handle Input change function
@@ -68,12 +69,12 @@ const EducationInfo = () => {
           >
             <div className="row g-3">
               <div className="col-md-6">
-                <label htmlFor="state" className="form-label">
+                <label htmlFor="program" className="form-label">
                   Program
                 </label>
                 <select
                   className="form-select"
-                  id="state"
+                  id="program"
                   required
                   name="program"
                   onChange={handleInputChange}
@@ -89,13 +90,13 @@ const EducationInfo = () => {
                 </div>
               </div>
               <div className="col-md-6">
-                <label htmlFor="lastName" className="form-label">
+                <label htmlFor="program_name" className="form-label">
                   Program name
                 </label>
                 <input
                   type="text"
                   className="form-control"
-                  id="lastName"
+                  id="program_name"
                   placeholder="Program name"
                   required
                   name="program_name"
@@ -105,13 +106,13 @@ const EducationInfo = () => {
                 </div>
               </div>
               <div className="col-md-6">
-                <label htmlFor="lastName" className="form-label">
+                <label htmlFor="institution" className="form-label">
                   Institution name
                 </label>
                 <input
                   type="text"
                   className="form-control"
-                  id="lastName"
+                  id="institution"
                   placeholder="Institution"
                   required
                   name="institution"
@@ -121,13 +122,13 @@ const EducationInfo = () => {
                 </div>
               </div>
               <div className="col-md-6">
-                <label htmlFor="lastName" className="form-label">
+                <label htmlFor="address" className="form-label">
                   Address
                 </label>
                 <input
                   type="text"
                   className="form-control"
-                  id="lastName"
+                  id="address"
                   placeholder="Address"
                   required
                   name="address"
@@ -138,14 +139,14 @@ const EducationInfo = () => {
               </div>
 
               <div className="col-md-6">
-                <label htmlFor="state" className="form-label">
+                <label htmlFor="s_month" className="form-label">
                   Start Month
                 </label>
                 <select
                   className="form-select"
-                  id="state"
+                  id="s_month"
                   required
-                  name="s_year"
+                  name="s_month"
                   onChange={handleInputChange}
                 >
                   <option>1</option>
@@ -167,7 +168,7 @@ const EducationInfo = () => {
               </div>
 
               <div className="col-md-6">
-                <label htmlFor="lastName" className="form-label">
+                <label htmlFor="s_year" className="form-label">
                   Start Year
                 </label>
                 <input
@@ -176,7 +177,7 @@ const EducationInfo = () => {
                   max={2100}
                   step={1}
                   className="form-control"
-                  id="lastName"
+                  id="s_year"
                   placeholder="Address"
                   required
                   name="s_year"
@@ -187,14 +188,14 @@ const EducationInfo = () => {
               </div>
 
               <div className="col-md-6">
-                <label htmlFor="state" className="form-label">
+                <label htmlFor="e_month" className="form-label">
                   End Month
                 </label>
                 <select
                   className="form-select"
-                  id="state"
+                  id="e_month"
                   required
-                  name="e_year"
+                  name="e_month"
                   onChange={handleInputChange}
                 >
                   <option>1</option>
@@ -216,7 +217,7 @@ const EducationInfo = () => {
               </div>
 
               <div className="col-md-6">
-                <label htmlFor="lastName" className="form-label">
+                <label htmlFor="e_year" className="form-label">
                   End Year
                 </label>
                 <input
@@ -225,7 +226,7 @@ const EducationInfo = () => {
                   max={2100}
                   step={1}
                   className="form-control"
-                  id="lastName"
+                  id="e_year"
                   placeholder="Address"
                   required
                   name="e_year"
@@ -236,16 +237,16 @@ const EducationInfo = () => {
               </div>
 
               <div className="col-md-6">
-                <label htmlFor="lastName" className="form-label">
+                <label htmlFor="about" className="form-label">
                   About
                 </label>
                 <input
                   type="text"
                   className="form-control"
-                  id="lastName"
-                  placeholder="Address"
+                  id="about"
+                  placeholder="Add your program content "
                   required
-                  name="address"
+                  name="about"
                 />
                 <div className="invalid-feedback">
                   Valid last name is required.
@@ -253,12 +254,7 @@ const EducationInfo = () => {
               </div>
             </div>
 
-            <button
-              className="btn btn-primary mt-3 "
-              type="submit"
-              data-bs-toggle="modal"
-              data-bs-target="#staticBackdrop"
-            >
+            <button className="btn btn-primary mt-3 " type="submit">
               Add
             </button>
           </form>
