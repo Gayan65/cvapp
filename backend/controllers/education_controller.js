@@ -1,5 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
+import jwt from "jsonwebtoken";
 import {
   createEdu,
   getAllEdu,
@@ -24,22 +25,11 @@ eduRouter.post("/create", async (req, res) => {
     e_year,
     about,
   } = req.body;
-
-  console.log(
-    user_id,
-    program,
-    program_name,
-    institution,
-    address,
-    s_month,
-    s_year,
-    e_month,
-    e_year,
-    about
-  );
-  /*
+  //Decoding the jwt token
+  const decodedToken = jwt.verify(user_id, process.env.JWT_KEY);
+  const id = decodedToken.userId;
   const newEdu = await createEdu(
-    user_id,
+    id,
     program,
     program_name,
     institution,
@@ -50,9 +40,18 @@ eduRouter.post("/create", async (req, res) => {
     e_year,
     about
   );
-  
-  res.send(newEdu);
-  */
+
+  if (newEdu.affectedRows > 0) {
+    res.status(200).json({
+      success: true,
+      message: "Language Added successfully!",
+    });
+  } else {
+    res.status(200).json({
+      success: false,
+      message: "Language can not be added !",
+    });
+  }
 });
 
 // Getting all edu info
