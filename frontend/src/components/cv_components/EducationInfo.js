@@ -1,12 +1,26 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const EducationInfo = () => {
   const navigate = useNavigate();
   const token = sessionStorage.getItem("token");
+  const [EudInfo, setEduInfo] = useState({
+    user_id: "",
+    program: "Primary",
+    program_name: "",
+    institution: "",
+    address: "",
+    s_month: "1",
+    s_year: "",
+    e_month: "1",
+    e_year: "",
+    about: "",
+  });
 
   //Handle Create function
-  const handleFormCreate = () => {};
+  const handleFormCreate = (event) => {
+    event.preventDefault();
+  };
 
   //Handle Input change function
   const handleInputChange = (event) => {};
@@ -82,7 +96,7 @@ const EducationInfo = () => {
                   type="text"
                   className="form-control"
                   id="lastName"
-                  placeholder="Accountancy"
+                  placeholder="Program name"
                   required
                   name="program_name"
                 />
