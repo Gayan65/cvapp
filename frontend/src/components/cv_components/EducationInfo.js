@@ -9,11 +9,7 @@ const EducationInfo = () => {
   const handleFormCreate = () => {};
 
   //Handle Input change function
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    console.log(value);
-    console.log(typeof value);
-  };
+  const handleInputChange = (event) => {};
 
   //protecting this route
   useEffect(() => {
