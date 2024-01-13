@@ -6,6 +6,7 @@ import {
   getAllEdu,
   eduUpdate,
   eduDelete,
+  getAllEduUser,
 } from "../services/education_service.js";
 
 const eduRouter = express.Router();
@@ -93,6 +94,27 @@ eduRouter.put("/update/:id", async (req, res) => {
 eduRouter.delete("/delete/:id", async (req, res) => {
   const deletedEdu = await eduDelete(req.params.id);
   res.send(deletedEdu);
+});
+
+// Getting all edu info from a user id
+eduRouter.get("/user/:id", async (req, res) => {
+  const id = req.params.id;
+  //Decoding the jwt token
+  const decodedToken = jwt.verify(id, process.env.JWT_KEY);
+  const user_id = decodedToken.userId;
+  const allEdu = await getAllEduUser(user_id);
+  if (allEdu.length > 0) {
+    res.status(200).json({
+      success: true,
+      message: "found Education information!",
+      languages: allEdu,
+    });
+  } else {
+    res.status(200).json({
+      success: false,
+      message: "not found Education information!",
+    });
+  }
 });
 
 export default eduRouter;
