@@ -166,6 +166,7 @@ const EducationInfo = () => {
             className="needs-validation"
             method="POST"
             onSubmit={handleFormCreate}
+            noValidate
           >
             <div className="row g-3">
               <div className="col-md-6">
