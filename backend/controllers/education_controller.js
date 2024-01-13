@@ -100,8 +100,19 @@ eduRouter.put("/update/:id", async (req, res) => {
 
 //Deleting a edu from the edu_id
 eduRouter.delete("/delete/:id", async (req, res) => {
-  const deletedEdu = await eduDelete(req.params.id);
-  res.send(deletedEdu);
+  const id = req.params.id;
+  const deletedEdu = await eduDelete(id);
+  if (deletedEdu.affectedRows > 0) {
+    res.status(200).json({
+      success: true,
+      message: "Education info deleted successfully!",
+    });
+  } else {
+    res.status(200).json({
+      success: false,
+      message: "Education info not deleted successfully!",
+    });
+  }
 });
 
 // Getting all edu info from a user id

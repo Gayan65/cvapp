@@ -59,6 +59,22 @@ const EducationInfo = () => {
     }));
   };
 
+  // Delete function
+  const handleDelete = (event) => {
+    const edu_id = event.target.value;
+    axios
+      .delete(`http://localhost:4000/api/edu/delete/${edu_id}`, {
+        headers,
+      })
+      .then((response) => {
+        if (response.data.success) {
+          setMessage(response.data.message);
+        } else {
+          console.log("No data");
+        }
+      });
+  };
+
   //protecting this route
   useEffect(() => {
     if (token === null || token === "") {
@@ -154,6 +170,15 @@ const EducationInfo = () => {
                       </small>
                     </div>
                   </li>
+                  <button
+                    className="btn btn-danger "
+                    onClick={handleDelete}
+                    value={eduData.edu_id}
+                    data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop"
+                  >
+                    Delete
+                  </button>
                 </div>
               ))
             ) : (
