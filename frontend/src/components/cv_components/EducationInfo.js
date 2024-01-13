@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import qs from "qs";
 import axios from "axios";
+import Model from "../Model";
 
 const EducationInfo = () => {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ const EducationInfo = () => {
     about: "",
   });
   const [eduDataDB, setEduDataDB] = useState(null);
+  const [message, setMessage] = useState(null);
 
   //Making the header
   const headers = {
@@ -35,10 +37,8 @@ const EducationInfo = () => {
         headers,
       })
       .then((response) => {
-        //setMessage(response.data.message);
-        console.log(response.data);
+        setMessage(response.data.message);
       });
-    console.log("add clicked");
   };
 
   //Handle Input change function
@@ -360,10 +360,23 @@ const EducationInfo = () => {
               </div>
             </div>
 
-            <button className="btn btn-primary mt-3 " type="submit">
+            <button
+              className="btn btn-primary mt-3 "
+              type="submit"
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop"
+            >
               Add
             </button>
           </form>
+          <Model
+            title={"Language information"}
+            message={
+              message
+                ? message
+                : "Fetching data unsuccessful!, recheck your fields."
+            }
+          />
         </div>
       </div>
     </div>
