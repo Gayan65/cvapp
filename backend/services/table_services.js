@@ -54,7 +54,7 @@ export const deleteContactTable = async () => {
 //creating edu table function
 export const createEduTable = async () => {
   const sqlQuery =
-    "CREATE TABLE edu (edu_id INT AUTO_INCREMENT PRIMARY KEY, user_id INT, program VARCHAR(55), program_name VARCHAR(255), institution VARCHAR(500), address VARCHAR(255), s_month VARCHAR(10), s_year VARCHAR(10), e_month VARCHAR(10), e_year VARCHAR(10), about VARCHAR(1000), INDEX `idx_user` (user_id), CONSTRAINT `fk_character_user_edu` FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE)";
+    "CREATE TABLE edu (edu_id INT AUTO_INCREMENT PRIMARY KEY, user_id INT, program VARCHAR(55) NOT NULL, program_name VARCHAR(255) NOT NULL, institution VARCHAR(500) NOT NULL, address VARCHAR(255) NOT NULL, s_month VARCHAR(10) NOT NULL, s_year VARCHAR(10) NOT NULL, e_month VARCHAR(10) NOT NULL, e_year VARCHAR(10) NOT NULL, about VARCHAR(1000) NOT NULL, INDEX `idx_user` (user_id), CONSTRAINT `fk_character_user_edu` FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE)";
   const [rows] = await mySqlPool.query(sqlQuery);
 
   return rows;

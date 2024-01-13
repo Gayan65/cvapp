@@ -10,14 +10,14 @@ const EducationInfo = () => {
   const [EduInfo, setEduInfo] = useState({
     user_id: "",
     program: "Primary",
-    program_name: "",
-    institution: "",
-    address: "",
+    program_name: null,
+    institution: null,
+    address: null,
     s_month: "1",
-    s_year: "",
+    s_year: null,
     e_month: "1",
-    e_year: "",
-    about: "",
+    e_year: null,
+    about: null,
   });
   const [eduDataDB, setEduDataDB] = useState(null);
   const [message, setMessage] = useState(null);
@@ -30,6 +30,14 @@ const EducationInfo = () => {
   //Handle Create function
   const handleFormCreate = async (event) => {
     event.preventDefault();
+
+    // Check if all required fields are filled
+    for (const key in EduInfo) {
+      if (EduInfo.hasOwnProperty(key) && EduInfo[key] === null) {
+        return;
+      }
+    }
+
     const data = qs.stringify(EduInfo);
     // axios call
     await axios
