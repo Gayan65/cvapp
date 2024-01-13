@@ -82,3 +82,10 @@ export const getAllEduUser = async (user_id) => {
   const [rows] = await mySqlPool.query(sqlQuery, [user_id]);
   return rows;
 };
+
+//Getting all Edu belongs to user
+export const getEduEduId = async (edu_id) => {
+  const sqlQuery = "SELECT * FROM edu WHERE edu_id = ?";
+  const [rows] = await mySqlPool.query(sqlQuery, [edu_id]);
+  return rows;
+};

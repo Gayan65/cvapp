@@ -7,6 +7,7 @@ import {
   eduUpdate,
   eduDelete,
   getAllEduUser,
+  getEduEduId,
 } from "../services/education_service.js";
 
 const eduRouter = express.Router();
@@ -127,6 +128,24 @@ eduRouter.get("/user/:id", async (req, res) => {
       success: true,
       message: "found Education information!",
       education: allEdu,
+    });
+  } else {
+    res.status(200).json({
+      success: false,
+      message: "not found Education information!",
+    });
+  }
+});
+
+//Getting edu info from edu_id
+eduRouter.get("/find/:id", async (req, res) => {
+  const id = req.params.id;
+  const edu = await getEduEduId(id);
+  if (edu.length > 0) {
+    res.status(200).json({
+      success: true,
+      message: "found Education information!",
+      education: edu,
     });
   } else {
     res.status(200).json({
