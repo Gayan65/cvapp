@@ -107,7 +107,7 @@ eduRouter.get("/user/:id", async (req, res) => {
     res.status(200).json({
       success: true,
       message: "found Education information!",
-      languages: allEdu,
+      education: allEdu,
     });
   } else {
     res.status(200).json({

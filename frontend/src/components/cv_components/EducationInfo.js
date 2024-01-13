@@ -18,6 +18,7 @@ const EducationInfo = () => {
     e_year: "",
     about: "",
   });
+  const [eduDataDB, setEduDataDB] = useState(null);
 
   //Making the header
   const headers = {
@@ -56,6 +57,19 @@ const EducationInfo = () => {
       navigate("/login");
     } else {
       console.log("Good to go!");
+      //Getting language information fro the DB
+      axios
+        .get(`http://localhost:4000/api/edu/user/${token}`, {
+          headers,
+        })
+        .then((response) => {
+          if (response.data.success) {
+            setEduDataDB(response.data.education);
+            console.log(response.data.education);
+          } else {
+            console.log("No data");
+          }
+        });
     }
     // eslint-disable-next-line
   }, []);
@@ -73,12 +87,74 @@ const EducationInfo = () => {
             <span className="text-primary">Your Education Summery</span>
           </h4>
           <ul className="list-group mb-3">
-            <li className="list-group-item d-flex justify-content-between lh-sm">
-              <div>
-                <h6 className="my-0"> hi </h6>
-                <small className="text-body-secondary">Hi</small>
-              </div>
-            </li>
+            {eduDataDB ? (
+              eduDataDB.map((eduData, i) => (
+                <div className=" mb-5" key={i}>
+                  <li className="list-group-item d-flex justify-content-between lh-sm">
+                    <div>
+                      <h6 className="my-0"> Level of Education </h6>
+                      <small className="text-body-secondary">
+                        {eduData.program}
+                      </small>
+                    </div>
+                  </li>
+                  <li className="list-group-item d-flex justify-content-between lh-sm">
+                    <div>
+                      <h6 className="my-0"> Program</h6>
+                      <small className="text-body-secondary">
+                        {eduData.program_name}
+                      </small>
+                    </div>
+                  </li>
+                  <li className="list-group-item d-flex justify-content-between lh-sm">
+                    <div>
+                      <h6 className="my-0"> Institution </h6>
+                      <small className="text-body-secondary">
+                        {eduData.institution}
+                      </small>
+                    </div>
+                  </li>
+                  <li className="list-group-item d-flex justify-content-between lh-sm">
+                    <div>
+                      <h6 className="my-0"> Address </h6>
+                      <small className="text-body-secondary">
+                        {eduData.address}
+                      </small>
+                    </div>
+                  </li>
+                  <li className="list-group-item d-flex justify-content-between lh-sm">
+                    <div>
+                      <h6 className="my-0"> Start year, month </h6>
+                      <small className="text-body-secondary">
+                        {eduData.s_month} {eduData.s_year}
+                      </small>
+                    </div>
+                  </li>
+                  <li className="list-group-item d-flex justify-content-between lh-sm">
+                    <div>
+                      <h6 className="my-0"> End year, month </h6>
+                      <small className="text-body-secondary">
+                        {eduData.e_month} {eduData.e_year}
+                      </small>
+                    </div>
+                  </li>
+                  <li className="list-group-item d-flex justify-content-between lh-sm">
+                    <div>
+                      <h6 className="my-0"> Content covered </h6>
+                      <small className="text-body-secondary">
+                        {eduData.about}
+                      </small>
+                    </div>
+                  </li>
+                </div>
+              ))
+            ) : (
+              <li className="list-group-item d-flex justify-content-between lh-sm">
+                <div>
+                  <h6 className="my-0"> No Education information found </h6>
+                </div>
+              </li>
+            )}
           </ul>
         </div>
 

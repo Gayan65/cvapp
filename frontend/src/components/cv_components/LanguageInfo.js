@@ -77,7 +77,7 @@ const LanguageInfo = () => {
         .then((response) => {
           setAllLanguages(response.data);
         });
-
+      //Getting language information fro the DB
       axios
         .get(`http://localhost:4000/api/lan/user/${token}`, {
           headers,
