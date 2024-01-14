@@ -71,3 +71,10 @@ export const expDelete = async (exp_id) => {
   const [rows] = await mySqlPool.query(sqlQuery, [exp_id]);
   return rows;
 };
+
+//Getting all Edu belongs to user
+export const getAllExpUser = async (user_id) => {
+  const sqlQuery = "SELECT * FROM exp WHERE user_id = ?";
+  const [rows] = await mySqlPool.query(sqlQuery, [user_id]);
+  return rows;
+};
