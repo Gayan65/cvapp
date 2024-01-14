@@ -21,8 +21,9 @@ const NavBar = () => {
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <a className="navbar-brand mb-2" href="/">
-            <img src={navLogo} alt="Bootstrap" width="150" height="20" />
+          <a className="navbar-brand me-5 " href="/">
+            <span className="custom-nav-logo-instar fs-3 fw-bold ">Instar</span>
+            <span className="custom-nav-logo-resume fs-3 fw-bold ">Resume</span>
           </a>
 
           <button

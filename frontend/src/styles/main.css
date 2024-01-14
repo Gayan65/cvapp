@@ -109,3 +109,15 @@ body {
   color: #f55c3d8f;
   text-shadow: 2px 2px 4px #333;
 }
+
+.custom-nav-logo-instar {
+  color: #019081;
+}
+
+.custom-nav-logo-resume {
+  color: #74cc7e;
+}
+
+.navbar {
+  background-color: #1d0251 !important;
+}
