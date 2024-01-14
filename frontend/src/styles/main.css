@@ -28,18 +28,20 @@ body {
 
 /* Custom button secondary outline color*/
 .btn-outline-secondary {
-  border-radius: 2px;
-  color: #0000ff;
-  border: solid #0000ff 1px;
+  border-radius: 3px;
+  color: #019081;
+  border: none;
 }
 
 .btn-outline-secondary:hover {
-  background-color: #0000ff;
+  background-color: #1d0251;
+  color: #d2eba7;
+  border: solid #019081 1px;
 }
 
 .btn-outline-secondary:active {
-  background-color: #f55c3d !important;
-  border: solid #f55c3d 1px !important;
+  background-color: #019081 !important;
+  border: solid #d2eba7 1px !important;
 }
 
 /* Custom button success color*/
@@ -101,13 +103,12 @@ body {
 
 /*Nav bar nav links*/
 .nav-link {
-  color: #0000ff;
-  text-shadow: 1px 1px 2px #333;
+  color: #d2eba7;
 }
 
 .nav-link:hover {
-  color: #f55c3d8f;
-  text-shadow: 2px 2px 4px #333;
+  color: #74cc7e;
+  text-shadow: 2px 2px 4px #019081;
 }
 
 .custom-nav-logo-instar {
