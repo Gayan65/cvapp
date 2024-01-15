@@ -25,12 +25,15 @@ const Start = () => {
             experiences in a way that stands out.
           </p>
           <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            <a className="btn btn-primary btn-lg px-4 gap-3" href="/login">
+            <a
+              className="btn btn-primary btn-lg px-4 gap-3 btn-custom-animation-n-y"
+              href="/login"
+            >
               <FontAwesomeIcon icon={faUser} />
               <span className=" ms-3 ">Login</span>
             </a>
             <a
-              className="btn btn-outline-secondary btn-lg px-4"
+              className="btn btn-outline-secondary btn-lg px-4 btn-custom-animation-p-y"
               href="/register"
             >
               <FontAwesomeIcon icon={faUserPen} />

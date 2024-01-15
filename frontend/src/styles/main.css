@@ -27,6 +27,30 @@ body {
   border: solid #019081 2px !important;
 }
 
+/* animates along in -y axis */
+.btn-custom-animation-n-y {
+  transition-property: transform;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+}
+
+.btn-custom-animation-n-y:hover {
+  transform: translate(-10px);
+}
+
+/* animates along in y axis */
+.btn-custom-animation-p-y {
+  transition-property: transform;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+}
+
+.btn-custom-animation-p-y:hover {
+  transform: translate(+10px);
+}
+
 /* Custom button danger color*/
 .btn-danger {
   border-radius: 2px;
