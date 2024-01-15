@@ -3,7 +3,11 @@ import { useNavigate } from "react-router-dom";
 import logoImg from "../../images/logos/LogoSmall.png";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPenNib } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPenNib,
+  faFaceSmile,
+  faPencil,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Home = () => {
   //window.location.reload(false);
@@ -45,23 +49,30 @@ const Home = () => {
       <section className="py-5 text-center container">
         <div className="row py-lg-5">
           <div className="col-lg-6 col-md-8 mx-auto">
-            <h1 className="fw-light">
+            <h1 className=" fw-semibold mb-4 ">
               Hi {`${fetchUser.fname} ${fetchUser.lname}`},
             </h1>
-            <p className="lead text-body-secondary">
-              Welcome to the INSTARESUME, click "Start" button to navigate each
-              section and, make sure to follow all the instructions carefully,
+            <p className="lead fs-4 custom-font-color fw-semibold  ">
+              Welcome to the INSTARESUME{" "}
+              <span>
+                <FontAwesomeIcon icon={faFaceSmile} />
+              </span>{" "}
+              ,
+            </p>
+            <p className="fs-4">
+              click "Start" button to navigate each section and, make sure to
+              follow all the instructions carefully,
             </p>
 
             <a
-              className="btn btn-primary btn-lg"
+              className="btn btn-primary btn-lg px-5 fs-4 py-3 mt-4"
               data-bs-toggle="offcanvas"
               href="#offcanvasExample"
               role="button"
               aria-controls="offcanvasExample"
             >
-              <FontAwesomeIcon icon={faPenNib} />
-              <span className="ms-2">Start</span>
+              <FontAwesomeIcon icon={faPencil} />
+              <span className="ms-3">Start</span>
             </a>
             <div
               className="offcanvas offcanvas-start"

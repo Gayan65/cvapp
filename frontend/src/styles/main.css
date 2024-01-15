@@ -126,6 +126,7 @@ body {
   color: #1d0251;
 }
 
+/* custom css for the footer in the login and registration page */
 .custom-font-color {
   color: #019081 !important;
   text-align: center;
