@@ -29,19 +29,21 @@ body {
 /* Custom button secondary outline color*/
 .btn-outline-secondary {
   border-radius: 3px;
-  color: #019081;
-  border: none;
+  background-color: #d2eba7;
+  color: #1d0251;
+  border: #d2eba7 2px solid;
+  border-radius: 50px;
 }
 
 .btn-outline-secondary:hover {
-  background-color: #1d0251;
-  color: #d2eba7;
-  border: solid #019081 1px;
+  background-color: #74cc7e;
+  color: #1d0251;
 }
 
 .btn-outline-secondary:active {
   background-color: #019081 !important;
   border: solid #d2eba7 1px !important;
+  color: #1d0251;
 }
 
 /* Custom button success color*/
