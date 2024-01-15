@@ -108,7 +108,7 @@ body {
 
 .nav-link:hover {
   color: #74cc7e;
-  text-shadow: 2px 2px 4px #019081;
+  font-weight: bolder;
 }
 
 .custom-nav-logo-instar {

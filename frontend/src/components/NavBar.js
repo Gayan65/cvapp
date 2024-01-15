@@ -71,7 +71,7 @@ const NavBar = () => {
             </ul>
 
             {isLoggedIn === false ? (
-              <a className="btn btn-outline-secondary fs-5 " href="/login">
+              <a className="nav-link fs-5 " href="/login">
                 <FontAwesomeIcon icon={faUser} />
                 <span className="ms-2">Login</span>
               </a>
