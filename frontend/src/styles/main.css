@@ -122,3 +122,21 @@ body {
 .navbar {
   background-color: #1d0251 !important;
 }
+
+.navbar-toggler {
+  border: 2px solid #019081;
+}
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+.navbar-toggler:hover {
+  border: 2px solid #d2eba7;
+}
+
+.custom-nav-toggler-icon {
+  color: #019081;
+}
+
+.custom-nav-toggler-icon:hover {
+  color: #d2eba7;
+}

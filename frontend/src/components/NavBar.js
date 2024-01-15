@@ -7,6 +7,7 @@ import {
   faMicrochip,
   faBuilding,
   faMagnifyingGlass,
+  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 
 const NavBar = () => {
@@ -40,7 +41,9 @@ const NavBar = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon"></span>
+            <span className="custom-nav-toggler-icon">
+              <FontAwesomeIcon icon={faBars} />
+            </span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
