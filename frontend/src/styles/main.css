@@ -36,7 +36,7 @@ body {
 }
 
 .btn-custom-animation-n-y:hover {
-  transform: translate(-10px);
+  transform: translate(-20px);
 }
 
 /* animates along in y axis */
@@ -48,7 +48,7 @@ body {
 }
 
 .btn-custom-animation-p-y:hover {
-  transform: translate(+10px);
+  transform: translate(+20px);
 }
 
 /* Custom button danger color*/
@@ -199,4 +199,28 @@ body {
 
 .custom-nav-toggler-icon:hover {
   color: #d2eba7;
+}
+
+/* off canvas body */
+.offcanvas {
+  background-color: #edf7dc;
+}
+
+.custom-offcanvas-font {
+  color: #1d0251;
+}
+
+.offcanvas-custom-link {
+  text-decoration: none;
+  color: #1d0251;
+  font-weight: bold;
+}
+
+.offcanvas-custom-link:hover {
+  color: #01564d;
+  text-decoration: underline;
+}
+
+.offcanvas-custom-font-color {
+  color: #019081;
 }

@@ -4,9 +4,13 @@ import logoImg from "../../images/logos/LogoSmall.png";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faPenNib,
   faFaceSmile,
   faPencil,
+  faCircleInfo,
+  faSquarePhone,
+  faLanguage,
+  faBuildingColumns,
+  faBriefcase,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Home = () => {
@@ -56,8 +60,7 @@ const Home = () => {
               Welcome to the INSTARESUME{" "}
               <span>
                 <FontAwesomeIcon icon={faFaceSmile} />
-              </span>{" "}
-              ,
+              </span>
             </p>
             <p className="fs-4">
               click "Start" button to navigate each section and, make sure to
@@ -80,10 +83,14 @@ const Home = () => {
               id="offcanvasExample"
               aria-labelledby="offcanvasExampleLabel"
             >
+              {/* off canvas header starts here */}
               <div className="offcanvas-header">
-                <h5 className="offcanvas-title" id="offcanvasExampleLabel">
-                  <img src={logoImg} alt="" width="50" height="50" /> Navigation
-                  section
+                <h5
+                  className="offcanvas-title fs-3 fw-semibold custom-offcanvas-font"
+                  id="offcanvasExampleLabel"
+                >
+                  <img src={logoImg} alt="" width="50" height="50" />
+                  <span className="ms-3 ">Navigation section</span>
                 </h5>
                 <button
                   type="button"
@@ -92,69 +99,58 @@ const Home = () => {
                   aria-label="Close"
                 ></button>
               </div>
+
+              {/* off canvas body starts here */}
+
               <div className="offcanvas-body">
-                <div className="text-start mb-5">
+                <div className="text-start mb-5 custom-offcanvas-font fs-5 ">
                   Dear {fetchUser.fname}, Visit each section and fill all the
                   details appropriately.
                 </div>
-                <p className=" text-start mb-1">
-                  <a
-                    className="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
-                    href="/personal_info"
-                  >
-                    1. Personal information
+                <p className=" text-start mb-1 fs-5 ">
+                  <a className="offcanvas-custom-link" href="/personal_info">
+                    <FontAwesomeIcon icon={faCircleInfo} /> Personal information
                   </a>
                 </p>
-                <p className="text-start mb-2">
+                <p className="text-start mb-4 fs-6 offcanvas-custom-font-color">
                   You can add your personal information via this link.
                 </p>
 
-                <p className=" text-start mb-1">
-                  <a
-                    className="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
-                    href="/contact_info"
-                  >
-                    2. Contact information
+                <p className=" text-start mb-1 fs-5">
+                  <a className="offcanvas-custom-link" href="/contact_info">
+                    <FontAwesomeIcon icon={faSquarePhone} /> Contact information
                   </a>
                 </p>
-                <p className="text-start mb-2">
+                <p className="text-start mb-4 fs-6 offcanvas-custom-font-color">
                   You can add your contact information such as, email, contact
                   number and etc via this link.
                 </p>
 
-                <p className=" text-start mb-1">
-                  <a
-                    className="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
-                    href="/language_info"
-                  >
-                    3. Language information
+                <p className=" text-start mb-1 fs-5">
+                  <a className="offcanvas-custom-link" href="/language_info">
+                    <FontAwesomeIcon icon={faLanguage} /> Language information
                   </a>
                 </p>
-                <p className="text-start mb-2">
+                <p className="text-start mb-4 fs-6 offcanvas-custom-font-color">
                   You can add your language information via this link.
                 </p>
 
-                <p className=" text-start mb-1">
-                  <a
-                    className="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
-                    href="/education_info"
-                  >
-                    4. Education Background
+                <p className=" text-start mb-1 fs-5 ">
+                  <a className="offcanvas-custom-link" href="/education_info">
+                    <FontAwesomeIcon icon={faBuildingColumns} /> Education
+                    Background
                   </a>
                 </p>
-                <p className="text-start mb-2">
+                <p className="text-start mb-4 fs-6 offcanvas-custom-font-color">
                   You can add your education level via this link.
                 </p>
 
-                <p className=" text-start mb-1">
-                  <a
-                    className="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
-                    href="/work_ex_info"
-                  >
-                    5. Work Experience
+                <p className=" text-start mb-1 fs-5 ">
+                  <a className="offcanvas-custom-link" href="/work_ex_info">
+                    <FontAwesomeIcon icon={faBriefcase} /> Work Experience
                   </a>
                 </p>
-                <p className="text-start mb-2">
+                <p className="text-start mb-4 fs-6 offcanvas-custom-font-color">
                   You can add your work experience in this section via this
                   link.
                 </p>
