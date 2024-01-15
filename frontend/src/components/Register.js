@@ -4,7 +4,12 @@ import qs from "qs";
 import { useNavigate } from "react-router-dom";
 import loginLogo from "../images/logos/LogoSmall.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserPen } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUserPen,
+  faEnvelope,
+  faKey,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Register = () => {
   const [inputData, setInputData] = useState({
@@ -66,7 +71,7 @@ const Register = () => {
           <div className="form-floating">
             <input
               type="text"
-              className="form-control mb-3"
+              className="form-control mb-4"
               id="floatingInput"
               placeholder="name@example.com"
               onChange={handleInputChange}
@@ -74,12 +79,14 @@ const Register = () => {
               value={inputData.email}
               required
             />
-            <label htmlFor="floatingInput">Email address</label>
+            <label htmlFor="floatingInput" className="floatingInput">
+              <FontAwesomeIcon icon={faEnvelope} /> Email
+            </label>
           </div>
           <div className="form-floating">
             <input
               type="password"
-              className="form-control mb-3"
+              className="form-control mb-4"
               id="floatingPassword"
               placeholder="Password"
               required
@@ -87,13 +94,15 @@ const Register = () => {
               onChange={handleInputChange}
               value={inputData.password}
             />
-            <label htmlFor="floatingPassword">Password</label>
+            <label htmlFor="floatingPassword" className="floatingInput">
+              <FontAwesomeIcon icon={faKey} /> Password
+            </label>
           </div>
 
           <div className="form-floating">
             <input
               type="text"
-              className="form-control mb-3"
+              className="form-control mb-4"
               id="floatingFname"
               placeholder="First Name"
               required
@@ -101,13 +110,15 @@ const Register = () => {
               onChange={handleInputChange}
               value={inputData.fname}
             />
-            <label htmlFor="floatingFname">First Name</label>
+            <label htmlFor="floatingFname" className="floatingInput">
+              <FontAwesomeIcon icon={faUser} /> First Name
+            </label>
           </div>
 
           <div className="form-floating">
             <input
               type="text"
-              className="form-control mb-3"
+              className="form-control mb-4"
               id="floatingLname"
               placeholder="Last Name"
               required
@@ -115,14 +126,16 @@ const Register = () => {
               onChange={handleInputChange}
               value={inputData.lname}
             />
-            <label htmlFor="floatingLname">Last Name</label>
+            <label htmlFor="floatingLname" className="floatingInput">
+              <FontAwesomeIcon icon={faUser} /> Last Name
+            </label>
           </div>
 
           <button className="btn btn-primary w-100 py-2" type="submit">
             <FontAwesomeIcon icon={faUserPen} />
-            <span className="ms-2">Register</span>
+            <span className="ms-2 fs-5 ">Register</span>
           </button>
-          <p className="mt-5 mb-3 text-body-secondary">
+          <p className="mt-5 mb-3 custom-font-color">
             Craft Your Success Story with Us..
           </p>
 

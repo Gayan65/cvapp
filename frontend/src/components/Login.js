@@ -4,7 +4,7 @@ import qs from "qs";
 import { useNavigate } from "react-router-dom";
 import loginLogo from "../images/logos/LogoSmall.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserLock } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
 
 const Login = () => {
   const [inputData, setInputData] = useState({
@@ -58,7 +58,7 @@ const Login = () => {
       <main className="form-signin w-100 m-auto">
         <form method="POST" onSubmit={handleSubmit} className=" mt-5 ">
           <img className="mb-4" src={loginLogo} alt="" width="72" height="72" />
-          <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
+          <h1 className="fs-2 mb-4 fw-medium ">Please sign in</h1>
 
           <div className="form-floating">
             <input
@@ -71,7 +71,9 @@ const Login = () => {
               value={inputData.email}
               required
             />
-            <label htmlFor="floatingInput">Email address</label>
+            <label htmlFor="floatingInput" className="floatingInput">
+              <FontAwesomeIcon icon={faEnvelope} /> Email
+            </label>
           </div>
           <div className="form-floating">
             <input
@@ -84,7 +86,9 @@ const Login = () => {
               onChange={handleInputChange}
               value={inputData.password}
             />
-            <label htmlFor="floatingPassword">Password</label>
+            <label htmlFor="floatingPassword" className="floatingInput">
+              <FontAwesomeIcon icon={faKey} /> Password
+            </label>
           </div>
 
           <div className="form-check text-start my-3">
@@ -99,10 +103,10 @@ const Login = () => {
             </label>
           </div>
           <button className="btn btn-primary w-100 py-2" type="submit">
-            <FontAwesomeIcon icon={faUserLock} />
-            <span className="ms-2">Sign in</span>
+            <FontAwesomeIcon icon={faUser} />
+            <span className="ms-2 fs-5 ">Sign in</span>
           </button>
-          <p className="mt-5 mb-3 text-body-secondary">
+          <p className="mt-5 mb-3 custom-font-color">
             Craft Your Success Story with Us..
           </p>
 

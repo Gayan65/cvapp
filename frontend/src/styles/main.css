@@ -17,8 +17,8 @@ body {
 }
 
 .btn-primary:active {
-  background-color: #f55c3d !important;
-  border: solid #f55c3d 1px !important;
+  background-color: #019081 !important;
+  border: solid #019081 2px !important;
 }
 
 .btn-primary:hover {
@@ -87,22 +87,49 @@ body {
 
 /*custom css for the input elements*/
 .form-control {
-  border: solid #4a4af79f 1px;
+  border: solid #74cc7e 2px;
+  border-radius: 5px;
+  background-color: #d2eba7;
+  color: #1d0251;
+  font-weight: bold;
 }
 
 .form-control:focus {
-  border: rgb(245, 92, 61) 1px solid !important;
-  box-shadow: 0 0 10px rgba(245, 92, 61, 0.5) !important;
+  border: rgb(116, 204, 126) 2px solid !important;
+  box-shadow: 0 0 10px rgba(29, 2, 81, 0.5) !important;
+  background-color: #edf7dc;
 }
 
 .text-primary {
-  color: #0000ff !important;
+  color: #1d0251 !important;
 }
 
 .custom-component-heading {
   color: #f55c3d;
 }
 
+.floatingInput {
+  font-weight: bold;
+}
+
+.form-check-input {
+  border: #019081 solid 2px;
+}
+
+.form-check-input:hover {
+  border: #1d0251 solid 2px;
+  background-color: #74cc7e;
+}
+
+.form-check-input:checked {
+  border: #019081 solid 2px;
+  color: #1d0251;
+}
+
+.custom-font-color {
+  color: #019081 !important;
+  text-align: center;
+}
 /*custom css for the image profile in personal component*/
 .img-custom {
   border-radius: 50%;
