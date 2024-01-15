@@ -1,7 +1,7 @@
 import React from "react";
 import smallLoago from "../images/logos/LogoSmall.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserLock, faUserPen } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faUserPen } from "@fortawesome/free-solid-svg-icons";
 
 const Start = () => {
   return (
@@ -11,8 +11,8 @@ const Start = () => {
           className="d-block mx-auto mb-4"
           src={smallLoago}
           alt=""
-          width="72"
-          height="72"
+          width="85"
+          height="85"
         />
         <h1 className="display-5 fw-bold text-body-emphasis font-custom-color">
           InstarResume
@@ -26,8 +26,8 @@ const Start = () => {
           </p>
           <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
             <a className="btn btn-primary btn-lg px-4 gap-3" href="/login">
-              <FontAwesomeIcon icon={faUserLock} />
-              <span className=" ms-2 ">Login</span>
+              <FontAwesomeIcon icon={faUser} />
+              <span className=" ms-3 ">Login</span>
             </a>
             <a
               className="btn btn-outline-secondary btn-lg px-4"
