@@ -218,7 +218,7 @@ const PersonalInfo = () => {
         </div>
         {/* form end */}
       </div>
-      <button className=" btn btn-success mt-2 " onClick={handdleBack}>
+      <button className=" btn btn-success mt-1 " onClick={handdleBack}>
         Back
       </button>
     </div>

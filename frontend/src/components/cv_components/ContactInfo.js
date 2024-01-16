@@ -118,7 +118,7 @@ const ContactInfo = () => {
   return (
     <div className=" container ">
       <div className="py-5 text-center">
-        <h1 className="text-center mb-5 fs-3 custom-component-heading">
+        <h1 className="ext-center mb-5 fs-2 fw-bold custom-component-heading">
           Contact Information Section
         </h1>
       </div>
@@ -187,7 +187,7 @@ const ContactInfo = () => {
                   Mobile Country code
                 </label>
                 <select
-                  className="form-select"
+                  className="form-select form-control"
                   id="state"
                   required
                   name="m_code"
@@ -234,7 +234,7 @@ const ContactInfo = () => {
                   Whatsapp Country code
                 </label>
                 <select
-                  className="form-select"
+                  className="form-select form-control"
                   id="state"
                   required
                   name="w_code"
@@ -317,7 +317,7 @@ const ContactInfo = () => {
                   Country
                 </label>
                 <select
-                  className="form-select"
+                  className="form-select form-control"
                   id="country"
                   required
                   name="country"
