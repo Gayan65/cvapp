@@ -115,7 +115,7 @@ const PersonalInfo = () => {
   return (
     <div className=" container mt-3 ">
       <div className="row">
-        <h1 className="text-center mb-5 fs-3 custom-component-heading">
+        <h1 className="text-center mb-5 fs-2 fw-bold custom-component-heading">
           Personal Information section
         </h1>
 

@@ -68,14 +68,14 @@ const Home = () => {
             </p>
 
             <a
-              className="btn btn-primary btn-lg px-5 fs-4 py-3 mt-4"
+              className="btn btn-primary btn-lg px-5 fs-4 py-3 mt-4 custom-btn-start"
               data-bs-toggle="offcanvas"
               href="#offcanvasExample"
               role="button"
               aria-controls="offcanvasExample"
             >
               <FontAwesomeIcon icon={faPencil} />
-              <span className="ms-3">Start</span>
+              <span className="ms-3">Build you resume</span>
             </a>
             <div
               className="offcanvas offcanvas-start"
