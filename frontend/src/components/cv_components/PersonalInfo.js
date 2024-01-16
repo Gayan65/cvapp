@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import profileImg from "../../images/profile/profile.png";
 import Model from "../Model";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFloppyDisk, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 const PersonalInfo = () => {
   const navigate = useNavigate();
@@ -198,12 +200,13 @@ const PersonalInfo = () => {
                 onChange={handleFileChange}
               />
               <button
-                className=" btn btn-primary mt-3 "
+                className=" btn btn-primary mt-3 px-4 "
                 type="submit"
                 data-bs-toggle="modal"
                 data-bs-target="#staticBackdrop"
               >
-                Save
+                <FontAwesomeIcon icon={faFloppyDisk} />
+                <span className="ms-2">Save</span>
               </button>
             </div>
           </form>
@@ -218,8 +221,9 @@ const PersonalInfo = () => {
         </div>
         {/* form end */}
       </div>
-      <button className=" btn btn-success mt-1 " onClick={handdleBack}>
-        Back
+      <button className=" btn btn-success mt-1 px-4" onClick={handdleBack}>
+        <FontAwesomeIcon icon={faArrowLeft} />
+        <span className=" ms-2 ">Back</span>
       </button>
     </div>
   );
