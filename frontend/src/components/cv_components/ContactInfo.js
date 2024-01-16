@@ -3,6 +3,14 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import qs from "qs";
 import Model from "../Model";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFlag,
+  faMobile,
+  faSignsPost,
+} from "@fortawesome/free-solid-svg-icons";
+
+import { faSquareWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
 const ContactInfo = () => {
   const token = sessionStorage.getItem("token");
@@ -184,7 +192,8 @@ const ContactInfo = () => {
             <div className="row g-3">
               <div className="col-md-6">
                 <label htmlFor="state" className="form-label">
-                  Mobile Country code
+                  <FontAwesomeIcon icon={faFlag} />
+                  <span className=" ms-2 ">Mobile Country code</span>
                 </label>
                 <select
                   className="form-select form-control"
@@ -211,7 +220,8 @@ const ContactInfo = () => {
 
               <div className="col-sm-6">
                 <label htmlFor="lastName" className="form-label">
-                  Mobile Number
+                  <FontAwesomeIcon icon={faMobile} />
+                  <span className=" ms-2 ">Mobile Number</span>
                 </label>
                 <input
                   type="text"
@@ -231,7 +241,8 @@ const ContactInfo = () => {
 
               <div className="col-md-6">
                 <label htmlFor="state" className="form-label">
-                  Whatsapp Country code
+                  <FontAwesomeIcon icon={faFlag} />
+                  <span className=" ms-2 ">Whatsapp Country code</span>
                 </label>
                 <select
                   className="form-select form-control"
@@ -258,7 +269,8 @@ const ContactInfo = () => {
 
               <div className="col-sm-6">
                 <label htmlFor="lastName" className="form-label">
-                  Whatsapp Number
+                  <FontAwesomeIcon icon={faSquareWhatsapp} />
+                  <span className=" ms-2 ">Whatsapp Number</span>
                 </label>
                 <input
                   type="text"
@@ -278,7 +290,8 @@ const ContactInfo = () => {
 
               <div className="col-12">
                 <label htmlFor="address" className="form-label">
-                  Address Lane
+                  <FontAwesomeIcon icon={faSignsPost} />
+                  <span className=" ms-2 ">Address Lane</span>
                 </label>
                 <input
                   type="text"
