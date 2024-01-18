@@ -5,26 +5,22 @@
 
 /* Custom font color*/
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   color: #1d0251 !important;
 }
 
 /* Custom button primary color*/
 .btn-primary {
-  background-color: #019081;
+  background-color: #4c13f5;
   border-radius: 50px;
-  border: solid #019081 2px;
-}
-
-.btn-primary:active {
-  background-color: #019081 !important;
-  border: solid #019081 2px !important;
+  border: solid #9b89b3 2px;
+  color: #fef6ff;
+  width: 100px;
 }
 
 .btn-primary:hover {
-  background-color: #d2eba7 !important;
-  color: #1d0251;
-  border: solid #019081 2px !important;
+  background-color: #fef6ff;
+  color: #4c13f5;
 }
 
 /* animates along in -y axis */
@@ -177,20 +173,20 @@ body {
 
 /*Nav bar nav links*/
 .nav-link {
-  color: #d2eba7;
+  color: #fef6ff;
 }
 
 .nav-link:hover {
-  color: #74cc7e;
+  color: #9b89b3;
   font-weight: bolder;
 }
 
 .custom-nav-logo-instar {
-  color: #019081;
+  color: #9b89b3;
 }
 
 .custom-nav-logo-resume {
-  color: #74cc7e;
+  color: #fef6ff;
 }
 
 .navbar {
@@ -198,21 +194,25 @@ body {
 }
 
 .navbar-toggler {
-  border: 2px solid #019081;
+  border: 2px solid #fef6ff;
 }
 .navbar-toggler:focus {
   box-shadow: none;
 }
 .navbar-toggler:hover {
-  border: 2px solid #d2eba7;
+  border: 2px solid #9b89b3;
 }
 
 .custom-nav-toggler-icon {
-  color: #019081;
+  color: #fef6ff;
 }
 
 .custom-nav-toggler-icon:hover {
   color: #d2eba7;
+}
+
+.navbar {
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3); /* Adjust the values as needed */
 }
 
 /* off canvas body */

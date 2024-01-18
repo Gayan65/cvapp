@@ -26,10 +26,10 @@ const NavBar = () => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
-        <div className="container-fluid">
+        <div className="container ">
           <a className="navbar-brand me-5" href="/">
-            <span className="custom-nav-logo-instar fs-3 fw-bold ">Instar</span>
-            <span className="custom-nav-logo-resume fs-3 fw-bold ">Resume</span>
+            <span className="custom-nav-logo-instar fw-bold ">instar</span>
+            <span className="custom-nav-logo-resume fw-bold ">Resume</span>
           </a>
 
           <button
@@ -45,43 +45,44 @@ const NavBar = () => {
               <FontAwesomeIcon icon={faBars} />
             </span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <div
+            className="collapse navbar-collapse justify-content-center"
+            id="navbarSupportedContent"
+          >
+            <ul className="navbar-nav mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link fs-5" href="/home">
+                <a className="nav-link mx-3 " href="/home">
                   <FontAwesomeIcon icon={faHouse} />
                   <span className="ms-1">Home</span>
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link fs-5 " href="/">
+                <a className="nav-link mx-3  " href="/">
                   <FontAwesomeIcon icon={faBuilding} />
                   <span className="ms-1">About Us</span>
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link fs-5" href="/">
+                <a className="nav-link mx-3 " href="/">
                   <FontAwesomeIcon icon={faMicrochip} />
                   <span className="ms-1">Product</span>
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link fs-5 " href="/">
+                <a className="nav-link mx-3  " href="/">
                   <FontAwesomeIcon icon={faMagnifyingGlass} />
                   <span className="ms-1">Search</span>
                 </a>
               </li>
             </ul>
-
-            {isLoggedIn === false ? (
-              <a className="btn btn-outline-secondary fs-5 " href="/login">
-                <FontAwesomeIcon icon={faUser} />
-                <span className="ms-2">Login</span>
-              </a>
-            ) : (
-              <NavUser />
-            )}
           </div>
+          {isLoggedIn === false ? (
+            <a className="btn btn-primary" href="/login">
+              <span>Login</span>
+            </a>
+          ) : (
+            <NavUser />
+          )}
         </div>
       </nav>
     </div>
