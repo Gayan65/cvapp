@@ -1,7 +1,12 @@
 import React from "react";
 import headingImg from "../images/assetsImg/professional.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faUserPen } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUserGroup,
+  faShieldHalved,
+  faPenToSquare,
+  faHandshake,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Start = () => {
   return (
@@ -40,6 +45,39 @@ const Start = () => {
                 <span className="mx-3 fs-4 ">Sign Up</span>
               </a>
             </div>
+          </div>
+        </div>
+      </div>
+      <div className=" container  mt-5 ">
+        <div className=" row-cols-auto "></div>
+        <p className=" fs-4 fw-bold ">Feature with</p>
+      </div>
+
+      <div class="container px-2 py-2 custom-feature" id="hanging-icons">
+        <div class="row g-4 py-2 row-cols-1 row-cols-lg-4">
+          <div class="col d-flex justify-content-center align-items-center">
+            <p class="fs-4">
+              <FontAwesomeIcon icon={faUserGroup} />
+              <span className=" ms-1 ">Collaboration</span>
+            </p>
+          </div>
+          <div class="col d-flex justify-content-center  align-items-center">
+            <p class="fs-4">
+              <FontAwesomeIcon icon={faShieldHalved} />
+              <span className=" ms-1 ">Security</span>
+            </p>
+          </div>
+          <div class="col d-flex justify-content-center  align-items-center">
+            <p class="fs-4">
+              <FontAwesomeIcon icon={faPenToSquare} />
+              <span className=" ms-1 ">Customization</span>
+            </p>
+          </div>
+          <div class="col d-flex justify-content-center  align-items-center">
+            <p class="fs-4">
+              <FontAwesomeIcon icon={faHandshake} />
+              <span className=" ms-1 ">Intuitive</span>
+            </p>
           </div>
         </div>
       </div>

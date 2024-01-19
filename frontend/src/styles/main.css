@@ -6,7 +6,7 @@
 /* Custom font color*/
 body {
   font-family: "Ubuntu", sans-serif;
-  color: #1d0251 !important;
+  color: #4c13f5 !important;
 }
 
 /* Custom button primary color*/
@@ -251,4 +251,9 @@ body {
 .increased-line-spacing-subheading {
   line-height: 2;
   color: #9b89b3 !important;
+}
+
+.custom-feature {
+  border-radius: 4px;
+  box-shadow: 0px 3px 10px rgba(155, 137, 179, 0.5) !important;
 }
