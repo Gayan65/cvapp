@@ -19,8 +19,9 @@ body {
 }
 
 .btn-primary:hover {
-  background-color: #fef6ff;
-  color: #4c13f5;
+  color: #fef6ff;
+  background-color: #9b89b3;
+  border: solid #9b89b3 2px;
 }
 
 /* animates along in -y axis */
