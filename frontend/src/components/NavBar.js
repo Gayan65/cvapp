@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import NavUser from "./NavUser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faUser,
   faHouse,
   faMicrochip,
   faBuilding,
@@ -78,7 +77,7 @@ const NavBar = () => {
           </div>
           {isLoggedIn === false ? (
             <a className="btn btn-primary" href="/login">
-              <span>Login</span>
+              <span className=" px-3 ">Login</span>
             </a>
           ) : (
             <NavUser />
