@@ -54,22 +54,22 @@ body {
 
 /* Custom button secondary outline color*/
 .btn-outline-secondary {
-  border-radius: 3px;
-  background-color: #d2eba7;
-  color: #1d0251;
-  border: #d2eba7 2px solid;
+  background-color: #fef6ff;
+  color: #4c13f5;
+  border: #9b89b3 2px solid;
   border-radius: 50px;
 }
 
 .btn-outline-secondary:hover {
-  background-color: #74cc7e;
+  background-color: #9b89b3;
+  border: solid 2px #9b89b3;
   color: #1d0251;
 }
 
 .btn-outline-secondary:active {
-  background-color: #019081 !important;
-  border: solid #d2eba7 1px !important;
-  color: #1d0251;
+  background-color: #4c13f5 !important;
+  border: solid #9b89b3 1px !important;
+  color: #fef6ff;
 }
 
 /* Custom button success color*/
@@ -93,12 +93,12 @@ body {
 }
 
 /* Custom button css for start button*/
-.custom-btn-start {
-  box-shadow: 2px 2px 10px rgba(29, 2, 81, 0.5) !important;
+.custom-btn-shadow {
+  box-shadow: 0px 2px 10px rgba(29, 2, 81, 0.5) !important;
 }
 
-.custom-btn-start:hover {
-  box-shadow: 5px 5px 10px rgba(29, 2, 81, 0.5) !important;
+.custom-btn-shadow:hover {
+  box-shadow: 0px 5px 10px rgba(29, 2, 81, 0.5) !important;
 }
 
 /* custom css for the login form element */
@@ -237,4 +237,18 @@ body {
 
 .offcanvas-custom-font-color {
   color: #019081;
+}
+
+.custom-border {
+  border: #1d0251 solid 1px !important;
+}
+
+.increased-line-spacing-heading {
+  line-height: 1.7; /* Adjust the value as needed */
+  color: #4c13f5 !important;
+}
+
+.increased-line-spacing-subheading {
+  line-height: 2;
+  color: #9b89b3 !important;
 }
