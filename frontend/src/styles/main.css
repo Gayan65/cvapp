@@ -120,19 +120,22 @@ body {
 
 /*custom css for the input elements*/
 .form-control {
-  border: solid #74cc7e 2px;
-  border-radius: 5px;
-  background-color: #d2eba7;
-  color: #1d0251;
-  font-weight: bold;
+  border: solid #9b89b3 2px;
+  border-radius: 50px;
+  background-color: #fef6ff;
+  color: #4c13f5 !important;
+  font-weight: normal;
 }
 
 .form-control:focus {
-  border: rgb(116, 204, 126) 2px solid !important;
+  border: rgb(155, 137, 179) 2px solid !important;
   box-shadow: 0 0 10px rgba(29, 2, 81, 0.5) !important;
-  background-color: #edf7dc;
+  background-color: #fef6ff;
 }
 
+.magnifying-icon {
+  color: #9b89b3;
+}
 .text-primary {
   color: #1d0251 !important;
 }
