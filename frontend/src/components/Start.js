@@ -18,11 +18,9 @@ const Start = () => {
           <div className="col-10 col-sm-8 col-lg-7">
             <img
               src={headingImg}
-              className="d-block mx-lg-auto img-fluid"
               alt="Bootstrap Themes"
-              width="745"
-              height="559"
-              loading="lazy"
+              width="545"
+              height="700"
             />
           </div>
           <div className="col-lg-5">
@@ -121,7 +119,6 @@ const Start = () => {
               alt="Bootstrap Themes"
               width="459"
               height="505"
-              loading="lazy"
             />
           </div>
         </div>
