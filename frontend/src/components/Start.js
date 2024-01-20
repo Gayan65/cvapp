@@ -53,28 +53,28 @@ const Start = () => {
       <div className=" container  mt-5 ">
         <div className=" row-cols-auto "></div>
         <p className=" fs-4 fw-bold ">Feature with</p>
-        <div class="container px-2 py-2 custom-feature" id="hanging-icons">
-          <div class="row g-4 py-2 row-cols-1 row-cols-lg-4">
-            <div class="col d-flex justify-content-center align-items-center">
-              <p class="fs-4">
+        <div className="container px-2 py-2 custom-feature" id="hanging-icons">
+          <div className="row g-4 py-2 row-cols-1 row-cols-lg-4">
+            <div className="col d-flex justify-content-center align-items-center">
+              <p className="fs-4">
                 <FontAwesomeIcon icon={faUserGroup} />
                 <span className=" ms-1 ">Collaboration</span>
               </p>
             </div>
-            <div class="col d-flex justify-content-center  align-items-center">
-              <p class="fs-4">
+            <div className="col d-flex justify-content-center  align-items-center">
+              <p className="fs-4">
                 <FontAwesomeIcon icon={faShieldHalved} />
                 <span className=" ms-1 ">Security</span>
               </p>
             </div>
-            <div class="col d-flex justify-content-center  align-items-center">
-              <p class="fs-4">
+            <div className="col d-flex justify-content-center  align-items-center">
+              <p className="fs-4">
                 <FontAwesomeIcon icon={faPenToSquare} />
                 <span className=" ms-1 ">Customization</span>
               </p>
             </div>
-            <div class="col d-flex justify-content-center  align-items-center">
-              <p class="fs-4">
+            <div className="col d-flex justify-content-center  align-items-center">
+              <p className="fs-4">
                 <FontAwesomeIcon icon={faHandshake} />
                 <span className=" ms-1 ">Intuitive</span>
               </p>
@@ -98,15 +98,15 @@ const Start = () => {
               Search your future employee here..
             </p>
             <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-              <div class="input-group input-group-lg">
+              <div className="input-group input-group-lg">
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   aria-label="Sizing example input"
                   aria-describedby="inputGroup-sizing-lg"
                 />
                 <span
-                  class="input-group-text magnifying-icon"
+                  className="input-group-text magnifying-icon"
                   id="inputGroup-sizing-lg"
                 >
                   <FontAwesomeIcon icon={faMagnifyingGlass} />
