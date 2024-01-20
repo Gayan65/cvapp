@@ -1,6 +1,6 @@
 /* Custom font color*/
 .font-custom-color {
-  color: #1d0251 !important;
+  color: #9b89b3 !important;
 }
 
 /* Custom font color*/
@@ -69,7 +69,7 @@ body {
 .btn-outline-secondary:hover {
   background-color: #9b89b3;
   border: solid 2px #9b89b3;
-  color: #1d0251;
+  color: #4c13f5;
 }
 
 .btn-outline-secondary:active {
@@ -109,11 +109,14 @@ body {
 
 /* custom css for the login form element */
 .form-signin {
-  max-width: 330px;
-  padding: 1rem;
+  max-width: 530px;
+  padding: 3rem;
 }
 .m-auto {
   margin: auto !important;
+  margin-top: 90px !important;
+  background-color: #fef6ff;
+  border-radius: 10px;
 }
 .w-100 {
   width: 100% !important;
@@ -155,24 +158,19 @@ body {
 }
 
 .form-check-input {
-  border: #019081 solid 2px;
+  border: #4c13f5 solid 1px;
 }
 
 .form-check-input:hover {
-  border: #1d0251 solid 2px;
-  background-color: #74cc7e;
+  border: #9b89b3 solid 1px;
+  background-color: #fef6ff;
 }
 
 .form-check-input:checked {
-  border: #019081 solid 2px;
-  color: #1d0251;
+  border: #4c13f5 solid 1px;
+  color: #fef6ff;
 }
 
-/* custom css for the footer in the login and registration page */
-.custom-font-color {
-  color: #019081 !important;
-  text-align: center;
-}
 /*custom css for the image profile in personal component*/
 .img-custom {
   border-radius: 50%;
@@ -269,4 +267,25 @@ body {
 
 .custom-txt-color {
   color: #fef6ff !important;
+}
+
+/* custom login input css */
+.custom-login-input {
+  background-color: #fef6ff;
+  border-radius: 10px;
+  border: #9b89b3 solid 1px;
+  box-shadow: 0px 2px 4px rgba(29, 2, 81, 0.5) !important;
+}
+
+.custom-link-signup {
+  color: #4c13f5;
+}
+
+.custom-link-signup:hover {
+  color: #4c13f5;
+  font-weight: bold;
+}
+
+.custom-border-login {
+  box-shadow: 0px 2px 10px rgba(29, 2, 81, 0.5) !important;
 }

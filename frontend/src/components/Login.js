@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import qs from "qs";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import loginLogo from "../images/logos/LogoSmall.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
@@ -55,15 +55,14 @@ const Login = () => {
 
   return (
     <div>
-      <main className="form-signin w-100 m-auto">
-        <form method="POST" onSubmit={handleSubmit} className=" mt-5 ">
-          <img className="mb-4" src={loginLogo} alt="" width="72" height="72" />
-          <h1 className="fs-2 mb-4 fw-medium ">Please sign in</h1>
+      <main className="form-signin w-100 m-auto custom-border-login">
+        <form method="POST" onSubmit={handleSubmit}>
+          <h1 className="fs-2 mb-5 fw-bold text-center ">Login</h1>
 
-          <div className="form-floating">
+          <div className="form-floating fw-light">
             <input
               type="text"
-              className="form-control mb-3"
+              className="form-control mb-4 custom-login-input"
               id="floatingInput"
               placeholder="name@example.com"
               onChange={handleInputChange}
@@ -78,7 +77,7 @@ const Login = () => {
           <div className="form-floating">
             <input
               type="password"
-              className="form-control"
+              className="form-control custom-login-input"
               id="floatingPassword"
               placeholder="Password"
               required
@@ -102,12 +101,19 @@ const Login = () => {
               Remember me
             </label>
           </div>
-          <button className="btn btn-primary w-100 py-2" type="submit">
+          <button
+            className="btn btn-outline-secondary text-center py-2 px-5 "
+            type="submit"
+          >
             <FontAwesomeIcon icon={faUser} />
-            <span className="ms-2 fs-5 ">Sign in</span>
+            <span className="ms-2 fs-5 ">Login</span>
           </button>
-          <p className="mt-5 mb-3 custom-font-color">
-            Craft Your Success Story with Us..
+          <p className="mt-5 mb-5 text-center font-custom-color">
+            No account, just{" "}
+            <Link className="custom-link-signup" to={"/register"}>
+              Sign up
+            </Link>
+            .
           </p>
 
           {apiResponse.success === false && (
@@ -116,6 +122,7 @@ const Login = () => {
             </div>
           )}
         </form>
+        <img className="" src={loginLogo} alt="" width="193" height="72" />
       </main>
     </div>
   );
