@@ -150,18 +150,26 @@ const PersonalInfo = () => {
             </div>
           </div>
         </div>
-
+        <div className=" col ">
+          <button className=" btn btn-success px-4" onClick={handdleBack}>
+            <FontAwesomeIcon icon={faArrowLeft} />
+            <span className=" ms-2 ">Back</span>
+          </button>
+        </div>
         {/* Renders the profile info end */}
 
         {/*Add Form for moto, description, image, user_id will be send as the token and decorded in the server end */}
         <div>
           <form method="POST" onSubmit={noData ? handleCreate : handleSubmit}>
             <div className="mb-3">
-              <label htmlFor="exampleFormControlInput1" className="form-label">
+              <label
+                htmlFor="exampleFormControlInput1"
+                className="form-label offcanvas-custom-font-color"
+              >
                 Add your moto here...
               </label>
               <textarea
-                className="form-control"
+                className="form-control custom-login-input"
                 id="exampleFormControlTextarea1"
                 rows="3"
                 onChange={handleMotoChange}
@@ -172,12 +180,12 @@ const PersonalInfo = () => {
             <div className="mb-3">
               <label
                 htmlFor="exampleFormControlTextarea1"
-                className="form-label"
+                className="form-label offcanvas-custom-font-color"
               >
                 The best way to describe about you..
               </label>
               <textarea
-                className="form-control"
+                className="form-control custom-login-input"
                 id="exampleFormControlTextarea1"
                 rows="5"
                 onChange={handleDescriptionChange}
@@ -185,12 +193,15 @@ const PersonalInfo = () => {
                 required
               ></textarea>
             </div>
-            <div className="mb-3">
-              <label htmlFor="formFile" className="form-label">
+            <div className="mb-3 ">
+              <label
+                htmlFor="formFile"
+                className="form-label offcanvas-custom-font-color"
+              >
                 Add your profile image..
               </label>
               <input
-                className="form-control"
+                className="form-control custom-login-input "
                 type="file"
                 id="formFile"
                 onChange={handleFileChange}
@@ -217,10 +228,6 @@ const PersonalInfo = () => {
         </div>
         {/* form end */}
       </div>
-      <button className=" btn btn-success mt-1 px-4" onClick={handdleBack}>
-        <FontAwesomeIcon icon={faArrowLeft} />
-        <span className=" ms-2 ">Back</span>
-      </button>
     </div>
   );
 };
