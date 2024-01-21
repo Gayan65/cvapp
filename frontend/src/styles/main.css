@@ -182,7 +182,6 @@ body {
 .img-custom {
   border-radius: 50%;
   border: none;
-  box-shadow: 10px 10px 5px 0px #888888;
 }
 
 /*Nav bar nav links*/
@@ -311,4 +310,12 @@ body {
 
 .custom-border-login {
   box-shadow: 0px 2px 10px rgba(29, 2, 81, 0.5) !important;
+}
+
+.personal-custom-border {
+  border: none;
+  box-shadow: 0px 3px 10px rgba(155, 137, 179, 0.5) !important;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  background-color: #fef6ff;
 }

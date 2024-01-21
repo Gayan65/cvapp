@@ -116,16 +116,12 @@ const PersonalInfo = () => {
 
   return (
     <div className=" container mt-3 ">
-      <div className="row">
-        <h1 className="text-center mb-5 fs-2 fw-bold custom-component-heading">
-          Personal Information section
-        </h1>
-
+      <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
         {/* Renders the profile info */}
 
-        <div className="mb-3" style={{ maxWidth: "800px" }}>
-          <div className="row g-0">
-            <div className="col-md-4 me-5">
+        <div className="mb-3">
+          <div className="row g-0 personal-custom-border px-5 py-3 ">
+            <div className="col-md-2 me-5">
               {tempImg === true ||
               tempImg === null ||
               fetchPersonal.image === null ? (
@@ -142,12 +138,12 @@ const PersonalInfo = () => {
                 />
               )}
             </div>
-            <div className="col-md-7">
+            <div className="col-md-9">
               <div className="card-body">
-                <h5 className="card-title mb-3 fw-semibold ">
+                <h5 className="card-title mb-3 text-center ">
                   {fetchPersonal.moto}
                 </h5>
-                <p className="card-text fst-italic mb-3 ">
+                <p className="card-text fst-italic mb-3 text-center font-custom-color">
                   {fetchPersonal.description}
                 </p>
               </div>
