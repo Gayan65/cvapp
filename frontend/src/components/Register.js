@@ -63,15 +63,14 @@ const Register = () => {
 
   return (
     <div>
-      <main className="form-signin w-100 m-auto">
-        <form method="POST" onSubmit={handleSubmit} className=" mt-5 ">
-          <img className="mb-4" src={loginLogo} alt="" width="72" height="72" />
-          <h1 className="h3 mb-3 fw-normal">Please register</h1>
+      <main className="form-signin w-100 m-auto custom-border-login">
+        <form method="POST" onSubmit={handleSubmit}>
+          <h1 className="fs-2 mb-5 fw-bold text-center ">Sign up</h1>
 
-          <div className="form-floating">
+          <div className="form-floating fw-light">
             <input
               type="text"
-              className="form-control mb-4"
+              className="form-control mb-4 custom-login-input"
               id="floatingInput"
               placeholder="name@example.com"
               onChange={handleInputChange}
@@ -83,10 +82,10 @@ const Register = () => {
               <FontAwesomeIcon icon={faEnvelope} /> Email
             </label>
           </div>
-          <div className="form-floating">
+          <div className="form-floating fw-light">
             <input
               type="password"
-              className="form-control mb-4"
+              className="form-control mb-4 custom-login-input"
               id="floatingPassword"
               placeholder="Password"
               required
@@ -99,10 +98,10 @@ const Register = () => {
             </label>
           </div>
 
-          <div className="form-floating">
+          <div className="form-floating fw-light">
             <input
               type="text"
-              className="form-control mb-4"
+              className="form-control mb-4 custom-login-input"
               id="floatingFname"
               placeholder="First Name"
               required
@@ -115,10 +114,10 @@ const Register = () => {
             </label>
           </div>
 
-          <div className="form-floating">
+          <div className="form-floating fw-light">
             <input
               type="text"
-              className="form-control mb-4"
+              className="form-control mb-4 custom-login-input"
               id="floatingLname"
               placeholder="Last Name"
               required
@@ -131,11 +130,14 @@ const Register = () => {
             </label>
           </div>
 
-          <button className="btn btn-primary w-100 py-2" type="submit">
+          <button
+            className="btn btn-outline-secondary text-center py-2 px-5"
+            type="submit"
+          >
             <FontAwesomeIcon icon={faUserPen} />
-            <span className="ms-2 fs-5 ">Register</span>
+            <span className="ms-2 fs-5 ">Sign up</span>
           </button>
-          <p className="mt-5 mb-3 custom-font-color">
+          <p className="mt-5 mb-5 custom-font-color">
             Craft Your Success Story with Us..
           </p>
 
@@ -145,6 +147,7 @@ const Register = () => {
             </div>
           )}
         </form>
+        <img className="mb-4" src={loginLogo} alt="" width="193" height="72" />
       </main>
     </div>
   );

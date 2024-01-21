@@ -74,7 +74,7 @@ const Login = () => {
               <FontAwesomeIcon icon={faEnvelope} /> Email
             </label>
           </div>
-          <div className="form-floating">
+          <div className="form-floating fw-light">
             <input
               type="password"
               className="form-control custom-login-input"
