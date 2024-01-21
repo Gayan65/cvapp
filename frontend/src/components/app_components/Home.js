@@ -4,14 +4,7 @@ import logoImg from "../../images/logos/LogoSmall.png";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import homeImage from "../../images/assetsImg/homeimage.png";
-import {
-  faPencil,
-  faCircleInfo,
-  faSquarePhone,
-  faLanguage,
-  faBuildingColumns,
-  faBriefcase,
-} from "@fortawesome/free-solid-svg-icons";
+import { faPencil } from "@fortawesome/free-solid-svg-icons";
 
 const Home = () => {
   //window.location.reload(false);
@@ -91,8 +84,7 @@ const Home = () => {
                   className="offcanvas-title fs-3 fw-semibold custom-offcanvas-font"
                   id="offcanvasExampleLabel"
                 >
-                  <img src={logoImg} alt="" width="50" height="50" />
-                  <span className="ms-3 ">Navigation section</span>
+                  <img src={logoImg} alt="" width="128" height="48" />
                 </h5>
                 <button
                   type="button"
@@ -105,57 +97,66 @@ const Home = () => {
               {/* off canvas body starts here */}
 
               <div className="offcanvas-body">
-                <div className="text-start mb-5 custom-offcanvas-font fs-5 ">
+                <div className="text-start mb-4 custom-offcanvas-font fs-5 ">
                   Dear {fetchUser.fname}, Visit each section and fill all the
                   details appropriately.
                 </div>
-                <p className=" text-start mb-1 fs-5 ">
-                  <a className="offcanvas-custom-link" href="/personal_info">
-                    <FontAwesomeIcon icon={faCircleInfo} /> Personal information
-                  </a>
-                </p>
-                <p className="text-start mb-4 fs-6 offcanvas-custom-font-color">
-                  You can add your personal information via this link.
-                </p>
+                <div className="offcanvas-custom-border py-2 px-3 mt-2 ">
+                  <p className=" text-start mb-1 fs-5 ">
+                    <a className="offcanvas-custom-link" href="/personal_info">
+                      Personal information
+                    </a>
+                  </p>
+                  <p className="text-start fs-6 offcanvas-custom-font-color">
+                    You can add your personal information via this link.
+                  </p>
+                </div>
 
-                <p className=" text-start mb-1 fs-5">
-                  <a className="offcanvas-custom-link" href="/contact_info">
-                    <FontAwesomeIcon icon={faSquarePhone} /> Contact information
-                  </a>
-                </p>
-                <p className="text-start mb-4 fs-6 offcanvas-custom-font-color">
-                  You can add your contact information such as, email, contact
-                  number and etc via this link.
-                </p>
+                <div className="offcanvas-custom-border py-2 px-3 mt-2">
+                  <p className=" text-start mb-1 fs-5">
+                    <a className="offcanvas-custom-link" href="/contact_info">
+                      Contact information
+                    </a>
+                  </p>
+                  <p className="text-start fs-6 offcanvas-custom-font-color">
+                    You can add your contact information such as, email, contact
+                    number and etc via this link.
+                  </p>
+                </div>
 
-                <p className=" text-start mb-1 fs-5">
-                  <a className="offcanvas-custom-link" href="/language_info">
-                    <FontAwesomeIcon icon={faLanguage} /> Language information
-                  </a>
-                </p>
-                <p className="text-start mb-4 fs-6 offcanvas-custom-font-color">
-                  You can add your language information via this link.
-                </p>
+                <div className="offcanvas-custom-border py-2 px-3 mt-2">
+                  <p className=" text-start mb-1 fs-5">
+                    <a className="offcanvas-custom-link" href="/language_info">
+                      Language information
+                    </a>
+                  </p>
+                  <p className="text-start fs-6 offcanvas-custom-font-color">
+                    You can add your language information via this link.
+                  </p>
+                </div>
 
-                <p className=" text-start mb-1 fs-5 ">
-                  <a className="offcanvas-custom-link" href="/education_info">
-                    <FontAwesomeIcon icon={faBuildingColumns} /> Education
-                    Background
-                  </a>
-                </p>
-                <p className="text-start mb-4 fs-6 offcanvas-custom-font-color">
-                  You can add your education level via this link.
-                </p>
+                <div className="offcanvas-custom-border py-2 px-3 mt-2">
+                  <p className=" text-start mb-1 fs-5 ">
+                    <a className="offcanvas-custom-link" href="/education_info">
+                      Education Background
+                    </a>
+                  </p>
+                  <p className="text-start fs-6 offcanvas-custom-font-color">
+                    You can add your education level via this link.
+                  </p>
+                </div>
 
-                <p className=" text-start mb-1 fs-5 ">
-                  <a className="offcanvas-custom-link" href="/work_ex_info">
-                    <FontAwesomeIcon icon={faBriefcase} /> Work Experience
-                  </a>
-                </p>
-                <p className="text-start mb-4 fs-6 offcanvas-custom-font-color">
-                  You can add your work experience in this section via this
-                  link.
-                </p>
+                <div className="offcanvas-custom-border py-2 px-3 mt-2">
+                  <p className=" text-start mb-1 fs-5 ">
+                    <a className="offcanvas-custom-link" href="/work_ex_info">
+                      Work Experience
+                    </a>
+                  </p>
+                  <p className="text-start fs-6 offcanvas-custom-font-color">
+                    You can add your work experience in this section via this
+                    link.
+                  </p>
+                </div>
               </div>
             </div>
           </div>

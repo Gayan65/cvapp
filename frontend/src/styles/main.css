@@ -231,26 +231,42 @@ body {
 
 /* off canvas body */
 .offcanvas {
-  background-color: #edf7dc;
+  background-color: #fef6ff;
+  border-radius: 10px;
+  border: #4c13f5 solid 2px;
 }
 
 .custom-offcanvas-font {
-  color: #1d0251;
+  color: #4c13f5;
 }
 
 .offcanvas-custom-link {
   text-decoration: none;
-  color: #1d0251;
+  color: #4c13f5;
   font-weight: bold;
 }
 
 .offcanvas-custom-link:hover {
-  color: #01564d;
+  color: #4c13f5;
   text-decoration: underline;
 }
 
 .offcanvas-custom-font-color {
-  color: #019081;
+  color: #9b89b3;
+}
+
+.offcanvas-custom-border {
+  border: none;
+  box-shadow: 0px 3px 10px rgba(155, 137, 179, 0.5) !important;
+  border-radius: 3px;
+  transition: transform 0.3s ease;
+}
+
+.offcanvas-custom-border:hover {
+  border: none;
+  box-shadow: 4px 4px 15px rgba(155, 137, 179, 0.5) !important;
+  border-radius: 3px;
+  transform: scale(1.05); /* Zoom in on hover (120% of the original size) */
 }
 
 .custom-border {

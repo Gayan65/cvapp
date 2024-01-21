@@ -141,7 +141,7 @@ const Register = () => {
             </div>
           )}
         </form>
-        <img className="mb-4" src={loginLogo} alt="" width="193" height="72" />
+        <img className="mb-4" src={loginLogo} alt="" width="128" height="48" />
       </main>
     </div>
   );
