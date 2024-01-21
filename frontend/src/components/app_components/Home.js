@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import logoImg from "../../images/logos/LogoSmall.png";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import homeImage from "../../images/assetsImg/homeimage.png";
 import {
-  faFaceSmile,
   faPencil,
   faCircleInfo,
   faSquarePhone,
@@ -54,21 +54,16 @@ const Home = () => {
         <div className="row py-lg-5">
           <div className="col-lg-6 col-md-8 mx-auto">
             <h1 className=" fw-semibold mb-4 ">
-              Hi {`${fetchUser.fname} ${fetchUser.lname}`},
+              Welcome {`${fetchUser.fname} ${fetchUser.lname}`},
             </h1>
-            <p className="lead fs-4 custom-font-color fw-semibold  ">
-              Welcome to the INSTARESUME{" "}
-              <span>
-                <FontAwesomeIcon icon={faFaceSmile} />
-              </span>
-            </p>
-            <p className="fs-4">
-              click "Start" button to navigate each section and, make sure to
+
+            <p className="fs-4 increased-line-spacing-subheading">
+              click below button to navigate each section and, make sure to
               follow all the instructions carefully,
             </p>
 
             <a
-              className="btn btn-primary btn-lg px-5 fs-4 py-3 mt-4 custom-btn-start"
+              className="btn btn-primary btn-lg px-5 fs-4 py-3 mt-4 custom-btn-start custom-btn-shadow"
               data-bs-toggle="offcanvas"
               href="#offcanvasExample"
               role="button"
@@ -77,6 +72,13 @@ const Home = () => {
               <FontAwesomeIcon icon={faPencil} />
               <span className="ms-3">Build you resume</span>
             </a>
+            <img
+              className=" mt-5 "
+              src={homeImage}
+              alt="Bootstrap Themes"
+              width="545"
+              height="700"
+            />
             <div
               className="offcanvas offcanvas-start"
               tabIndex="-1"

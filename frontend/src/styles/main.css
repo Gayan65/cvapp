@@ -9,7 +9,7 @@ body {
   color: #4c13f5 !important;
 
   /* Use the linear-gradient property with the desired color stops */
-  background: linear-gradient(45deg, #fef6ff, #4c13f53f);
+  background: linear-gradient(45deg, #fef6ff, #9e82f33f);
   /* You can customize the gradient direction and colors as per your preference */
   /* For example, "to bottom" creates a top-to-bottom gradient */
   /* #ffcc00 and #ff6600 are example colors; you can replace them with your desired colors */
