@@ -4,12 +4,7 @@ import qs from "qs";
 import { useNavigate } from "react-router-dom";
 import loginLogo from "../images/logos/LogoSmall.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faUserPen,
-  faEnvelope,
-  faKey,
-  faUser,
-} from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faKey, faUser } from "@fortawesome/free-solid-svg-icons";
 
 const Register = () => {
   const [inputData, setInputData] = useState({
@@ -63,7 +58,7 @@ const Register = () => {
 
   return (
     <div>
-      <main className="form-signin w-100 m-auto custom-border-login">
+      <main className="form-signin w-100 m-auto-signup custom-border-login">
         <form method="POST" onSubmit={handleSubmit}>
           <h1 className="fs-2 mb-5 fw-bold text-center ">Sign up</h1>
 
@@ -134,8 +129,7 @@ const Register = () => {
             className="btn btn-outline-secondary text-center py-2 px-5"
             type="submit"
           >
-            <FontAwesomeIcon icon={faUserPen} />
-            <span className="ms-2 fs-5 ">Sign up</span>
+            <span className="fs-5 ">Sign up</span>
           </button>
           <p className="mt-5 mb-5 custom-font-color">
             Craft Your Success Story with Us..
