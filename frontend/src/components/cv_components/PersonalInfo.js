@@ -151,7 +151,10 @@ const PersonalInfo = () => {
           </div>
         </div>
         <div className=" col ">
-          <button className=" btn btn-success px-4" onClick={handdleBack}>
+          <button
+            className=" btn btn-outline-secondary px-4"
+            onClick={handdleBack}
+          >
             <FontAwesomeIcon icon={faArrowLeft} />
             <span className=" ms-2 ">Back</span>
           </button>
