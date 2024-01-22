@@ -95,16 +95,12 @@ const LanguageInfo = () => {
 
   return (
     <div className=" container ">
-      <div className="py-5 text-center">
-        <h1 className="text-center mb-5 fs-3 custom-component-heading">
-          Your Language Proficiency
-        </h1>
-      </div>
+      <div className="py-5 text-center"></div>
 
       <div className="row g-5">
         <div className="col-md-5 col-lg-4 order-md-last">
           <h4 className="d-flex justify-content-between align-items-center mb-3">
-            <span className="text-primary">Your Language Summery</span>
+            <span className=" font-custom-color">Your Language Summery</span>
           </h4>
           <ul className="list-group mb-3">
             {languageDataDB ? (
@@ -114,8 +110,11 @@ const LanguageInfo = () => {
                   className="list-group-item d-flex justify-content-between lh-sm"
                 >
                   <div>
-                    <h6 className="my-0"> {language.l_name} </h6>
-                    <small className="text-body-secondary">
+                    <h6 className="my-0 font-custom-color">
+                      {" "}
+                      {language.l_name}{" "}
+                    </h6>
+                    <small className="text-body-secondary font-custom-color">
                       {language.l_pro}
                     </small>
                   </div>
@@ -126,7 +125,7 @@ const LanguageInfo = () => {
                     data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop"
                   >
-                    <FontAwesomeIcon icon={faTrashCan} /> Delete
+                    <FontAwesomeIcon icon={faTrashCan} />
                   </button>
                 </li>
               ))
@@ -143,7 +142,9 @@ const LanguageInfo = () => {
         {/*Form section two */}
 
         <div className="col-md-7 col-lg-8">
-          <h4 className="mb-3">Language information here..</h4>
+          <h4 className="mb-3 font-custom-color">
+            Language information here..
+          </h4>
           <form
             className="needs-validation"
             method="POST"
@@ -151,11 +152,11 @@ const LanguageInfo = () => {
           >
             <div className="row g-3">
               <div className="col-md-6">
-                <label htmlFor="state" className="form-label">
+                <label htmlFor="state" className="form-label font-custom-color">
                   Select Language
                 </label>
                 <select
-                  className="form-select"
+                  className="form-select form-control custom-login-input"
                   id="state"
                   required
                   name="l_name"
@@ -174,11 +175,11 @@ const LanguageInfo = () => {
                 </div>
               </div>
               <div className="col-md-6">
-                <label htmlFor="state" className="form-label">
+                <label htmlFor="state" className="form-label font-custom-color">
                   Proficiency Level
                 </label>
                 <select
-                  className="form-select"
+                  className="form-select custom-login-input form-control"
                   id="state"
                   required
                   name="l_pro"
