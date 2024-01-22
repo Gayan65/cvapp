@@ -3,6 +3,12 @@ import { useNavigate } from "react-router-dom";
 import qs from "qs";
 import axios from "axios";
 import Model from "../Model";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faTrashCan,
+  faPlus,
+  faArrowLeft,
+} from "@fortawesome/free-solid-svg-icons";
 
 const EducationInfo = () => {
   const navigate = useNavigate();
@@ -99,16 +105,12 @@ const EducationInfo = () => {
   }, []);
   return (
     <div className=" container ">
-      <div className="py-5 text-center">
-        <h1 className="text-center mb-5 fs-3 custom-component-heading">
-          Your Language Proficiency
-        </h1>
-      </div>
+      <div className="py-5 text-center"></div>
 
       <div className="row g-5">
         <div className="col-md-5 col-lg-4 order-md-last">
           <h4 className="d-flex justify-content-between align-items-center mb-3">
-            <span className="text-primary">Your Education Summery</span>
+            <span className="font-custom-color">Your Education Summery</span>
           </h4>
           <ul className="list-group mb-3">
             {eduDataDB ? (
@@ -116,75 +118,71 @@ const EducationInfo = () => {
                 <div className=" mb-5" key={i}>
                   <li className="list-group-item d-flex justify-content-between lh-sm">
                     <div>
-                      <h6 className="my-0"> Level of Education </h6>
-                      <small className="text-body-secondary">
-                        {eduData.program}
+                      <h6 className="my-0 font-custom-color">
+                        Level of Education, Program
+                      </h6>
+                      <small className="text-body-secondary font-custom-color">
+                        {eduData.program}, {eduData.program_name}
                       </small>
                     </div>
                   </li>
                   <li className="list-group-item d-flex justify-content-between lh-sm">
                     <div>
-                      <h6 className="my-0"> Program</h6>
-                      <small className="text-body-secondary">
-                        {eduData.program_name}
-                      </small>
-                    </div>
-                  </li>
-                  <li className="list-group-item d-flex justify-content-between lh-sm">
-                    <div>
-                      <h6 className="my-0"> Institution </h6>
-                      <small className="text-body-secondary">
+                      <h6 className="my-0 font-custom-color"> Institution </h6>
+                      <small className="text-body-secondary font-custom-color">
                         {eduData.institution}
                       </small>
                     </div>
                   </li>
                   <li className="list-group-item d-flex justify-content-between lh-sm">
                     <div>
-                      <h6 className="my-0"> Address </h6>
-                      <small className="text-body-secondary">
+                      <h6 className="my-0 font-custom-color"> Address </h6>
+                      <small className="text-body-secondary font-custom-color">
                         {eduData.address}
                       </small>
                     </div>
                   </li>
                   <li className="list-group-item d-flex justify-content-between lh-sm">
                     <div>
-                      <h6 className="my-0"> Start year, month </h6>
-                      <small className="text-body-secondary">
-                        {eduData.s_month} {eduData.s_year}
+                      <h6 className="my-0 font-custom-color">
+                        {" "}
+                        Start year, month - End Year, month
+                      </h6>
+                      <small className="text-body-secondary font-custom-color">
+                        {eduData.s_month} {eduData.s_year} - {eduData.e_month}{" "}
+                        {eduData.e_year}
                       </small>
                     </div>
                   </li>
                   <li className="list-group-item d-flex justify-content-between lh-sm">
                     <div>
-                      <h6 className="my-0"> End year, month </h6>
-                      <small className="text-body-secondary">
-                        {eduData.e_month} {eduData.e_year}
-                      </small>
-                    </div>
-                  </li>
-                  <li className="list-group-item d-flex justify-content-between lh-sm">
-                    <div>
-                      <h6 className="my-0"> Content covered </h6>
-                      <small className="text-body-secondary">
+                      <h6 className="my-0 font-custom-color">
+                        {" "}
+                        Content covered{" "}
+                      </h6>
+                      <small className="text-body-secondary font-custom-color">
                         {eduData.about}
                       </small>
                     </div>
                   </li>
                   <button
-                    className="btn btn-danger "
+                    className="btn btn-danger mt-2"
                     onClick={handleDelete}
                     value={eduData.edu_id}
                     data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop"
                   >
-                    Delete
+                    <FontAwesomeIcon icon={faTrashCan} />
                   </button>
                 </div>
               ))
             ) : (
               <li className="list-group-item d-flex justify-content-between lh-sm">
                 <div>
-                  <h6 className="my-0"> No Education information found </h6>
+                  <h6 className="my-0 font-custom-color">
+                    {" "}
+                    No Education information found{" "}
+                  </h6>
                 </div>
               </li>
             )}
@@ -194,7 +192,9 @@ const EducationInfo = () => {
         {/*Form section two */}
 
         <div className="col-md-7 col-lg-8">
-          <h4 className="mb-3">Education information here..</h4>
+          <h4 className="mb-3 font-custom-color">
+            Education information here..
+          </h4>
           <form
             className="needs-validation"
             method="POST"
@@ -203,11 +203,14 @@ const EducationInfo = () => {
           >
             <div className="row g-3">
               <div className="col-md-6">
-                <label htmlFor="program" className="form-label">
+                <label
+                  htmlFor="program"
+                  className="form-label font-custom-color"
+                >
                   Program
                 </label>
                 <select
-                  className="form-select"
+                  className="form-select form-control custom-login-input"
                   id="program"
                   required
                   name="program"
@@ -224,12 +227,15 @@ const EducationInfo = () => {
                 </div>
               </div>
               <div className="col-md-6">
-                <label htmlFor="program_name" className="form-label">
+                <label
+                  htmlFor="program_name"
+                  className="form-label font-custom-color"
+                >
                   Program name
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control custom-login-input"
                   id="program_name"
                   placeholder="Program name"
                   required
@@ -241,12 +247,15 @@ const EducationInfo = () => {
                 </div>
               </div>
               <div className="col-md-6">
-                <label htmlFor="institution" className="form-label">
+                <label
+                  htmlFor="institution"
+                  className="form-label font-custom-color"
+                >
                   Institution name
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control custom-login-input"
                   id="institution"
                   placeholder="Institution"
                   required
@@ -258,12 +267,15 @@ const EducationInfo = () => {
                 </div>
               </div>
               <div className="col-md-6">
-                <label htmlFor="address" className="form-label">
+                <label
+                  htmlFor="address"
+                  className="form-label font-custom-color"
+                >
                   Address
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control custom-login-input"
                   id="address"
                   placeholder="Address"
                   required
@@ -276,11 +288,14 @@ const EducationInfo = () => {
               </div>
 
               <div className="col-md-6">
-                <label htmlFor="s_month" className="form-label">
+                <label
+                  htmlFor="s_month"
+                  className="form-label font-custom-color"
+                >
                   Start Month
                 </label>
                 <select
-                  className="form-select"
+                  className="form-select form-control custom-login-input"
                   id="s_month"
                   required
                   name="s_month"
@@ -305,7 +320,10 @@ const EducationInfo = () => {
               </div>
 
               <div className="col-md-6">
-                <label htmlFor="s_year" className="form-label">
+                <label
+                  htmlFor="s_year"
+                  className="form-label font-custom-color"
+                >
                   Start Year
                 </label>
                 <input
@@ -313,9 +331,9 @@ const EducationInfo = () => {
                   min={1900}
                   max={2100}
                   step={1}
-                  className="form-control"
+                  className="form-control custom-login-input"
                   id="s_year"
-                  placeholder="Address"
+                  placeholder="Start year"
                   required
                   name="s_year"
                   onChange={handleInputChange}
@@ -326,11 +344,14 @@ const EducationInfo = () => {
               </div>
 
               <div className="col-md-6">
-                <label htmlFor="e_month" className="form-label">
+                <label
+                  htmlFor="e_month"
+                  className="form-label font-custom-color"
+                >
                   End Month
                 </label>
                 <select
-                  className="form-select"
+                  className="form-select form-control custom-login-input"
                   id="e_month"
                   required
                   name="e_month"
@@ -355,7 +376,10 @@ const EducationInfo = () => {
               </div>
 
               <div className="col-md-6">
-                <label htmlFor="e_year" className="form-label">
+                <label
+                  htmlFor="e_year"
+                  className="form-label font-custom-color"
+                >
                   End Year
                 </label>
                 <input
@@ -363,9 +387,9 @@ const EducationInfo = () => {
                   min={1900}
                   max={2100}
                   step={1}
-                  className="form-control"
+                  className="form-control custom-login-input"
                   id="e_year"
-                  placeholder="Address"
+                  placeholder="End year"
                   required
                   name="e_year"
                   onChange={handleInputChange}
@@ -376,12 +400,12 @@ const EducationInfo = () => {
               </div>
 
               <div className="col-md-6">
-                <label htmlFor="about" className="form-label">
-                  About
+                <label htmlFor="about" className="form-label font-custom-color">
+                  Content covered
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control custom-login-input"
                   id="about"
                   placeholder="Add your program content "
                   required
@@ -400,9 +424,14 @@ const EducationInfo = () => {
               data-bs-toggle="modal"
               data-bs-target="#staticBackdrop"
             >
-              Add
+              <FontAwesomeIcon icon={faPlus} />
+              <span className="px-1">Add</span>
             </button>
           </form>
+          <a href="/home" className=" btn btn-outline-secondary mt-3 ">
+            <FontAwesomeIcon icon={faArrowLeft} />
+            <span className="ms-1">Back</span>
+          </a>
           <Model
             title={"Language information"}
             message={

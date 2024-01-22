@@ -24,18 +24,6 @@ const ContactInfo = () => {
   //When contact data not exists
   const [noData, setNoData] = useState(false);
   const [message, setMessage] = useState(null);
-  /*
-  //Making the form data in a relevant manner for the sending as payload
-  const formData = new FormData();
-  formData.append("m_code", fetchContact.m_code);
-  formData.append("m_number", fetchContact.m_number);
-  formData.append("w_code", fetchContact.w_code);
-  formData.append("w_number", fetchContact.w_number);
-  formData.append("address_lane", fetchContact.address_lane);
-  formData.append("city", fetchContact.city);
-  formData.append("post_code", fetchContact.post_code);
-  formData.append("country", fetchContact.country);
-*/
 
   //Handling inputs
   const handleInputChange = (event) => {

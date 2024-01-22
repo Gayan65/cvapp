@@ -4,7 +4,11 @@ import axios from "axios";
 import qs from "qs";
 import Model from "../Model";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashCan, faPlus } from "@fortawesome/free-solid-svg-icons";
+import {
+  faTrashCan,
+  faPlus,
+  faArrowLeft,
+} from "@fortawesome/free-solid-svg-icons";
 
 const LanguageInfo = () => {
   const navigate = useNavigate();
@@ -205,9 +209,14 @@ const LanguageInfo = () => {
               data-bs-toggle="modal"
               data-bs-target="#staticBackdrop"
             >
-              <FontAwesomeIcon icon={faPlus} /> Add
+              <FontAwesomeIcon icon={faPlus} />{" "}
+              <span className=" px-1">Add</span>
             </button>
           </form>
+          <a href="/home" className=" btn btn-outline-secondary mt-3 ">
+            <FontAwesomeIcon icon={faArrowLeft} />
+            <span className="ms-1">Back</span>
+          </a>
           <Model
             title={"Language information"}
             message={
