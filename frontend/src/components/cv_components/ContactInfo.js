@@ -4,13 +4,7 @@ import { useNavigate } from "react-router-dom";
 import qs from "qs";
 import Model from "../Model";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFlag,
-  faMobile,
-  faSignsPost,
-} from "@fortawesome/free-solid-svg-icons";
-
-import { faSquareWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import { faFloppyDisk, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 const ContactInfo = () => {
   const token = sessionStorage.getItem("token");
@@ -125,54 +119,50 @@ const ContactInfo = () => {
 
   return (
     <div className=" container ">
-      <div className="py-5 text-center">
-        <h1 className="ext-center mb-5 fs-2 fw-bold custom-component-heading">
-          Contact Information Section
-        </h1>
-      </div>
+      <div className="py-5 text-center"></div>
 
       <div className="row g-5">
         <div className="col-md-5 col-lg-4 order-md-last">
           <h4 className="d-flex justify-content-between align-items-center mb-3">
-            <span className="text-primary">Your contact summery</span>
+            <span className="font-custom-color">Summery</span>
           </h4>
-          <ul className="list-group mb-3">
-            <li className="list-group-item d-flex justify-content-between lh-sm">
+          <ul className="list-group mb-3 custom-border-contact">
+            <li className="list-group-item d-flex justify-content-between lh-sm font-custom-color">
               <div>
                 <h6 className="my-0">Mobile Number</h6>
-                <small className="text-body-secondary">
+                <small className="">
                   {fetchContact.m_code} {fetchContact.m_number}
                 </small>
               </div>
             </li>
-            <li className="list-group-item d-flex justify-content-between lh-sm">
+            <li className="list-group-item d-flex justify-content-between lh-sm font-custom-color">
               <div>
                 <h6 className="my-0">Whatsapp Number</h6>
-                <small className="text-body-secondary">
+                <small className="text-body-secondary font-custom-color">
                   {fetchContact.w_code} {fetchContact.w_number}
                 </small>
               </div>
             </li>
-            <li className="list-group-item d-flex justify-content-between lh-sm">
+            <li className="list-group-item d-flex justify-content-between lh-sm font-custom-color">
               <div>
                 <h6 className="my-0">Address</h6>
-                <small className="text-body-secondary">
+                <small className="text-body-secondary font-custom-color">
                   {fetchContact.address_lane}
                 </small>
               </div>
             </li>
-            <li className="list-group-item d-flex justify-content-between lh-sm">
+            <li className="list-group-item d-flex justify-content-between lh-sm font-custom-color">
               <div>
                 <h6 className="my-0">Postcode, City</h6>
-                <small className="text-body-secondary">
+                <small className="text-body-secondary font-custom-color">
                   {fetchContact.post_code} {fetchContact.city}
                 </small>
               </div>
             </li>
-            <li className="list-group-item d-flex justify-content-between lh-sm">
+            <li className="list-group-item d-flex justify-content-between lh-sm font-custom-color">
               <div>
                 <h6 className="my-0">Country</h6>
-                <small className="text-body-secondary">
+                <small className="text-body-secondary font-custom-color">
                   {fetchContact.country}
                 </small>
               </div>
@@ -183,7 +173,7 @@ const ContactInfo = () => {
         {/*Form section two */}
 
         <div className="col-md-7 col-lg-8">
-          <h4 className="mb-3">Contact information here..</h4>
+          <h4 className="mb-3 font-custom-color">Add here..</h4>
           <form
             className="needs-validation"
             method="POST"
@@ -192,11 +182,12 @@ const ContactInfo = () => {
             <div className="row g-3">
               <div className="col-md-6">
                 <label htmlFor="state" className="form-label">
-                  <FontAwesomeIcon icon={faFlag} />
-                  <span className=" ms-2 ">Mobile Country code</span>
+                  <span className=" ms-2 font-custom-color">
+                    Mobile Country code
+                  </span>
                 </label>
                 <select
-                  className="form-select form-control"
+                  className="form-select form-control custom-login-input"
                   id="state"
                   required
                   name="m_code"
@@ -220,12 +211,11 @@ const ContactInfo = () => {
 
               <div className="col-sm-6">
                 <label htmlFor="lastName" className="form-label">
-                  <FontAwesomeIcon icon={faMobile} />
-                  <span className=" ms-2 ">Mobile Number</span>
+                  <span className=" ms-2 font-custom-color">Mobile Number</span>
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control custom-login-input"
                   id="lastName"
                   placeholder="123456789"
                   required
@@ -241,11 +231,12 @@ const ContactInfo = () => {
 
               <div className="col-md-6">
                 <label htmlFor="state" className="form-label">
-                  <FontAwesomeIcon icon={faFlag} />
-                  <span className=" ms-2 ">Whatsapp Country code</span>
+                  <span className=" ms-2 font-custom-color">
+                    Whatsapp Country code
+                  </span>
                 </label>
                 <select
-                  className="form-select form-control"
+                  className="form-select form-control custom-login-input"
                   id="state"
                   required
                   name="w_code"
@@ -269,12 +260,13 @@ const ContactInfo = () => {
 
               <div className="col-sm-6">
                 <label htmlFor="lastName" className="form-label">
-                  <FontAwesomeIcon icon={faSquareWhatsapp} />
-                  <span className=" ms-2 ">Whatsapp Number</span>
+                  <span className=" ms-2 font-custom-color">
+                    Whatsapp Number
+                  </span>
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control custom-login-input"
                   id="lastName"
                   placeholder="123456789"
                   required
@@ -290,12 +282,11 @@ const ContactInfo = () => {
 
               <div className="col-12">
                 <label htmlFor="address" className="form-label">
-                  <FontAwesomeIcon icon={faSignsPost} />
-                  <span className=" ms-2 ">Address Lane</span>
+                  <span className=" ms-2 font-custom-color">Address Lane</span>
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control custom-login-input"
                   id="address"
                   placeholder="1234 Main St"
                   required
@@ -309,12 +300,15 @@ const ContactInfo = () => {
               </div>
 
               <div className="col-12">
-                <label htmlFor="address" className="form-label">
+                <label
+                  htmlFor="address"
+                  className="form-label font-custom-color"
+                >
                   City
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control custom-login-input"
                   id="address"
                   placeholder="City"
                   required
@@ -326,11 +320,14 @@ const ContactInfo = () => {
               </div>
 
               <div className="col-md-7">
-                <label htmlFor="country" className="form-label">
+                <label
+                  htmlFor="country"
+                  className="form-label font-custom-color"
+                >
                   Country
                 </label>
                 <select
-                  className="form-select form-control"
+                  className="form-select form-control custom-login-input"
                   id="country"
                   required
                   name="country"
@@ -353,12 +350,12 @@ const ContactInfo = () => {
               </div>
 
               <div className="col-md-5">
-                <label htmlFor="zip" className="form-label">
+                <label htmlFor="zip" className="form-label font-custom-color">
                   Postcode
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control custom-login-input"
                   id="zip"
                   placeholder=""
                   required
@@ -376,9 +373,14 @@ const ContactInfo = () => {
               data-bs-toggle="modal"
               data-bs-target="#staticBackdrop"
             >
-              Save
+              <FontAwesomeIcon icon={faFloppyDisk} />{" "}
+              <span className="ms-1">Save</span>
             </button>
           </form>
+          <a href="/home" className=" btn btn-outline-secondary mt-3 ">
+            <FontAwesomeIcon icon={faArrowLeft} />
+            <span className="ms-1">Back</span>
+          </a>
           <Model
             title={"Contact information"}
             message={
