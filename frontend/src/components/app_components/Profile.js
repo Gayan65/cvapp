@@ -73,11 +73,10 @@ const Profile = () => {
           className="d-block mx-auto mb-4"
           src={logoImg}
           alt="Logo"
-          width="72"
-          height="72"
+          width="128"
+          height="48"
         />
-        <h2>User Profile</h2>
-        <p className="lead">
+        <p className="lead font-custom-color">
           This profile page is a dedicated space that provides a personalized
           and customizable view of own information and typically serves as a
           central hub for to manage your account settings within this platform.
@@ -86,41 +85,50 @@ const Profile = () => {
       <div className="row g-5">
         <div className="col-md-5 col-lg-4 order-md-last">
           <h4 className="d-flex justify-content-between align-items-center mb-3">
-            <span className="text-primary">Your Profile Settings</span>
+            <span className="font-custom-color">Your Profile Summary</span>
           </h4>
           <ul className="list-group mb-3">
             <li className="list-group-item d-flex justify-content-between lh-sm p-3">
               <div>
-                <h6 className="my-0">Email Address</h6>
+                <h6 className="my-0 font-custom-color">Email Address</h6>
               </div>
-              <span className="text-body-secondary">{fetchUser.email}</span>
+              <span className="text-body-secondary font-custom-color">
+                {fetchUser.email}
+              </span>
             </li>
             <li className="list-group-item d-flex justify-content-between lh-sm p-3">
               <div>
-                <h6 className="my-0">First Name</h6>
+                <h6 className="my-0 font-custom-color">First Name</h6>
               </div>
-              <span className="text-body-secondary">{fetchUser.fname}</span>
+              <span className="text-body-secondary font-custom-color">
+                {fetchUser.fname}
+              </span>
             </li>
             <li className="list-group-item d-flex justify-content-between lh-sm p-3">
               <div>
-                <h6 className="my-0">Last Name</h6>
+                <h6 className="my-0 font-custom-color">Last Name</h6>
               </div>
-              <span className="text-body-secondary">{fetchUser.lname}</span>
+              <span className="text-body-secondary font-custom-color">
+                {fetchUser.lname}
+              </span>
             </li>
           </ul>
         </div>
         <div className="col-md-7 col-lg-8">
-          <h4 className="mb-3">Edit Your Profile</h4>
+          <h4 className="mb-3 font-custom-color">Edit Your Profile Settings</h4>
 
           <form className="needs-validation" onSubmit={handleSubmit}>
             <div className="row g-3 mb-3 ">
               <div className="col-sm-6">
-                <label htmlFor="firstName" className="form-label">
+                <label
+                  htmlFor="firstName"
+                  className="form-label font-custom-color"
+                >
                   First name
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control custom-login-input"
                   id="firstName"
                   name="fname"
                   onChange={handleInputChange}
@@ -132,12 +140,15 @@ const Profile = () => {
               </div>
 
               <div className="col-sm-6">
-                <label htmlFor="lastName" className="form-label">
+                <label
+                  htmlFor="lastName"
+                  className="form-label font-custom-color"
+                >
                   Last name
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control custom-login-input"
                   id="lastName"
                   name="lname"
                   onChange={handleInputChange}
@@ -159,7 +170,7 @@ const Profile = () => {
             </div>
           )}
 
-          <h4 className="my-3">Privacy</h4>
+          <h4 className="my-3 font-custom-color">Privacy</h4>
           <PasswordChange userId={fetchUser.user_id} />
         </div>
       </div>

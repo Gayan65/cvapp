@@ -341,3 +341,7 @@ body {
   transition: transform 0.3s ease;
   background-color: #fef6ff;
 }
+
+.main-custom-color {
+  color: #4c13f5 !important;
+}

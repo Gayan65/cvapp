@@ -72,12 +72,15 @@ const PasswordChange = (props) => {
               >
                 <div className="row g-3 mb-3 ">
                   <div className="col-sm-6">
-                    <label htmlFor="lastName" className="form-label">
+                    <label
+                      htmlFor="lastName"
+                      className="form-label main-custom-color "
+                    >
                       New Password
                     </label>
                     <input
                       type="password"
-                      className="form-control"
+                      className="form-control custom-login-input"
                       id="password"
                       name="password"
                       onChange={handlePaaswordInputChange}
