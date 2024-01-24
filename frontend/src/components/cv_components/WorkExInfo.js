@@ -98,16 +98,12 @@ const WorkExInfo = () => {
   }, []);
   return (
     <div className=" container ">
-      <div className="py-5 text-center">
-        <h1 className="text-center mb-5 fs-3 custom-component-heading">
-          Your Work Experience
-        </h1>
-      </div>
+      <div className="py-5 text-center"></div>
 
       <div className="row g-5">
         <div className="col-md-5 col-lg-4 order-md-last">
           <h4 className="d-flex justify-content-between align-items-center mb-3">
-            <span className="text-primary">Your Education Summery</span>
+            <span className="font-custom-color">Your work experience</span>
           </h4>
           <ul className="list-group mb-3">
             {expDataDB ? (
@@ -115,16 +111,16 @@ const WorkExInfo = () => {
                 <div className=" mb-5" key={i}>
                   <li className="list-group-item d-flex justify-content-between lh-sm">
                     <div>
-                      <h6 className="my-0"> Position Hold </h6>
-                      <small className="text-body-secondary">
+                      <h6 className="my-0 font-custom-color"> Position</h6>
+                      <small className="text-body-secondary font-custom-color">
                         {expData.position}
                       </small>
                     </div>
                   </li>
                   <li className="list-group-item d-flex justify-content-between lh-sm">
                     <div>
-                      <h6 className="my-0"> Employer</h6>
-                      <small className="text-body-secondary">
+                      <h6 className="my-0 font-custom-color"> Employer</h6>
+                      <small className="text-body-secondary font-custom-color">
                         {expData.employer}
                       </small>
                     </div>
@@ -132,32 +128,41 @@ const WorkExInfo = () => {
 
                   <li className="list-group-item d-flex justify-content-between lh-sm">
                     <div>
-                      <h6 className="my-0"> Address </h6>
-                      <small className="text-body-secondary">
+                      <h6 className="my-0 font-custom-color"> Address </h6>
+                      <small className="text-body-secondary font-custom-color">
                         {expData.address}
                       </small>
                     </div>
                   </li>
                   <li className="list-group-item d-flex justify-content-between lh-sm">
                     <div>
-                      <h6 className="my-0"> Start year, month </h6>
-                      <small className="text-body-secondary">
+                      <h6 className="my-0 font-custom-color">
+                        {" "}
+                        Start year, month{" "}
+                      </h6>
+                      <small className="text-body-secondary font-custom-color">
                         {expData.s_month} {expData.s_year}
                       </small>
                     </div>
                   </li>
                   <li className="list-group-item d-flex justify-content-between lh-sm">
                     <div>
-                      <h6 className="my-0"> End year, month </h6>
-                      <small className="text-body-secondary">
+                      <h6 className="my-0 font-custom-color">
+                        {" "}
+                        End year, month{" "}
+                      </h6>
+                      <small className="text-body-secondary font-custom-color">
                         {expData.e_month} {expData.e_year}
                       </small>
                     </div>
                   </li>
                   <li className="list-group-item d-flex justify-content-between lh-sm">
                     <div>
-                      <h6 className="my-0"> Tasks, Achievements </h6>
-                      <small className="text-body-secondary">
+                      <h6 className="my-0 font-custom-color">
+                        {" "}
+                        Tasks, Achievements{" "}
+                      </h6>
+                      <small className="text-body-secondary font-custom-color">
                         {expData.task}
                       </small>
                     </div>
@@ -176,7 +181,10 @@ const WorkExInfo = () => {
             ) : (
               <li className="list-group-item d-flex justify-content-between lh-sm">
                 <div>
-                  <h6 className="my-0"> No Education information found </h6>
+                  <h6 className="my-0 font-custom-color">
+                    {" "}
+                    No Education information found{" "}
+                  </h6>
                 </div>
               </li>
             )}
@@ -186,7 +194,7 @@ const WorkExInfo = () => {
         {/*Form section two */}
 
         <div className="col-md-7 col-lg-8">
-          <h4 className="mb-3">Education information here..</h4>
+          <h4 className="mb-3 font-custom-color">Work information here..</h4>
           <form
             className="needs-validation"
             method="POST"
@@ -195,12 +203,15 @@ const WorkExInfo = () => {
           >
             <div className="row g-3">
               <div className="col-md-6">
-                <label htmlFor="position" className="form-label">
+                <label
+                  htmlFor="position"
+                  className="form-label font-custom-color"
+                >
                   Position
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control custom-login-input"
                   id="position"
                   placeholder="Program name"
                   required
@@ -212,12 +223,15 @@ const WorkExInfo = () => {
                 </div>
               </div>
               <div className="col-md-6">
-                <label htmlFor="employer" className="form-label">
+                <label
+                  htmlFor="employer"
+                  className="form-label font-custom-color"
+                >
                   Employer
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control custom-login-input"
                   id="employer"
                   placeholder="Program name"
                   required
@@ -229,12 +243,15 @@ const WorkExInfo = () => {
                 </div>
               </div>
               <div className="col-md-6">
-                <label htmlFor="address" className="form-label">
+                <label
+                  htmlFor="address"
+                  className="form-label font-custom-color"
+                >
                   Address
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control custom-login-input"
                   id="address"
                   placeholder="Address"
                   required
@@ -247,11 +264,14 @@ const WorkExInfo = () => {
               </div>
 
               <div className="col-md-6">
-                <label htmlFor="s_month" className="form-label">
+                <label
+                  htmlFor="s_month"
+                  className="form-label font-custom-color"
+                >
                   Start Month
                 </label>
                 <select
-                  className="form-select"
+                  className="form-select form-control custom-login-input"
                   id="s_month"
                   required
                   name="s_month"
@@ -276,7 +296,10 @@ const WorkExInfo = () => {
               </div>
 
               <div className="col-md-6">
-                <label htmlFor="s_year" className="form-label">
+                <label
+                  htmlFor="s_year"
+                  className="form-label font-custom-color"
+                >
                   Start Year
                 </label>
                 <input
@@ -284,7 +307,7 @@ const WorkExInfo = () => {
                   min={1900}
                   max={2100}
                   step={1}
-                  className="form-control"
+                  className="form-control custom-login-input"
                   id="s_year"
                   placeholder="Address"
                   required
@@ -297,11 +320,14 @@ const WorkExInfo = () => {
               </div>
 
               <div className="col-md-6">
-                <label htmlFor="e_month" className="form-label">
+                <label
+                  htmlFor="e_month"
+                  className="form-label font-custom-color"
+                >
                   End Month
                 </label>
                 <select
-                  className="form-select"
+                  className="form-select form-control custom-login-input"
                   id="e_month"
                   required
                   name="e_month"
@@ -326,7 +352,10 @@ const WorkExInfo = () => {
               </div>
 
               <div className="col-md-6">
-                <label htmlFor="e_year" className="form-label">
+                <label
+                  htmlFor="e_year"
+                  className="form-label font-custom-color"
+                >
                   End Year
                 </label>
                 <input
@@ -334,7 +363,7 @@ const WorkExInfo = () => {
                   min={1900}
                   max={2100}
                   step={1}
-                  className="form-control"
+                  className="form-control custom-login-input"
                   id="e_year"
                   placeholder="Address"
                   required
@@ -347,12 +376,12 @@ const WorkExInfo = () => {
               </div>
 
               <div className="col-md-6">
-                <label htmlFor="task" className="form-label">
+                <label htmlFor="task" className="form-label font-custom-color">
                   Tasks, Achievements
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control custom-login-input"
                   id="task"
                   placeholder="Add your program content "
                   required
