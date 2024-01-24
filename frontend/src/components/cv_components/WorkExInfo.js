@@ -3,6 +3,12 @@ import { useNavigate } from "react-router-dom";
 import qs from "qs";
 import axios from "axios";
 import Model from "../Model";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faTrashCan,
+  faPlus,
+  faArrowLeft,
+} from "@fortawesome/free-solid-svg-icons";
 
 const WorkExInfo = () => {
   const navigate = useNavigate();
@@ -168,13 +174,13 @@ const WorkExInfo = () => {
                     </div>
                   </li>
                   <button
-                    className="btn btn-danger "
+                    className="btn btn-danger mt-3"
                     onClick={handleDelete}
                     value={expData.exp_id}
                     data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop"
                   >
-                    Delete
+                    <FontAwesomeIcon icon={faTrashCan} />
                   </button>
                 </div>
               ))
@@ -309,7 +315,7 @@ const WorkExInfo = () => {
                   step={1}
                   className="form-control custom-login-input"
                   id="s_year"
-                  placeholder="Address"
+                  placeholder="Start Year"
                   required
                   name="s_year"
                   onChange={handleInputChange}
@@ -365,7 +371,7 @@ const WorkExInfo = () => {
                   step={1}
                   className="form-control custom-login-input"
                   id="e_year"
-                  placeholder="Address"
+                  placeholder="End Year"
                   required
                   name="e_year"
                   onChange={handleInputChange}
@@ -400,9 +406,14 @@ const WorkExInfo = () => {
               data-bs-toggle="modal"
               data-bs-target="#staticBackdrop"
             >
-              Add
+              <FontAwesomeIcon icon={faPlus} />
+              <span className="px-1">Add</span>
             </button>
           </form>
+          <a href="/home" className=" btn btn-outline-secondary mt-3 ">
+            <FontAwesomeIcon icon={faArrowLeft} />
+            <span className="ms-1">Back</span>
+          </a>
           <Model
             title={"Language information"}
             message={
