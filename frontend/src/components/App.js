@@ -11,6 +11,7 @@ import ContactInfo from "./cv_components/ContactInfo";
 import LanguageInfo from "./cv_components/LanguageInfo";
 import EducationInfo from "./cv_components/EducationInfo";
 import WorkExInfo from "./cv_components/WorkExInfo";
+import Other from "./cv_components/Other";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/language_info" element={<LanguageInfo />}></Route>
           <Route path="/education_info" element={<EducationInfo />}></Route>
           <Route path="/work_ex_info" element={<WorkExInfo />}></Route>
+          <Route path="/other" element={<Other />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

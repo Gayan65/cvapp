@@ -157,6 +157,17 @@ const Home = () => {
                     link.
                   </p>
                 </div>
+
+                <div className="offcanvas-custom-border py-2 px-3 mt-2">
+                  <p className=" text-start mb-1 fs-5 ">
+                    <a className="offcanvas-custom-link" href="/other">
+                      Other Information
+                    </a>
+                  </p>
+                  <p className="text-start fs-6 offcanvas-custom-font-color">
+                    You can add your other highlights in this section link.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
