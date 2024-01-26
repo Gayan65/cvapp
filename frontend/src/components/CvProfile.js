@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const CvProfile = () => {
-  const [personal, setPersonal] = useState(null);
-  //protecting this route
+  const [user, setUser] = useState(null);
+  //getting the user params
+  const { email } = useParams();
+
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/api/personal/find/email`)
+      .get(`http://localhost:4000/api/profile/find/${email}`)
       .then((response) => {
-        setPersonal(response.data.personal[0]);
+        console.log(response.data.user[0]);
       })
       .catch((error) => {
         // Handle errors
