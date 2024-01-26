@@ -56,8 +56,8 @@ const NavUser = () => {
           </a>
         </li>
         <li>
-          <a className="dropdown-item" href="/home">
-            CV QR
+          <a className="dropdown-item" href={`/cv_profile/${fetchUser.email}`}>
+            My resume
           </a>
         </li>
         <li>

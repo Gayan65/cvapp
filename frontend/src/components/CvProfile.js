@@ -25,18 +25,35 @@ const CvProfile = () => {
     // eslint-disable-next-line
   }, []);
 
-  return (
-    <div>
-      <div>CvProfile {user ? user.fname : "No data"}</div>
-      <div>URL {user ? currentUrl : "No data"}</div>
-      <div>
-        <p>Scan Me</p>
+  if (user) {
+    return (
+      <div className="container mt-4 ">
+        {/* Start Raw image Moto, Description */}
+        <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary row custom-border">
+          <div class="col-lg-4 px-0 custom-border"></div>
+          <div className="col-lg-8 custom-border">
+            <h1 class="fst-italic">Title of a longer featured blog post</h1>
+            <p class="lead my-3">
+              Multiple lines of text that form the lede, informing new readers
+              quickly and efficiently about what’s most interesting in this
+              post’s contents.
+            </p>
+          </div>
+        </div>
+        {/* Start Raw image Moto, Description */}
+        <div>CvProfile {user ? user.fname : "No data"}</div>
+        <div>URL {user ? currentUrl : "No data"}</div>
         <div>
-          {user ? <QRCodeSVG value={currentUrl} size={256} /> : "No data"}
+          <p>Scan Me</p>
+          <div>
+            {user ? <QRCodeSVG value={currentUrl} size={256} /> : "No data"}
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return <div className="container mt-4 ">No Data to display</div>;
+  }
 };
 
 export default CvProfile;
