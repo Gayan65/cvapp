@@ -1,7 +1,11 @@
 import express from "express";
 import bodyParser from "body-parser";
 import jwt from "jsonwebtoken";
-import { allUserOther, createOther } from "../services/other_services.js";
+import {
+  allUserOther,
+  createOther,
+  deleteOther,
+} from "../services/other_services.js";
 
 const otherRouter = express.Router();
 otherRouter.use(bodyParser.urlencoded({ extended: false }));
@@ -52,6 +56,27 @@ otherRouter.get("/user/:id", async (req, res) => {
       success: false,
       message: "not found languages!",
     });
+  }
+});
+
+//Deleting an other info
+otherRouter.delete("/delete/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const deletedOther = await deleteOther(id);
+    if (deletedOther.affectedRows > 0) {
+      res.status(200).json({
+        success: true,
+        message: "Other info deleted successfully!",
+      });
+    } else {
+      res.status(200).json({
+        success: false,
+        message: "Other not deleted successfully!",
+      });
+    }
+  } catch (error) {
+    console.error(error.response.data);
   }
 });
 

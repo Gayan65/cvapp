@@ -41,13 +41,17 @@ const LanguageInfo = () => {
   //Handle Delete
   const handleDelete = (event) => {
     const lan_id = event.target.value;
-    axios
-      .delete(`http://localhost:4000/api/lan/delete/${lan_id}`, {
-        headers,
-      })
-      .then((response) => {
-        setMessage(response.data.message);
-      });
+    if (lan_id === undefined || lan_id === null) {
+      window.location.reload();
+    } else {
+      axios
+        .delete(`http://localhost:4000/api/lan/delete/${lan_id}`, {
+          headers,
+        })
+        .then((response) => {
+          setMessage(response.data.message);
+        });
+    }
   };
 
   //Handle form create

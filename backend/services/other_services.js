@@ -14,3 +14,10 @@ export const allUserOther = async (user_id) => {
   const [rows] = await mySqlPool.query(sqlQuery, [user_id]);
   return rows;
 };
+
+//Deleting Other sql
+export const deleteOther = async (other_id) => {
+  const sqlQuery = "DELETE FROM other WHERE other_id = ?";
+  const [rows] = await mySqlPool.query(sqlQuery, [other_id]);
+  return rows;
+};

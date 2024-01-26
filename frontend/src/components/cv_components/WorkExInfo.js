@@ -67,17 +67,21 @@ const WorkExInfo = () => {
   // Delete function
   const handleDelete = (event) => {
     const exp_id = event.target.value;
-    axios
-      .delete(`http://localhost:4000/api/exp/delete/${exp_id}`, {
-        headers,
-      })
-      .then((response) => {
-        if (response.data.success) {
-          setMessage(response.data.message);
-        } else {
-          console.log("No data");
-        }
-      });
+    if (exp_id === undefined || exp_id === null) {
+      window.location.reload();
+    } else {
+      axios
+        .delete(`http://localhost:4000/api/exp/delete/${exp_id}`, {
+          headers,
+        })
+        .then((response) => {
+          if (response.data.success) {
+            setMessage(response.data.message);
+          } else {
+            console.log("No data");
+          }
+        });
+    }
   };
 
   //protecting this route

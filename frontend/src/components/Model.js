@@ -23,12 +23,6 @@ const Model = (props) => {
               <h1 className="modal-title fs-5" id="staticBackdropLabel">
                 {props.title}
               </h1>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
             </div>
             <div className="modal-body">{props.message}</div>
             <div className="modal-footer">

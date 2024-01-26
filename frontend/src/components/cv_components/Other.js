@@ -3,6 +3,12 @@ import { useNavigate } from "react-router-dom";
 import Model from "../Model";
 import qs from "qs";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faTrashCan,
+  faPlus,
+  faArrowLeft,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Other = () => {
   const [other, setOther] = useState({
@@ -34,6 +40,31 @@ const Other = () => {
 
     const data = qs.stringify(other);
     // axios call
+    await axios
+      .post("http://localhost:4000/api/other/create", data, {
+        headers,
+      })
+      .then((response) => {
+        console.log(response.data);
+        setMessage(response.data.message);
+      });
+  };
+
+  //Handle Delete
+  const handleDelete = async (event) => {
+    const other_id = event.target.value;
+    //Error handles of being deleting value become undefined
+    if (other_id === undefined || other_id === null) {
+      window.location.reload();
+    } else {
+      await axios
+        .delete(`http://localhost:4000/api/other/delete/${other_id}`, {
+          headers,
+        })
+        .then((response) => {
+          setMessage(response.data.message);
+        });
+    }
   };
 
   //Handle Input change function
@@ -59,7 +90,7 @@ const Other = () => {
         })
         .then((response) => {
           if (response.data.success) {
-            setOtherDataDB(response.data.other);
+            setOtherDataDB(response.data.other_info);
           } else {
             console.log("No data");
           }
@@ -78,7 +109,7 @@ const Other = () => {
           </h4>
           <ul className="list-group mb-3">
             {otherDataDB ? (
-              otherDataDB.map((language, i) => (
+              otherDataDB.map((otherInfo, i) => (
                 <li
                   key={i}
                   className="list-group-item d-flex justify-content-between lh-sm"
@@ -86,25 +117,30 @@ const Other = () => {
                   <div>
                     <h6 className="my-0 font-custom-color">
                       {" "}
-                      {language.l_name}{" "}
+                      {otherInfo.topic}{" "}
                     </h6>
                     <small className="text-body-secondary font-custom-color">
-                      {language.l_pro}
+                      {otherInfo.content}
                     </small>
                   </div>
                   <button
                     className="btn btn-danger "
-                    value={language.lan_id}
-                    onClick={""}
+                    value={otherInfo.other_id}
+                    onClick={handleDelete}
                     data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop"
-                  ></button>
+                  >
+                    <FontAwesomeIcon icon={faTrashCan} />
+                  </button>
                 </li>
               ))
             ) : (
               <li className="list-group-item d-flex justify-content-between lh-sm">
                 <div>
-                  <h6 className="my-0"> {"No other info added"} </h6>
+                  <h6 className="my-0 font-custom-color">
+                    {" "}
+                    {"No other info added"}{" "}
+                  </h6>
                 </div>
               </li>
             )}
@@ -163,10 +199,12 @@ const Other = () => {
               data-bs-toggle="modal"
               data-bs-target="#staticBackdrop"
             >
+              <FontAwesomeIcon icon={faPlus} />
               <span className=" px-1">Add</span>
             </button>
           </form>
           <a href="/home" className=" btn btn-outline-secondary mt-3 ">
+            <FontAwesomeIcon icon={faArrowLeft} />
             <span className="ms-1">Back</span>
           </a>
           <Model
