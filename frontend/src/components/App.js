@@ -12,6 +12,7 @@ import LanguageInfo from "./cv_components/LanguageInfo";
 import EducationInfo from "./cv_components/EducationInfo";
 import WorkExInfo from "./cv_components/WorkExInfo";
 import Other from "./cv_components/Other";
+import CvProfile from "./CvProfile";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/education_info" element={<EducationInfo />}></Route>
           <Route path="/work_ex_info" element={<WorkExInfo />}></Route>
           <Route path="/other" element={<Other />}></Route>
+          <Route path="/cv_profile" element={<CvProfile />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
