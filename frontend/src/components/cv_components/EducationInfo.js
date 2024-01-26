@@ -66,8 +66,7 @@ const EducationInfo = () => {
   };
 
   // Delete function
-  const handleDelete = (event) => {
-    const edu_id = event.target.value;
+  const handleDelete = (edu_id) => {
     if (edu_id === undefined || edu_id === null) {
       window.location.reload();
     } else {
@@ -171,8 +170,7 @@ const EducationInfo = () => {
                   </li>
                   <button
                     className="btn btn-danger mt-2"
-                    onClick={handleDelete}
-                    value={eduData.edu_id}
+                    onClick={() => handleDelete(eduData.edu_id)}
                     data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop"
                   >
