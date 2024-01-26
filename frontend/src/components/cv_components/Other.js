@@ -51,8 +51,7 @@ const Other = () => {
   };
 
   //Handle Delete
-  const handleDelete = async (event) => {
-    const other_id = event.target.value;
+  const handleDelete = async (other_id) => {
     //Error handles of being deleting value become undefined
     if (other_id === undefined || other_id === null) {
       window.location.reload();
@@ -125,8 +124,7 @@ const Other = () => {
                   </div>
                   <button
                     className="btn btn-danger "
-                    value={otherInfo.other_id}
-                    onClick={handleDelete}
+                    onClick={() => handleDelete(otherInfo.other_id)}
                     data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop"
                   >
