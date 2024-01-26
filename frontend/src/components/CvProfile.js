@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { QRCodeSVG } from "qrcode.react";
 
 const CvProfile = () => {
   const [user, setUser] = useState(null);
@@ -28,6 +29,10 @@ const CvProfile = () => {
     <div>
       <div>CvProfile {user ? user.fname : "No data"}</div>
       <div>URL {user ? currentUrl : "No data"}</div>
+      <div>
+        <p>Scan Me</p>
+        <div>{user ? <QRCodeSVG value={currentUrl} /> : "No data"}</div>
+      </div>
     </div>
   );
 };
