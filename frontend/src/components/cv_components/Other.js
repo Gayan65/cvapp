@@ -12,7 +12,7 @@ const Other = () => {
   });
 
   //Setting database other data
-  const [otherDataDB, setotherDataDB] = useState(null);
+  const [otherDataDB, setOtherDataDB] = useState(null);
   const [message, setMessage] = useState(null);
   const navigate = useNavigate();
   const token = sessionStorage.getItem("token");
@@ -52,7 +52,18 @@ const Other = () => {
     if (token === "" || token === null) {
       navigate("/login");
     } else {
-      console.log("yeah");
+      //Getting other information from the DB
+      axios
+        .get(`http://localhost:4000/api/other/user/${token}`, {
+          headers,
+        })
+        .then((response) => {
+          if (response.data.success) {
+            setOtherDataDB(response.data.other);
+          } else {
+            console.log("No data");
+          }
+        });
     }
     // eslint-disable-next-line
   }, []);

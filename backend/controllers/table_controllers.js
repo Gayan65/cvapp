@@ -12,6 +12,8 @@ import {
   deleteExpTable,
   createLanTable,
   deleteLanTable,
+  createOtherTable,
+  deleteOtherTable,
 } from "../services/table_services.js";
 
 const tableRouter = express.Router();
@@ -87,4 +89,17 @@ tableRouter.delete("/lan/delete", async (req, res) => {
   const newTable = await deleteLanTable();
   res.send(newTable);
 });
+
+//creating language table
+tableRouter.post("/other/create", async (req, res) => {
+  const newTable = await createOtherTable();
+  res.send(newTable);
+});
+
+//deleting language table
+tableRouter.delete("/other/delete", async (req, res) => {
+  const newTable = await deleteOtherTable();
+  res.send(newTable);
+});
+
 export default tableRouter;

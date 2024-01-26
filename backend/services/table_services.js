@@ -101,3 +101,20 @@ export const deleteLanTable = async () => {
 
   return rows;
 };
+
+//creating other table function
+export const createOtherTable = async () => {
+  const sqlQuery =
+    "CREATE TABLE other (other_id INT AUTO_INCREMENT PRIMARY KEY, user_id INT, topic VARCHAR(20) UNIQUE NOT NULL, content VARCHAR(500) NOT NULL, INDEX `idx_user` (user_id), CONSTRAINT `fk_character_user_other` FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE)";
+  const [rows] = await mySqlPool.query(sqlQuery);
+
+  return rows;
+};
+
+//deleting other table function
+export const deleteOtherTable = async () => {
+  const sqlQuery = "DROP TABLE other";
+  const [rows] = await mySqlPool.query(sqlQuery);
+
+  return rows;
+};
