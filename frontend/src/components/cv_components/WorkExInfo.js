@@ -65,8 +65,7 @@ const WorkExInfo = () => {
   };
 
   // Delete function
-  const handleDelete = (event) => {
-    const exp_id = event.target.value;
+  const handleDelete = (exp_id) => {
     if (exp_id === undefined || exp_id === null) {
       window.location.reload();
     } else {
@@ -179,8 +178,7 @@ const WorkExInfo = () => {
                   </li>
                   <button
                     className="btn btn-danger mt-3"
-                    onClick={handleDelete}
-                    value={expData.exp_id}
+                    onClick={() => handleDelete(expData.exp_id)}
                     data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop"
                   >

@@ -26,7 +26,7 @@ app.use("/api/table", tableRouter);
 app.use("/api/personal", auth, personalRouter);
 app.use("/api/contact", auth, contactRouter);
 app.use("/api/edu", auth, eduRouter);
-app.use("/api/exp", expRouter);
+app.use("/api/exp", auth, expRouter);
 app.use("/api/lan", auth, lanRouter);
 app.use("/api/rest_language", restLanguageRouter);
 app.use("/api/other", otherRouter);
