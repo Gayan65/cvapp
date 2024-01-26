@@ -29,7 +29,7 @@ app.use("/api/edu", eduRouter);
 app.use("/api/exp", expRouter);
 app.use("/api/lan", auth, lanRouter);
 app.use("/api/rest_language", restLanguageRouter);
-app.use("api/other", otherRouter);
+app.use("/api/other", otherRouter);
 
 //Global error handler middleware
 app.use((err, req, res, next) => {
