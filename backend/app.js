@@ -13,6 +13,7 @@ import lanRouter from "./controllers/language_controller.js";
 import userLoginRouter from "./controllers/user_login_controller.js";
 import restLanguageRouter from "./controllers/rest_language.js";
 import otherRouter from "./controllers/other_controller.js";
+import fullProfileRouter from "./controllers/fullprofile_controller.js";
 import { auth } from "./middleware/auth.js";
 
 const port = process.env.PORT;
@@ -30,6 +31,7 @@ app.use("/api/exp", auth, expRouter);
 app.use("/api/lan", auth, lanRouter);
 app.use("/api/rest_language", restLanguageRouter);
 app.use("/api/other", auth, otherRouter);
+app.use("/api/profile", fullProfileRouter);
 
 //Global error handler middleware
 app.use((err, req, res, next) => {

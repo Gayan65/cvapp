@@ -31,7 +31,7 @@ function App() {
           <Route path="/education_info" element={<EducationInfo />}></Route>
           <Route path="/work_ex_info" element={<WorkExInfo />}></Route>
           <Route path="/other" element={<Other />}></Route>
-          <Route path="/cv_profile" element={<CvProfile />}></Route>
+          <Route path="/cv_profile/:id" element={<CvProfile />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
