@@ -63,7 +63,7 @@ const Other = () => {
       <div className="row g-5">
         <div className="col-md-5 col-lg-4 order-md-last">
           <h4 className="d-flex justify-content-between align-items-center mb-3">
-            <span className=" font-custom-color">Your Language Summery</span>
+            <span className=" font-custom-color">Other info summery</span>
           </h4>
           <ul className="list-group mb-3">
             {otherDataDB ? (
@@ -93,7 +93,7 @@ const Other = () => {
             ) : (
               <li className="list-group-item d-flex justify-content-between lh-sm">
                 <div>
-                  <h6 className="my-0"> {"No Language proficiency added"} </h6>
+                  <h6 className="my-0"> {"No other info added"} </h6>
                 </div>
               </li>
             )}
@@ -118,7 +118,7 @@ const Other = () => {
                   type="text"
                   className="form-control custom-login-input"
                   id="topic"
-                  placeholder="Add your program content "
+                  placeholder="Add your topic"
                   required
                   name="topic"
                   onChange={handleInputChange}
@@ -132,6 +132,7 @@ const Other = () => {
                   Content
                 </label>
                 <textarea
+                  placeholder="Add content here"
                   className="form-control custom-login-input"
                   id="exampleFormControlTextarea1"
                   rows="3"
