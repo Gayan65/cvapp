@@ -31,7 +31,9 @@ const CvProfile = () => {
       <div>URL {user ? currentUrl : "No data"}</div>
       <div>
         <p>Scan Me</p>
-        <div>{user ? <QRCodeSVG value={currentUrl} /> : "No data"}</div>
+        <div>
+          {user ? <QRCodeSVG value={currentUrl} size={256} /> : "No data"}
+        </div>
       </div>
     </div>
   );
