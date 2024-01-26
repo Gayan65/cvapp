@@ -52,12 +52,12 @@ const NavUser = () => {
         </li>
         <li>
           <a className="dropdown-item" href="/home">
-            Another action
+            Home
           </a>
         </li>
         <li>
           <a className="dropdown-item" href="/home">
-            Something else here
+            CV QR
           </a>
         </li>
         <li>
