@@ -26,7 +26,6 @@ const CvProfile = () => {
             `http://localhost:4000/api/profile/personal/find/${response.data.user[0].user_id}`
           )
           .then((personal_response) => {
-            console.log(personal_response.data.personal[0]);
             setPersonal(personal_response.data.personal[0]);
           })
           .catch((error) => {

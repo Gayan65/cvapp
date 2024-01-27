@@ -15,3 +15,10 @@ export const personalGetPersonal = async (id) => {
   const [rows] = await mySqlPool.query(sqlQuery, [id]);
   return rows;
 };
+
+//Getting contact info from use id
+export const personalGetContact = async (id) => {
+  const sqlQuery = "SELECT * FROM contact WHERE user_id = ?";
+  const [rows] = await mySqlPool.query(sqlQuery, [id]);
+  return rows;
+};

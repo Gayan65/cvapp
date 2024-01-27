@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import {
   personalGetPerson,
   personalGetPersonal,
+  personalGetContact,
 } from "../services/fullprofile_services.js";
 
 const fullProfileRouter = express.Router();
@@ -29,7 +30,7 @@ fullProfileRouter.get("/user/find/:email", async (req, res) => {
 //Get a personal from a user id
 fullProfileRouter.get("/personal/find/:id", async (req, res) => {
   const id = req.params.id;
-  const getPersonal = await personalGetPersonal(id);
+  const getContact = await personalGetPersonal(id);
   if (getPersonal.length > 0) {
     res.status(200).json({
       success: true,
@@ -40,6 +41,24 @@ fullProfileRouter.get("/personal/find/:id", async (req, res) => {
     res.status(200).json({
       success: false,
       message: "Personal data can not be found!",
+    });
+  }
+});
+
+//Get a contact from a user id
+fullProfileRouter.get("/contact/find/:id", async (req, res) => {
+  const id = req.params.id;
+  const getContact = await personalGetContact(id);
+  if (getContact.length > 0) {
+    res.status(200).json({
+      success: true,
+      message: "Contact data view successfully!",
+      personal: getContact,
+    });
+  } else {
+    res.status(200).json({
+      success: false,
+      message: "Contact data can not be found!",
     });
   }
 });
