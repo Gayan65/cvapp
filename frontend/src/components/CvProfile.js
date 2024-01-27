@@ -115,7 +115,7 @@ const CvProfile = () => {
                   )}
                 </div>
                 <div>
-                  Contact Whatsapp{" "}
+                  Contact Whatsapp
                   {contact && (
                     <span>
                       {contact.w_code} - {contact.w_number}
