@@ -29,7 +29,7 @@ const CvProfile = () => {
     return (
       <div className="container mt-4 ">
         {/* Start Raw image Moto, Description */}
-        <div className="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary row custom-border">
+        <div className="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary row custom-border-cv">
           <div className="col-lg-3 p-2 custom-border">img</div>
           <div className="col-lg-9 custom-border p-2 ">
             <h1 className="">
