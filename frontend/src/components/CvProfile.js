@@ -8,6 +8,7 @@ const CvProfile = () => {
   const [user, setUser] = useState(null);
   const [personal, setPersonal] = useState(null);
   const [tempImg, setTempImg] = useState(false);
+  const [contact, setContact] = useState(null);
   //getting the user params
   const { email } = useParams();
   const currentUrl = window.location.href;
@@ -29,9 +30,20 @@ const CvProfile = () => {
             setPersonal(personal_response.data.personal[0]);
           })
           .catch((error) => {
+            setTempImg(true);
+          });
+
+        axios
+          .get(
+            `http://localhost:4000/api/profile/contact/find/${response.data.user[0].user_id}`
+          )
+          .then((contact_response) => {
+            console.log(contact_response.data.contact[0]);
+            setContact(contact_response.data.contact[0]);
+          })
+          .catch((error) => {
             // Handle errors
             //console.error("Error fetching user data:", error);
-            setTempImg(true);
             //setNoData(true);
           });
       })
@@ -85,10 +97,32 @@ const CvProfile = () => {
           <div className="container">
             <div className="row justify-content-center">
               <div className="col custom-border mt-3 p-2 d-flex justify-content-between align-items-center">
-                <div>Address</div>
-                <div>Contact Mobile</div>
-                <div>Contact Whatsapp</div>
-                <div>Email</div>
+                <div>
+                  Address
+                  {contact && (
+                    <span>
+                      {contact.address_lane}, {contact.city}, {contact.country},{" "}
+                      {contact.post_code}
+                    </span>
+                  )}
+                </div>
+                <div>
+                  Contact Mobile
+                  {contact && (
+                    <span>
+                      {contact.m_code} - {contact.m_number}
+                    </span>
+                  )}
+                </div>
+                <div>
+                  Contact Whatsapp{" "}
+                  {contact && (
+                    <span>
+                      {contact.w_code} - {contact.w_number}
+                    </span>
+                  )}
+                </div>
+                <div>Email {user && <span>{user.email}</span>}</div>
               </div>
             </div>
           </div>
