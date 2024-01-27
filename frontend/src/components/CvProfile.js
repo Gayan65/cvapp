@@ -2,20 +2,39 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { QRCodeSVG } from "qrcode.react";
+import profileImg from "../images/profile/profile.png";
 
 const CvProfile = () => {
   const [user, setUser] = useState(null);
+  const [personal, setPersonal] = useState(null);
+  const [tempImg, setTempImg] = useState(false);
   //getting the user params
   const { email } = useParams();
   const currentUrl = window.location.href;
   console.log(currentUrl);
 
   useEffect(() => {
+    //Getting user Dtls
     axios
-      .get(`http://localhost:4000/api/profile/find/${email}`)
+      .get(`http://localhost:4000/api/profile/user/find/${email}`)
       .then((response) => {
-        console.log(response.data.user[0].fname);
         setUser(response.data.user[0]);
+
+        //Getting personal dtls
+        axios
+          .get(
+            `http://localhost:4000/api/profile/personal/find/${response.data.user[0].user_id}`
+          )
+          .then((personal_response) => {
+            console.log(personal_response.data.personal[0]);
+            setPersonal(personal_response.data.personal[0]);
+          })
+          .catch((error) => {
+            // Handle errors
+            //console.error("Error fetching user data:", error);
+            setTempImg(true);
+            //setNoData(true);
+          });
       })
       .catch((error) => {
         // Handle errors
@@ -30,21 +49,36 @@ const CvProfile = () => {
       <div className="container mt-4 ">
         {/* Start Raw image Moto, Description */}
         <div className="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary row custom-border-cv">
-          <div className="col-lg-3 p-2 custom-border">img</div>
-          <div className="col-lg-9 custom-border p-2 ">
-            <h1 className="">
-              Title of a longer featured blog post (full name)
+          <div className="col-lg-3 p-3 custom-border-cv-head">
+            {personal ? (
+              <div className="">
+                {tempImg === true ||
+                tempImg === null ||
+                personal.image === null ? (
+                  <img
+                    src={profileImg}
+                    className="img-fluid mb-3 img-custom"
+                    alt="profile"
+                  />
+                ) : (
+                  <img
+                    src={`data:image/png;base64,${personal.image}`}
+                    className="img-fluid mb-3 img-custom"
+                    alt="profile"
+                  />
+                )}
+              </div>
+            ) : null}
+          </div>
+          <div className="col-lg-9 p-3 custom-border-cv-head">
+            <h1 className="custom-cv-font-color-name fw-bold ">
+              {user.fname} {user.lname}
             </h1>
-            <p className="lead my-3">
-              Multiple lines of text that form the lede, informing new readers
-              (Moto)
+            <p className="lead my-3 custom-cv-font-color-moto">
+              {personal ? personal.moto : null}
             </p>
-            <p className="lead my-3">
-              Multiple lines of text that form the lede, informing new readers
-              quickly and efficiently about what’s most interesting in this
-              post’s contents. Multiple lines of text that form the lede,
-              informing new readers quickly and efficiently about what’s most
-              interesting in this post’s contents (Description)
+            <p className="lead my-3 custom-cv-font-color-description">
+              {personal ? personal.description : null}
             </p>
           </div>
           {/* End Raw image Moto, Description */}

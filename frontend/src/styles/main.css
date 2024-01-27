@@ -346,7 +346,27 @@ body {
   color: #4c13f5 !important;
 }
 
+/* CV */
 .custom-border-cv {
   box-shadow: 0px 3px 10px rgba(155, 137, 179, 0.5) !important;
   border: #4c13f542 solid 1px;
+}
+
+.custom-border-cv-head {
+  background-color: #3498db;
+}
+
+.custom-cv-font-color-name {
+  color: #fef6ff;
+}
+
+.custom-cv-font-color-moto {
+  color: #fef6ff;
+  font-weight: bold;
+}
+
+.custom-cv-font-color-description {
+  color: #fef6ff;
+  font-weight: lighter;
+  font-style: italic !important;
 }

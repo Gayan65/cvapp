@@ -7,3 +7,11 @@ export const personalGetPerson = async (email) => {
   const [rows] = await mySqlPool.query(sqlQuery, [email]);
   return rows;
 };
+
+//Getting personal info from use id
+export const personalGetPersonal = async (id) => {
+  const sqlQuery =
+    "SELECT moto, description, image FROM personal WHERE user_id = ?";
+  const [rows] = await mySqlPool.query(sqlQuery, [id]);
+  return rows;
+};
