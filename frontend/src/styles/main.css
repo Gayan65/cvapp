@@ -353,7 +353,7 @@ body {
 }
 
 .custom-border-cv-head {
-  background-color: #3498db;
+  background-color: #033353;
 }
 
 .custom-cv-font-color-name {
@@ -361,7 +361,7 @@ body {
 }
 
 .custom-cv-font-color-moto {
-  color: #fef6ff;
+  color: #4d9bb9;
   font-weight: bold;
 }
 
@@ -369,4 +369,9 @@ body {
   color: #fef6ff;
   font-weight: lighter;
   font-style: italic !important;
+}
+
+.custom-contact-info {
+  color: #fef6ff;
+  background-color: #031c2c;
 }
