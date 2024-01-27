@@ -29,16 +29,95 @@ const CvProfile = () => {
     return (
       <div className="container mt-4 ">
         {/* Start Raw image Moto, Description */}
-        <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary row custom-border">
-          <div class="col-lg-4 px-0 custom-border"></div>
-          <div className="col-lg-8 custom-border">
-            <h1 class="fst-italic">Title of a longer featured blog post</h1>
-            <p class="lead my-3">
+        <div className="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary row custom-border">
+          <div className="col-lg-3 p-2 custom-border">img</div>
+          <div className="col-lg-9 custom-border p-2 ">
+            <h1 className="">
+              Title of a longer featured blog post (full name)
+            </h1>
+            <p className="lead my-3">
+              Multiple lines of text that form the lede, informing new readers
+              (Moto)
+            </p>
+            <p className="lead my-3">
               Multiple lines of text that form the lede, informing new readers
               quickly and efficiently about what’s most interesting in this
-              post’s contents.
+              post’s contents. Multiple lines of text that form the lede,
+              informing new readers quickly and efficiently about what’s most
+              interesting in this post’s contents (Description)
             </p>
           </div>
+          {/* End Raw image Moto, Description */}
+          {/* Start contact infor bar */}
+          <div className="container">
+            <div className="row justify-content-center">
+              <div className="col custom-border mt-3 p-2 d-flex justify-content-between align-items-center">
+                <div>Address</div>
+                <div>Contact Mobile</div>
+                <div>Contact Whatsapp</div>
+                <div>Email</div>
+              </div>
+            </div>
+          </div>
+          {/* End contact infor bar */}
+          {/* Start Work experience */}
+          <div className="container custom-border mt-3 p-2">
+            Work Experience
+            <div className="container custom-border">
+              <div className="row justify-content-center">
+                <div className="col custom-border mt-3 p-2 d-flex justify-content-between align-items-center">
+                  <div>Institution</div>
+                  <div>Position</div>
+                  <div>Start</div>
+                  <div>End</div>
+                </div>
+                <div className="custom-border mt-3 p-2">Task</div>
+              </div>
+            </div>
+          </div>
+          {/* End Work experience */}
+          {/* Start Education */}
+          <div className="container custom-border mt-3 p-2">
+            Education
+            <div className="container custom-border">
+              <div className="row justify-content-center">
+                <div className="col custom-border mt-3 p-2 d-flex justify-content-between align-items-center">
+                  <div>Institution</div>
+                  <div>Program</div>
+                  <div>Name of Major</div>
+                  <div>Start</div>
+                  <div>End</div>
+                </div>
+                <div className="custom-border mt-3 p-2">Content Covered</div>
+              </div>
+            </div>
+          </div>
+          {/* End Education */}
+          {/* Start Language */}
+          <div className="container custom-border mt-3 p-2">
+            Languages
+            <div className="container custom-border">
+              <div className="row justify-content-center">
+                <div className="col custom-border mt-3 p-2 d-flex justify-content-between align-items-center">
+                  <div>Language</div>
+                  <div>Proficiency </div>
+                </div>
+                <div className="custom-border mt-3 p-2">Any Comments</div>
+              </div>
+            </div>
+          </div>
+          {/* End Language */}
+          {/* Start Other */}
+          <div className="container custom-border mt-3 p-2">
+            Other
+            <div className="container custom-border">
+              <div className="row justify-content-center">
+                <div className="custom-border mt-3 p-2">Topic</div>
+                <div className="custom-border mt-3 p-2">Content</div>
+              </div>
+            </div>
+          </div>
+          {/* End Other */}
         </div>
         {/* Start Raw image Moto, Description */}
         <div>CvProfile {user ? user.fname : "No data"}</div>
