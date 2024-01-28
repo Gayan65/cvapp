@@ -381,6 +381,7 @@ body {
   font-weight: bolder;
   font-size: large;
   text-decoration: underline;
+  text-transform: uppercase;
 }
 
 .custom-inner-heading {

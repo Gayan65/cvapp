@@ -18,6 +18,8 @@ const CvProfile = () => {
   const [exp, setExp] = useState(null);
   const [edu, setEdu] = useState(null);
   const [lan, setLan] = useState(null);
+  const [other, setOther] = useState(null);
+
   //getting the user params
   const { email } = useParams();
   const currentUrl = window.location.href;
@@ -84,6 +86,19 @@ const CvProfile = () => {
           .then((lan_response) => {
             console.log(lan_response.data.lan);
             setLan(lan_response.data.lan);
+          })
+          .catch((error) => {
+            //console.error("Error fetching user data:", error);
+          });
+
+        //Getting Other dtls
+        axios
+          .get(
+            `http://localhost:4000/api/profile/other/find/${response.data.user[0].user_id}`
+          )
+          .then((other_response) => {
+            console.log(other_response.data.other);
+            setOther(other_response.data.other);
           })
           .catch((error) => {
             //console.error("Error fetching user data:", error);
@@ -252,14 +267,17 @@ const CvProfile = () => {
           </div>
           {/* End Language */}
           {/* Start Other */}
-          <div className="container custom-border mt-3 p-2">
-            Topic
-            <div className="container custom-border">
-              <div className="row justify-content-center">
-                <div className="custom-border mt-3 p-2">Content</div>
+          {other &&
+            other.map((item, i) => (
+              <div className="container mt-3 p-2" key={i}>
+                <span className="sub-heading-cv">{item.topic}</span>
+                <div className="container">
+                  <div className="row justify-content-center">
+                    <div className="p-2 custom-inner-item">{item.content}</div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+            ))}
           {/* End Other */}
         </div>
         {/* Start Raw image Moto, Description */}
