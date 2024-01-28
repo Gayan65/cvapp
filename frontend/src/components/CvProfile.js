@@ -283,7 +283,7 @@ const CvProfile = () => {
         {/* End CV */}
 
         {/*-------------- Bottom part start -----------------*/}
-        <div className="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary row">
+        <div className="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary row custom-border-cv mt-5 ">
           <div className="col-lg-3 p-3">
             <div>
               <p className=" fs-3 ">Scan Me</p>
