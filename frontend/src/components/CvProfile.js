@@ -253,10 +253,9 @@ const CvProfile = () => {
           {/* End Language */}
           {/* Start Other */}
           <div className="container custom-border mt-3 p-2">
-            Other
+            Topic
             <div className="container custom-border">
               <div className="row justify-content-center">
-                <div className="custom-border mt-3 p-2">Topic</div>
                 <div className="custom-border mt-3 p-2">Content</div>
               </div>
             </div>

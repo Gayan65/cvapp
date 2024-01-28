@@ -46,3 +46,10 @@ export const personalGetLan = async (id) => {
   const [rows] = await mySqlPool.query(sqlQuery, [id]);
   return rows;
 };
+
+//Getting other info from use id
+export const personalGetOther = async (id) => {
+  const sqlQuery = "SELECT topic, content FROM other WHERE user_id = ?";
+  const [rows] = await mySqlPool.query(sqlQuery, [id]);
+  return rows;
+};

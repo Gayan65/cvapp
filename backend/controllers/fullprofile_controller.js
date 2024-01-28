@@ -7,6 +7,7 @@ import {
   personalGetExp,
   personalGetEdu,
   personalGetLan,
+  personalGetOther,
 } from "../services/fullprofile_services.js";
 
 const fullProfileRouter = express.Router();
@@ -119,4 +120,23 @@ fullProfileRouter.get("/lan/find/:id", async (req, res) => {
     });
   }
 });
+
+//Get an other info from a user id
+fullProfileRouter.get("/other/find/:id", async (req, res) => {
+  const id = req.params.id;
+  const getOther = await personalGetOther(id);
+  if (getOther.length > 0) {
+    res.status(200).json({
+      success: true,
+      message: "Other data view successfully!",
+      other: getOther,
+    });
+  } else {
+    res.status(200).json({
+      success: false,
+      message: "Other data can not be found!",
+    });
+  }
+});
+
 export default fullProfileRouter;
