@@ -17,6 +17,7 @@ const CvProfile = () => {
   const [contact, setContact] = useState(null);
   const [exp, setExp] = useState(null);
   const [edu, setEdu] = useState(null);
+  const [lan, setLan] = useState(null);
   //getting the user params
   const { email } = useParams();
   const currentUrl = window.location.href;
@@ -69,8 +70,20 @@ const CvProfile = () => {
             `http://localhost:4000/api/profile/edu/find/${response.data.user[0].user_id}`
           )
           .then((edu_response) => {
-            console.log(edu_response.data.edu);
             setEdu(edu_response.data.edu);
+          })
+          .catch((error) => {
+            //console.error("Error fetching user data:", error);
+          });
+
+        //Getting Language dtls
+        axios
+          .get(
+            `http://localhost:4000/api/profile/lan/find/${response.data.user[0].user_id}`
+          )
+          .then((lan_response) => {
+            console.log(lan_response.data.lan);
+            setLan(lan_response.data.lan);
           })
           .catch((error) => {
             //console.error("Error fetching user data:", error);
@@ -221,17 +234,21 @@ const CvProfile = () => {
           </div>
           {/* End Education */}
           {/* Start Language */}
-          <div className="container custom-border mt-3 p-2">
-            Languages
-            <div className="container custom-border">
-              <div className="row justify-content-center">
-                <div className="col custom-border mt-3 p-2 d-flex justify-content-between align-items-center">
-                  <div>Language</div>
-                  <div>Proficiency </div>
+          <div className="container mt-3 p-2">
+            <span className="sub-heading-cv">LANGUAGE</span>
+            {lan &&
+              lan.map((language, i) => (
+                <div className="container" key={i}>
+                  <div className="row justify-content-center">
+                    <div className=" mt-3 p-2 custom-inner-heading">
+                      {language.l_name}
+                    </div>
+                    <div className=" p-2 custom-inner-item">
+                      {language.l_pro}
+                    </div>
+                  </div>
                 </div>
-                <div className="custom-border mt-3 p-2">Any Comments</div>
-              </div>
-            </div>
+              ))}
           </div>
           {/* End Language */}
           {/* Start Other */}
