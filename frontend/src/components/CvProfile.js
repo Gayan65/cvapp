@@ -16,6 +16,7 @@ const CvProfile = () => {
   const [tempImg, setTempImg] = useState(false);
   const [contact, setContact] = useState(null);
   const [exp, setExp] = useState(null);
+  const [edu, setEdu] = useState(null);
   //getting the user params
   const { email } = useParams();
   const currentUrl = window.location.href;
@@ -56,8 +57,20 @@ const CvProfile = () => {
             `http://localhost:4000/api/profile/exp/find/${response.data.user[0].user_id}`
           )
           .then((exp_response) => {
-            console.log(exp_response.data.exp);
             setExp(exp_response.data.exp);
+          })
+          .catch((error) => {
+            //console.error("Error fetching user data:", error);
+          });
+
+        //Getting Education dtls
+        axios
+          .get(
+            `http://localhost:4000/api/profile/edu/find/${response.data.user[0].user_id}`
+          )
+          .then((edu_response) => {
+            console.log(edu_response.data.edu);
+            setEdu(edu_response.data.edu);
           })
           .catch((error) => {
             //console.error("Error fetching user data:", error);
@@ -181,20 +194,30 @@ const CvProfile = () => {
           </div>
           {/* End Work experience */}
           {/* Start Education */}
-          <div className="container custom-border mt-3 p-2">
-            Education
-            <div className="container custom-border">
-              <div className="row justify-content-center">
-                <div className="col custom-border mt-3 p-2 d-flex justify-content-between align-items-center">
-                  <div>Institution</div>
-                  <div>Program</div>
-                  <div>Name of Major</div>
-                  <div>Start</div>
-                  <div>End</div>
+          <div className="container mt-3 p-2">
+            <span className="sub-heading-cv">EDUCATION</span>
+            {edu &&
+              edu.map((education, i) => (
+                <div className="container" key={i}>
+                  <div className="row justify-content-center">
+                    <div className="col mt-3 p-2 d-flex justify-content-between align-items-center">
+                      <div className="custom-inner-heading">
+                        {education.program} in {education.program_name}
+                      </div>
+                      <div className="custom-inner-item">
+                        {education.institution}, {education.address}
+                      </div>
+                      <div className="custom-inner-item">
+                        {education.s_month}/{education.s_year} -{" "}
+                        {education.e_month}/{education.e_year}
+                      </div>
+                    </div>
+                    <div className="p-2 custom-inner-item">
+                      {education.about}
+                    </div>
+                  </div>
                 </div>
-                <div className="custom-border mt-3 p-2">Content Covered</div>
-              </div>
-            </div>
+              ))}
           </div>
           {/* End Education */}
           {/* Start Language */}

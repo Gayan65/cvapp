@@ -220,6 +220,7 @@ const EducationInfo = () => {
                 >
                   <option>Primary</option>
                   <option>Secondary</option>
+                  <option>Diploma</option>
                   <option>Bachelor's degree</option>
                   <option>Master's degree</option>
                   <option>Doctoral degree</option>
