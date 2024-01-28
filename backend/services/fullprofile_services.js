@@ -23,3 +23,11 @@ export const personalGetContact = async (id) => {
   const [rows] = await mySqlPool.query(sqlQuery, [id]);
   return rows;
 };
+
+//Getting work exp info from use id
+export const personalGetExp = async (id) => {
+  const sqlQuery =
+    "SELECT position, employer, address, s_month, s_year, e_month, e_year, task FROM exp WHERE user_id = ?";
+  const [rows] = await mySqlPool.query(sqlQuery, [id]);
+  return rows;
+};

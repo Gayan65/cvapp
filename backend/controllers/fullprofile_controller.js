@@ -4,6 +4,7 @@ import {
   personalGetPerson,
   personalGetPersonal,
   personalGetContact,
+  personalGetExp,
 } from "../services/fullprofile_services.js";
 
 const fullProfileRouter = express.Router();
@@ -59,6 +60,24 @@ fullProfileRouter.get("/contact/find/:id", async (req, res) => {
     res.status(200).json({
       success: false,
       message: "Contact data can not be found!",
+    });
+  }
+});
+
+//Get a work exp from a user id
+fullProfileRouter.get("/exp/find/:id", async (req, res) => {
+  const id = req.params.id;
+  const getExp = await personalGetExp(id);
+  if (getExp.length > 0) {
+    res.status(200).json({
+      success: true,
+      message: "Work experience data view successfully!",
+      exp: getExp,
+    });
+  } else {
+    res.status(200).json({
+      success: false,
+      message: "Work experience data can not be found!",
     });
   }
 });
