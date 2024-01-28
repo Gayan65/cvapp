@@ -280,15 +280,24 @@ const CvProfile = () => {
             ))}
           {/* End Other */}
         </div>
-        {/* Start Raw image Moto, Description */}
-        <div>CvProfile {user ? user.fname : "No data"}</div>
-        <div>URL {user ? currentUrl : "No data"}</div>
-        <div>
-          <p>Scan Me</p>
-          <div>
-            {user ? <QRCodeSVG value={currentUrl} size={256} /> : "No data"}
+        {/* End CV */}
+
+        {/*-------------- Bottom part start -----------------*/}
+        <div className="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary row">
+          <div className="col-lg-3 p-3">
+            <div>
+              <p className=" fs-3 ">Scan Me</p>
+              <div>
+                {user ? <QRCodeSVG value={currentUrl} size={256} /> : "No data"}
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-9 p-3">
+            <p className=" fs-3 ">Here is my link</p>
+            <h1 className=" fw-bold ">URL {user ? currentUrl : "No data"}</h1>
           </div>
         </div>
+        {/*-------------- Bottom part end -----------------*/}
       </div>
     );
   } else {
