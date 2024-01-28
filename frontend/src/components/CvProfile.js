@@ -15,6 +15,7 @@ const CvProfile = () => {
   const [personal, setPersonal] = useState(null);
   const [tempImg, setTempImg] = useState(false);
   const [contact, setContact] = useState(null);
+  const [exp, setExp] = useState(null);
   //getting the user params
   const { email } = useParams();
   const currentUrl = window.location.href;
@@ -38,19 +39,28 @@ const CvProfile = () => {
           .catch((error) => {
             setTempImg(true);
           });
-
+        //Getting contact dtls
         axios
           .get(
             `http://localhost:4000/api/profile/contact/find/${response.data.user[0].user_id}`
           )
           .then((contact_response) => {
-            console.log(contact_response.data.contact[0]);
             setContact(contact_response.data.contact[0]);
           })
           .catch((error) => {
-            // Handle errors
             //console.error("Error fetching user data:", error);
-            //setNoData(true);
+          });
+        //Getting Work exp dtls
+        axios
+          .get(
+            `http://localhost:4000/api/profile/exp/find/${response.data.user[0].user_id}`
+          )
+          .then((exp_response) => {
+            console.log(exp_response.data.exp);
+            setExp(exp_response.data.exp);
+          })
+          .catch((error) => {
+            //console.error("Error fetching user data:", error);
           });
       })
       .catch((error) => {
@@ -148,17 +158,24 @@ const CvProfile = () => {
           {/* Start Work experience */}
           <div className="container custom-border mt-3 p-2">
             Work Experience
-            <div className="container custom-border">
-              <div className="row justify-content-center">
-                <div className="col custom-border mt-3 p-2 d-flex justify-content-between align-items-center">
-                  <div>Institution</div>
-                  <div>Position</div>
-                  <div>Start</div>
-                  <div>End</div>
+            {exp &&
+              exp.map((work, i) => (
+                <div className="container custom-border" key={i}>
+                  <div className="row justify-content-center">
+                    <div className="col custom-border mt-3 p-2 d-flex justify-content-between align-items-center">
+                      <div>{work.position}</div>
+                      <div>
+                        {work.employer}, {work.address}
+                      </div>
+                      <div>
+                        {work.s_month}/{work.s_year} - {work.e_month}/
+                        {work.e_year}
+                      </div>
+                    </div>
+                    <div className="custom-border mt-3 p-2">{work.task}</div>
+                  </div>
                 </div>
-                <div className="custom-border mt-3 p-2">Task</div>
-              </div>
-            </div>
+              ))}
           </div>
           {/* End Work experience */}
           {/* Start Education */}
