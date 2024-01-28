@@ -39,3 +39,10 @@ export const personalGetEdu = async (id) => {
   const [rows] = await mySqlPool.query(sqlQuery, [id]);
   return rows;
 };
+
+//Getting language info from use id
+export const personalGetLan = async (id) => {
+  const sqlQuery = "SELECT l_name, l_pro FROM lan WHERE user_id = ?";
+  const [rows] = await mySqlPool.query(sqlQuery, [id]);
+  return rows;
+};

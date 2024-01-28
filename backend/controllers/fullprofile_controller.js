@@ -6,6 +6,7 @@ import {
   personalGetContact,
   personalGetExp,
   personalGetEdu,
+  personalGetLan,
 } from "../services/fullprofile_services.js";
 
 const fullProfileRouter = express.Router();
@@ -101,4 +102,21 @@ fullProfileRouter.get("/edu/find/:id", async (req, res) => {
   }
 });
 
+//Get a Language from a user id
+fullProfileRouter.get("/lan/find/:id", async (req, res) => {
+  const id = req.params.id;
+  const getLan = await personalGetLan(id);
+  if (getLan.length > 0) {
+    res.status(200).json({
+      success: true,
+      message: "Language data view successfully!",
+      lan: getLan,
+    });
+  } else {
+    res.status(200).json({
+      success: false,
+      message: "Language data can not be found!",
+    });
+  }
+});
 export default fullProfileRouter;
