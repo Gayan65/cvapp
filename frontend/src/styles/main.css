@@ -375,3 +375,19 @@ body {
   color: #fef6ff;
   background-color: #031c2c;
 }
+
+.sub-heading-cv {
+  color: #2b6d86;
+  font-weight: bolder;
+  font-size: large;
+  text-decoration: underline;
+}
+
+.custom-inner-heading {
+  color: #031c2c;
+  font-weight: bold;
+}
+
+.custom-inner-item {
+  color: #031c2c;
+}

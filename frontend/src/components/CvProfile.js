@@ -156,23 +156,25 @@ const CvProfile = () => {
           </div>
           {/* End contact infor bar */}
           {/* Start Work experience */}
-          <div className="container custom-border mt-3 p-2">
-            Work Experience
+          <div className="container mt-3 p-2">
+            <span className="sub-heading-cv">WORK EXPERIENCE</span>
             {exp &&
               exp.map((work, i) => (
-                <div className="container custom-border" key={i}>
+                <div className="container" key={i}>
                   <div className="row justify-content-center">
-                    <div className="col custom-border mt-3 p-2 d-flex justify-content-between align-items-center">
-                      <div>{work.position}</div>
-                      <div>
+                    <div className="col  mt-3 p-2 d-flex justify-content-between align-items-center">
+                      <div className="custom-inner-heading">
+                        {work.position}
+                      </div>
+                      <div className="custom-inner-item">
                         {work.employer}, {work.address}
                       </div>
-                      <div>
+                      <div className="custom-inner-item">
                         {work.s_month}/{work.s_year} - {work.e_month}/
                         {work.e_year}
                       </div>
                     </div>
-                    <div className="custom-border mt-3 p-2">{work.task}</div>
+                    <div className="p-2 custom-inner-item">{work.task}</div>
                   </div>
                 </div>
               ))}
