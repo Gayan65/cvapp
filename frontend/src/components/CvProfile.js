@@ -4,6 +4,8 @@ import axios from "axios";
 import { QRCodeSVG } from "qrcode.react";
 import profileImg from "../images/profile/profile.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 import {
   faLocationDot,
   faPhone,
@@ -19,6 +21,36 @@ const CvProfile = () => {
   const [edu, setEdu] = useState(null);
   const [lan, setLan] = useState(null);
   const [other, setOther] = useState(null);
+
+  //implementing download option
+  const [loader, setLoader] = useState(false);
+
+  const downloadPDF = () => {
+    const capture = document.querySelector(".cv-image-zone");
+    setLoader(true);
+
+    html2canvas(capture).then((canvas) => {
+      const imageData = canvas.toDataURL("image/png");
+
+      // Calculate aspect ratio of captured content
+      const aspectRatio = canvas.width / canvas.height;
+
+      // Set desired width and height for the PDF page
+      const pdfWidth = 210; // A4 page width in mm
+      const pdfHeight = pdfWidth / aspectRatio;
+
+      // Create PDF document
+      const doc = new jsPDF("p", "mm", "a4");
+
+      // Add captured image to PDF with adjusted dimensions
+      doc.addImage(imageData, "PNG", 0, 0, pdfWidth, pdfHeight);
+
+      setLoader(false);
+
+      // Save PDF
+      doc.save("cv.pdf");
+    });
+  };
 
   //getting the user params
   const { email } = useParams();
@@ -115,8 +147,9 @@ const CvProfile = () => {
   if (user) {
     return (
       <div className="container mt-4 ">
-        {/* Start Raw image Moto, Description */}
-        <div className="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary row custom-border-cv">
+        {/* Start CV */}
+        <div className="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary row custom-border-cv cv-image-zone">
+          {/* Start Raw image Moto, Description */}
           <div className="col-lg-3 p-3 custom-border-cv-head">
             {personal ? (
               <div className="">
@@ -281,6 +314,15 @@ const CvProfile = () => {
           {/* End Other */}
         </div>
         {/* End CV */}
+        <div className=" mt-2 ">
+          <button
+            className="btn btn-primary"
+            onClick={downloadPDF}
+            disabled={!(loader === false)}
+          >
+            {loader ? <span>Downloading</span> : <span>Download</span>}
+          </button>
+        </div>
 
         {/*-------------- Bottom part start -----------------*/}
         <div className="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary row custom-border-cv mt-5 ">
