@@ -5,6 +5,7 @@ import {
   personalGetPersonal,
   personalGetContact,
   personalGetExp,
+  personalGetEdu,
 } from "../services/fullprofile_services.js";
 
 const fullProfileRouter = express.Router();
@@ -78,6 +79,24 @@ fullProfileRouter.get("/exp/find/:id", async (req, res) => {
     res.status(200).json({
       success: false,
       message: "Work experience data can not be found!",
+    });
+  }
+});
+
+//Get a education from a user id
+fullProfileRouter.get("/edu/find/:id", async (req, res) => {
+  const id = req.params.id;
+  const getEdu = await personalGetEdu(id);
+  if (getEdu.length > 0) {
+    res.status(200).json({
+      success: true,
+      message: "Education data view successfully!",
+      edu: getEdu,
+    });
+  } else {
+    res.status(200).json({
+      success: false,
+      message: "Education data can not be found!",
     });
   }
 });

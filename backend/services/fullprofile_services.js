@@ -31,3 +31,11 @@ export const personalGetExp = async (id) => {
   const [rows] = await mySqlPool.query(sqlQuery, [id]);
   return rows;
 };
+
+//Getting education info from use id
+export const personalGetEdu = async (id) => {
+  const sqlQuery =
+    "SELECT program, program_name, institution, address, s_month, s_year, e_month, e_year, about FROM edu WHERE user_id = ?";
+  const [rows] = await mySqlPool.query(sqlQuery, [id]);
+  return rows;
+};
