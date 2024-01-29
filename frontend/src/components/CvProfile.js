@@ -5,6 +5,7 @@ import { QRCodeSVG } from "qrcode.react";
 import profileImg from "../images/profile/profile.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import html2canvas from "html2canvas";
+import loginLogo from "../images/logos/LogoSmall.png";
 import jsPDF from "jspdf";
 import {
   faLocationDot,
@@ -337,6 +338,13 @@ const CvProfile = () => {
           <div className="col-lg-9 p-3">
             <p className=" fs-3 ">Here is my link</p>
             <h1 className=" fw-bold ">URL {user ? currentUrl : "No data"}</h1>
+            <img
+              className="mt-5"
+              src={loginLogo}
+              alt=""
+              width="256"
+              height="96"
+            />
           </div>
         </div>
         {/*-------------- Bottom part end -----------------*/}
