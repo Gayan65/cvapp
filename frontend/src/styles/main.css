@@ -392,3 +392,16 @@ body {
 .custom-inner-item {
   color: #031c2c;
 }
+
+.custom-drop-down {
+  background-color: #9b89b3;
+}
+
+.dropdown-item {
+  color: #4c13f5;
+}
+
+.dropdown-item:hover {
+  color: #fef6ff;
+  background-color: #4c13f5;
+}

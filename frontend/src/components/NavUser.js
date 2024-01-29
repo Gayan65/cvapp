@@ -44,7 +44,7 @@ const NavUser = () => {
         <FontAwesomeIcon icon={faUser} />
         <span className=" ms-2 ">{fetchUser.fname}</span>
       </button>
-      <ul className="dropdown-menu">
+      <ul className="dropdown-menu custom-drop-down">
         <li>
           <a className="dropdown-item" href="/profile">
             profile
