@@ -25,8 +25,8 @@ const CvProfile = () => {
   //implementing download option
   const [loader, setLoader] = useState(false);
 
-  const downloadPDF = () => {
-    const capture = document.querySelector(".cv-image-zone");
+  const downloadPDF = (area) => {
+    const capture = document.querySelector(area);
     setLoader(true);
 
     html2canvas(capture).then((canvas) => {
@@ -317,7 +317,7 @@ const CvProfile = () => {
         <div className=" mt-2 ">
           <button
             className="btn btn-primary"
-            onClick={downloadPDF}
+            onClick={() => downloadPDF(".cv-image-zone")}
             disabled={!(loader === false)}
           >
             {loader ? <span>Downloading</span> : <span>Download</span>}
@@ -325,7 +325,7 @@ const CvProfile = () => {
         </div>
 
         {/*-------------- Bottom part start -----------------*/}
-        <div className="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary row custom-border-cv mt-5 ">
+        <div className="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary row custom-border-cv mt-5 cv-qr-zone">
           <div className="col-lg-3 p-3">
             <div>
               <p className=" fs-3 ">Scan Me</p>
@@ -340,6 +340,15 @@ const CvProfile = () => {
           </div>
         </div>
         {/*-------------- Bottom part end -----------------*/}
+        <div className=" mt-2 ">
+          <button
+            className="btn btn-primary"
+            onClick={() => downloadPDF(".cv-qr-zone")}
+            disabled={!(loader === false)}
+          >
+            {loader ? <span>Downloading</span> : <span>Download</span>}
+          </button>
+        </div>
       </div>
     );
   } else {
