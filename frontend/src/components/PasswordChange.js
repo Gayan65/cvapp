@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import qs from "qs";
+import { useNavigate } from "react-router-dom";
 
 const PasswordChange = (props) => {
+  const navigate = useNavigate();
   //Start state of the component
   const [user, setUser] = useState({
     hash: "",
@@ -41,6 +43,12 @@ const PasswordChange = (props) => {
       )
       .then((response) => {
         setMessage(response.data.message);
+      })
+      .catch((error) => {
+        // Handle errors
+        //once the token expires user redirect to the Error page
+        if (error.response.status === 403) navigate("/login");
+        else console.error("Error fetching user data:", error);
       });
   };
 

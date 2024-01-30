@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 const NavUser = () => {
+  const navigate = useNavigate();
   //Getting token
   const token = sessionStorage.getItem("token");
 
@@ -27,7 +29,9 @@ const NavUser = () => {
       })
       .catch((error) => {
         // Handle errors
-        console.error("Error fetching user data:", error);
+        //once the token expires user redirect to the Error page
+        if (error.response.status === 403) navigate("/login");
+        else console.error("Error fetching user data:", error);
       });
 
     // eslint-disable-next-line

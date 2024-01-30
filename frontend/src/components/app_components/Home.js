@@ -36,7 +36,7 @@ const Home = () => {
         .catch((error) => {
           // Handle errors
           //once the token expires user redirect to the Error page
-          if (error.response.status === 403) navigate("/error_page");
+          if (error.response.status === 403) navigate("/login");
           else console.error("Error fetching user data:", error);
         });
     }

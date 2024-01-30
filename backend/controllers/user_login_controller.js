@@ -20,7 +20,7 @@ userLoginRouter.post("/login", async (req, res) => {
       if (result) {
         const userId = existingUser[0].user_id;
         const token = jwt.sign({ userId }, process.env.JWT_KEY, {
-          expiresIn: 5,
+          expiresIn: 60 * 60,
         });
         res.status(200).json({
           success: true,

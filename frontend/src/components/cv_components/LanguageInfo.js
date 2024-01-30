@@ -50,6 +50,12 @@ const LanguageInfo = () => {
         })
         .then((response) => {
           setMessage(response.data.message);
+        })
+        .catch((error) => {
+          // Handle errors
+          //once the token expires user redirect to the Error page
+          if (error.response.status === 403) navigate("/login");
+          else console.error("Error fetching user data:", error);
         });
     }
   };
@@ -66,6 +72,12 @@ const LanguageInfo = () => {
       })
       .then((response) => {
         setMessage(response.data.message);
+      })
+      .catch((error) => {
+        // Handle errors
+        //once the token expires user redirect to the Error page
+        if (error.response.status === 403) navigate("/login");
+        else console.error("Error fetching user data:", error);
       });
   };
 
@@ -84,6 +96,12 @@ const LanguageInfo = () => {
         })
         .then((response) => {
           setAllLanguages(response.data);
+        })
+        .catch((error) => {
+          // Handle errors
+          //once the token expires user redirect to the Error page
+          if (error.response.status === 403) navigate("/login");
+          else console.error("Error fetching user data:", error);
         });
       //Getting language information fro the DB
       axios
@@ -96,6 +114,12 @@ const LanguageInfo = () => {
           } else {
             console.log("No data");
           }
+        })
+        .catch((error) => {
+          // Handle errors
+          //once the token expires user redirect to the Error page
+          if (error.response.status === 403) navigate("/login");
+          else console.error("Error fetching user data:", error);
         });
     }
     // eslint-disable-next-line

@@ -47,6 +47,12 @@ const Other = () => {
       .then((response) => {
         console.log(response.data);
         setMessage(response.data.message);
+      })
+      .catch((error) => {
+        // Handle errors
+        //once the token expires user redirect to the Error page
+        if (error.response.status === 403) navigate("/login");
+        else console.error("Error fetching user data:", error);
       });
   };
 
@@ -62,6 +68,12 @@ const Other = () => {
         })
         .then((response) => {
           setMessage(response.data.message);
+        })
+        .catch((error) => {
+          // Handle errors
+          //once the token expires user redirect to the Error page
+          if (error.response.status === 403) navigate("/login");
+          else console.error("Error fetching user data:", error);
         });
     }
   };
@@ -93,6 +105,12 @@ const Other = () => {
           } else {
             console.log("No data");
           }
+        })
+        .catch((error) => {
+          // Handle errors
+          //once the token expires user redirect to the Error page
+          if (error.response.status === 403) navigate("/login");
+          else console.error("Error fetching user data:", error);
         });
     }
     // eslint-disable-next-line
