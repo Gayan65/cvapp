@@ -38,6 +38,8 @@ const Profile = () => {
         .catch((error) => {
           // Handle errors
           console.error("Error fetching user data:", error);
+          //once the token expires user redirect to the login page
+          navigate("/login");
         });
     }
 
@@ -63,6 +65,12 @@ const Profile = () => {
       })
       .then((response) => {
         setMessage(response.data.message);
+      })
+      .catch((error) => {
+        // Handle errors
+        console.error("Error fetching user data:", error);
+        //once the token expires user redirect to the login page
+        navigate("/login");
       });
   };
 

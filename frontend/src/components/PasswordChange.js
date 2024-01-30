@@ -84,6 +84,7 @@ const PasswordChange = (props) => {
                       id="password"
                       name="password"
                       onChange={handlePaaswordInputChange}
+                      required
                     />
                     <div className="invalid-feedback">
                       Valid password required
@@ -121,7 +122,9 @@ const PasswordChange = (props) => {
                         ></button>
                       </div>
                       <div className="modal-body">
-                        Password successfully Changed !
+                        {message
+                          ? "Password successfully Changed !"
+                          : "Password not changed"}
                       </div>
                       <div className="modal-footer">
                         <button
