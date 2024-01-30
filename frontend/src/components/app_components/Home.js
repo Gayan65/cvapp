@@ -35,7 +35,9 @@ const Home = () => {
         })
         .catch((error) => {
           // Handle errors
-          console.error("Error fetching user data:", error);
+          //once the token expires user redirect to the Error page
+          if (error.response.status === 403) navigate("/error_page");
+          else console.error("Error fetching user data:", error);
         });
     }
     // eslint-disable-next-line

@@ -37,9 +37,9 @@ const Profile = () => {
         })
         .catch((error) => {
           // Handle errors
-          console.error("Error fetching user data:", error);
-          //once the token expires user redirect to the login page
-          navigate("/login");
+          //once the token expires user redirect to the Error page
+          if (error.response.status === 403) navigate("/error_page");
+          else console.error("Error fetching user data:", error);
         });
     }
 
@@ -68,9 +68,10 @@ const Profile = () => {
       })
       .catch((error) => {
         // Handle errors
-        console.error("Error fetching user data:", error);
-        //once the token expires user redirect to the login page
-        navigate("/login");
+        //console.error("Error fetching user data:", error.response.status);
+        //once the token expires user redirect to the Error page
+        if (error.response.status === 403) navigate("/error_page");
+        else console.error("Error fetching user data:", error);
       });
   };
 
