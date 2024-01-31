@@ -68,7 +68,7 @@ const NavBar = () => {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link mx-3  " href="/">
+                <a className="nav-link mx-3  " href="/search">
                   <FontAwesomeIcon icon={faMagnifyingGlass} />
                   <span className="ms-1">Search</span>
                 </a>
