@@ -7,8 +7,8 @@ import {
   faShieldHalved,
   faPenToSquare,
   faHandshake,
-  faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
+import UrlUpdater from "./UrlUpdater";
 
 const Start = () => {
   return (
@@ -96,20 +96,7 @@ const Start = () => {
               Search your future employee here..
             </p>
             <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-              <div className="input-group input-group-lg">
-                <input
-                  type="text"
-                  className="form-control"
-                  aria-label="Sizing example input"
-                  aria-describedby="inputGroup-sizing-lg"
-                />
-                <span
-                  className="input-group-text magnifying-icon"
-                  id="inputGroup-sizing-lg"
-                >
-                  <FontAwesomeIcon icon={faMagnifyingGlass} />
-                </span>
-              </div>
+              <UrlUpdater />
             </div>
           </div>
           <div className="col-10 col-sm-8 col-lg-5">
