@@ -19,6 +19,7 @@ lanRouter.post("/create", async (req, res) => {
     //Decoding the jwt token
     const decodedToken = jwt.verify(user_id, process.env.JWT_KEY);
     const id = decodedToken.userId;
+
     const newLan = await createLanguage(id, l_name, l_pro);
     if (newLan.affectedRows > 0) {
       res.status(200).json({
@@ -32,6 +33,7 @@ lanRouter.post("/create", async (req, res) => {
       });
     }
   } catch (error) {
+    console.log(error);
     res.status(200).json({
       success: false,
       message:

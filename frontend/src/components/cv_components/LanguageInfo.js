@@ -80,9 +80,6 @@ const LanguageInfo = () => {
       });
   };
 
-  //Handle form update
-  //const handleFormUpdate = () => {};
-
   //Protecting route
   useEffect(() => {
     if (token === null || token === "") {

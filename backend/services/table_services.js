@@ -88,7 +88,7 @@ export const deleteExpTable = async () => {
 //creating language table function
 export const createLanTable = async () => {
   const sqlQuery =
-    "CREATE TABLE lan (lan_id INT AUTO_INCREMENT PRIMARY KEY, user_id INT, l_name VARCHAR(20) UNIQUE NOT NULL, l_pro VARCHAR(20) NOT NULL, INDEX `idx_user` (user_id), CONSTRAINT `fk_character_user_lan` FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE)";
+    "CREATE TABLE lan (lan_id INT AUTO_INCREMENT PRIMARY KEY, user_id INT, l_name VARCHAR(20) NOT NULL, l_pro VARCHAR(20) NOT NULL, INDEX `idx_user` (user_id), CONSTRAINT `fk_character_user_lan` FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE)";
   const [rows] = await mySqlPool.query(sqlQuery);
 
   return rows;
