@@ -39,8 +39,7 @@ const LanguageInfo = () => {
   };
 
   //Handle Delete
-  const handleDelete = (event) => {
-    const lan_id = event.target.value;
+  const handleDelete = async (lan_id) => {
     if (lan_id === undefined || lan_id === null) {
       window.location.reload();
     } else {
@@ -152,8 +151,7 @@ const LanguageInfo = () => {
                   </div>
                   <button
                     className="btn btn-danger "
-                    value={language.lan_id}
-                    onClick={handleDelete}
+                    onClick={() => handleDelete(language.lan_id)}
                     data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop"
                   >
