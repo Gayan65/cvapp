@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import Model from "../Model";
 
 const Admin = () => {
@@ -88,7 +88,7 @@ const Admin = () => {
                     </p>
                   </div>
                   <small className="opacity-50 text-nowrap">
-                    {user.admin == false && (
+                    {user.admin === 0 && (
                       <button
                         className=" btn btn-danger"
                         onClick={() => handleDelete(user.user_id)}
@@ -104,7 +104,7 @@ const Admin = () => {
             ))}
         </div>
         <Model
-          title={"Language information"}
+          title={"Profile Delete"}
           message={message ? message : "No message"}
         />
       </div>
