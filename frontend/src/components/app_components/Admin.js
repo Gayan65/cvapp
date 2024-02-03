@@ -20,16 +20,25 @@ const Admin = () => {
       navigate("/login");
     } else {
       axios
-        .get(`http://localhost:4000/api/user/all`, { headers })
+        .get(`http://localhost:4000/api/user/find/${token}`, { headers })
         .then((response) => {
-          console.log(response.data);
-          setUsers(response.data);
-        })
-        .catch((error) => {
-          // Handle errors
-          //once the token expires user redirect to the Error page
-          if (error.response.status === 403) navigate("/login");
-          else console.error("Error fetching user data:", error);
+          const user = response.data.user[0];
+          if (user.admin) {
+            axios
+              .get(`http://localhost:4000/api/user/all`, { headers })
+              .then((response) => {
+                console.log(response.data);
+                setUsers(response.data);
+              })
+              .catch((error) => {
+                // Handle errors
+                //once the token expires user redirect to the Error page
+                if (error.response.status === 403) navigate("/login");
+                else console.error("Error fetching user data:", error);
+              });
+          } else {
+            navigate("/login");
+          }
         });
     }
     // eslint-disable-next-line
