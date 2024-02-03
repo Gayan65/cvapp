@@ -59,7 +59,17 @@ userRouter.get("/profile/:id", async (req, res) => {
 //Deleting a user from the id
 userRouter.delete("/delete/:id", async (req, res) => {
   const deletedUser = await userDelete(req.params.id);
-  res.send(deletedUser);
+  if (deletedUser.affectedRows === 0) {
+    res.status(200).json({
+      success: false,
+      message: "User can not be deleted!",
+    });
+  } else {
+    res.status(200).json({
+      success: true,
+      message: "Profile Delete successfully!",
+    });
+  }
 });
 
 //Updating a user from the id (ONLY UPDATES FNAME AND LNAME)

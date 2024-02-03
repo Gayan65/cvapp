@@ -74,7 +74,7 @@ export const userLogin = async (email, password) => {
 // Find the user from the user ID
 export const userFindById = async (userId) => {
   const sqlQuery =
-    "SELECT email, fname, lname, admin FROM users WHERE user_id = ?";
+    "SELECT email, fname, lname, admin, user_id FROM users WHERE user_id = ?";
   const [rows] = await mySqlPool.query(sqlQuery, [userId]);
   return rows;
 };
