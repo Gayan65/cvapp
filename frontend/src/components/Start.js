@@ -1,6 +1,5 @@
 import React from "react";
 import headingImg from "../images/assetsImg/professional.png";
-import subHeadingImg from "../images/assetsImg/custemise.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUserGroup,
@@ -8,7 +7,6 @@ import {
   faPenToSquare,
   faHandshake,
 } from "@fortawesome/free-solid-svg-icons";
-import UrlUpdater from "./UrlUpdater";
 import SearchPart from "./SearchPart";
 
 const Start = () => {
