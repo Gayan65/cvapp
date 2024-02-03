@@ -122,8 +122,10 @@ const PersonalInfo = () => {
           setTempImg(true);
           setNoData(true);
           //once the token expires user redirect to the Error page
-          if (error.response.status === 403) navigate("/login");
-          else console.error("Error fetching user data:", error);
+          if (error === undefined) {
+            if (error.response.status === 403) navigate("/login");
+            else console.error("Error fetching personal data:", error);
+          }
         });
     }
     // eslint-disable-next-line
