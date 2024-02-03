@@ -14,6 +14,7 @@ import WorkExInfo from "./cv_components/WorkExInfo";
 import Other from "./cv_components/Other";
 import CvProfile from "./CvProfile";
 import Search from "./Search";
+import Admin from "./app_components/Admin";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/work_ex_info" element={<WorkExInfo />}></Route>
           <Route path="/other" element={<Other />}></Route>
           <Route path="/search" element={<Search />}></Route>
+          <Route path="/admin_function" element={<Admin />}></Route>
           <Route path="/cv_profile/:email" element={<CvProfile />}></Route>
         </Routes>
       </BrowserRouter>

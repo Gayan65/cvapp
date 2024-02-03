@@ -14,6 +14,9 @@ const NavUser = () => {
     fname: "",
   });
 
+  //Admin status
+  const [admin, setAdmin] = useState(false);
+
   //Making the header
   const headers = {
     Authorization: `bearer ${token}`,
@@ -27,10 +30,11 @@ const NavUser = () => {
       .then((response) => {
         setFetchUser(response.data.user[0]);
         console.log(response.data.user[0]);
+        //setting admin for admin function
         if (response.data.user[0].admin) {
-          console.log("yes");
+          setAdmin(true);
         } else {
-          console.log("no");
+          setAdmin(false);
         }
       })
       .catch((error) => {
@@ -70,6 +74,13 @@ const NavUser = () => {
             My resume
           </a>
         </li>
+        {admin && (
+          <li>
+            <a className="dropdown-item" href={`/admin_function`}>
+              Admin Function
+            </a>
+          </li>
+        )}
         <li>
           <a className="dropdown-item" href="/login">
             Logout
