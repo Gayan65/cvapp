@@ -26,6 +26,12 @@ const NavUser = () => {
       .get(`http://localhost:4000/api/user/find/${token}`, { headers })
       .then((response) => {
         setFetchUser(response.data.user[0]);
+        console.log(response.data.user[0]);
+        if (response.data.user[0].admin) {
+          console.log("yes");
+        } else {
+          console.log("no");
+        }
       })
       .catch((error) => {
         // Handle errors
