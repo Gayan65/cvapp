@@ -10,6 +10,7 @@ import {
 import SearchPart from "./SearchPart";
 
 const Start = () => {
+  //Comment
   return (
     <div>
       <div className="container col-xxl-8 py-5">
