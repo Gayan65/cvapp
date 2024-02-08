@@ -87,7 +87,6 @@ const EducationInfo = () => {
           if (response.data.success) {
             setMessage(response.data.message);
           } else {
-            console.log("No data");
           }
         })
         .catch((error) => {
@@ -104,7 +103,6 @@ const EducationInfo = () => {
     if (token === null || token === "") {
       navigate("/login");
     } else {
-      console.log("Good to go!");
       //Getting language information fro the DB
       axios
         .get(
@@ -116,9 +114,7 @@ const EducationInfo = () => {
         .then((response) => {
           if (response.data.success) {
             setEduDataDB(response.data.education);
-            console.log(response.data.education);
           } else {
-            console.log("No data");
           }
         })
         .catch((error) => {

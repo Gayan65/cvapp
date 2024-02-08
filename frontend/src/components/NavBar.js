@@ -20,8 +20,6 @@ const NavBar = () => {
     setIsLoggedIn(!!token);
   }, []); // The empty dependency array ensures this effect runs only once on mount
 
-  console.log("Is User Logged In:", isLoggedIn);
-
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">

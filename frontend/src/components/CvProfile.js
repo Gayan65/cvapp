@@ -56,7 +56,6 @@ const CvProfile = () => {
   //getting the user params
   const { email } = useParams();
   const currentUrl = window.location.href;
-  console.log(currentUrl);
 
   useEffect(() => {
     //Getting user Dtls
@@ -119,7 +118,6 @@ const CvProfile = () => {
             `https://instar-resume-bakend.onrender.com/api/profile/lan/find/${response.data.user[0].user_id}`
           )
           .then((lan_response) => {
-            console.log(lan_response.data.lan);
             setLan(lan_response.data.lan);
           })
           .catch((error) => {
@@ -132,7 +130,6 @@ const CvProfile = () => {
             `https://instar-resume-bakend.onrender.com/api/profile/other/find/${response.data.user[0].user_id}`
           )
           .then((other_response) => {
-            console.log(other_response.data.other);
             setOther(other_response.data.other);
           })
           .catch((error) => {

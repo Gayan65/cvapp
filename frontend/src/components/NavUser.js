@@ -31,7 +31,6 @@ const NavUser = () => {
       })
       .then((response) => {
         setFetchUser(response.data.user[0]);
-        console.log(response.data.user[0]);
         //setting admin for admin function
         if (response.data.user[0].admin) {
           setAdmin(true);

@@ -49,7 +49,6 @@ const Other = () => {
         }
       )
       .then((response) => {
-        console.log(response.data);
         setMessage(response.data.message);
       })
       .catch((error) => {
@@ -88,7 +87,6 @@ const Other = () => {
   //Handle Input change function
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    //    console.log(name, value);
     setOther((prevData) => ({
       ...prevData,
       [name]: value,
@@ -113,7 +111,6 @@ const Other = () => {
           if (response.data.success) {
             setOtherDataDB(response.data.other_info);
           } else {
-            console.log("No data");
           }
         })
         .catch((error) => {

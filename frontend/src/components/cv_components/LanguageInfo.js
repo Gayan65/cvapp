@@ -114,7 +114,6 @@ const LanguageInfo = () => {
           if (response.data.success) {
             setLanguageDataDB(response.data.languages);
           } else {
-            console.log("No data");
           }
         })
         .catch((error) => {

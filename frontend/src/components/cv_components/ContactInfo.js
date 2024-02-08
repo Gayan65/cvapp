@@ -43,8 +43,6 @@ const ContactInfo = () => {
   // Handle Form create
   const handleFormCreate = async (event) => {
     event.preventDefault();
-    console.log("Submitted");
-    console.log(fetchContact);
     const data = qs.stringify(fetchContact);
     // axios call
     await axios
@@ -57,16 +55,12 @@ const ContactInfo = () => {
       )
       .then((response) => {
         setMessage(response.data.message);
-        console.log(response.data);
       });
   };
 
   // Handle Form update
   const handleFormUpdate = async (event) => {
     event.preventDefault();
-    // console.log("Updated");
-
-    //console.log(fetchContact);
     const data = qs.stringify(fetchContact);
     // axios call
     await axios
@@ -79,7 +73,6 @@ const ContactInfo = () => {
       )
       .then((response) => {
         setMessage(response.data.message);
-        console.log(response.data);
       });
   };
 
@@ -104,7 +97,6 @@ const ContactInfo = () => {
           { headers }
         )
         .then((response) => {
-          console.log(response.data.contact[0]);
           setFetchContact(response.data.contact[0]);
         })
         .catch((error) => {

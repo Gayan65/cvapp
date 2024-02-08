@@ -86,7 +86,6 @@ const WorkExInfo = () => {
           if (response.data.success) {
             setMessage(response.data.message);
           } else {
-            console.log("No data");
           }
         })
         .catch((error) => {
@@ -103,7 +102,6 @@ const WorkExInfo = () => {
     if (token === null || token === "") {
       navigate("/login");
     } else {
-      console.log("Good to go!");
       //Getting exp information fro the DB
       axios
         .get(
@@ -115,9 +113,7 @@ const WorkExInfo = () => {
         .then((response) => {
           if (response.data.success) {
             setExpDataDB(response.data.work_exp);
-            console.log(response.data.work_exp);
           } else {
-            console.log("No data");
           }
         })
         .catch((error) => {

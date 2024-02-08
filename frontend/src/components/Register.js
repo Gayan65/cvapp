@@ -42,7 +42,6 @@ const Register = () => {
       )
       .then((response) => {
         if (response.data.success) {
-          console.log(response.data);
           navigate("/login");
         } else {
           setApiResponse(response.data);
