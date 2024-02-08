@@ -56,13 +56,13 @@ const NavBar = () => {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link mx-3  " href="/">
+                <a className="nav-link mx-3  " href="/about">
                   <FontAwesomeIcon icon={faBuilding} />
                   <span className="ms-1">About Us</span>
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link mx-3 " href="/">
+                <a className="nav-link mx-3 " href="/product">
                   <FontAwesomeIcon icon={faMicrochip} />
                   <span className="ms-1">Product</span>
                 </a>
