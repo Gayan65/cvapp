@@ -46,7 +46,7 @@ const WorkExInfo = () => {
     const data = qs.stringify(ExpInfo);
     // axios call
     await axios
-      .post("http://localhost:4000/api/exp/create", data, {
+      .post("https://instar-resume-bakend.onrender.com/api/exp/create", data, {
         headers,
       })
       .then((response) => {
@@ -76,9 +76,12 @@ const WorkExInfo = () => {
       window.location.reload();
     } else {
       axios
-        .delete(`http://localhost:4000/api/exp/delete/${exp_id}`, {
-          headers,
-        })
+        .delete(
+          `https://instar-resume-bakend.onrender.com/api/exp/delete/${exp_id}`,
+          {
+            headers,
+          }
+        )
         .then((response) => {
           if (response.data.success) {
             setMessage(response.data.message);
@@ -103,9 +106,12 @@ const WorkExInfo = () => {
       console.log("Good to go!");
       //Getting exp information fro the DB
       axios
-        .get(`http://localhost:4000/api/exp/user/${token}`, {
-          headers,
-        })
+        .get(
+          `https://instar-resume-bakend.onrender.com/api/exp/user/${token}`,
+          {
+            headers,
+          }
+        )
         .then((response) => {
           if (response.data.success) {
             setExpDataDB(response.data.work_exp);

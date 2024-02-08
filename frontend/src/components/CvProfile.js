@@ -61,14 +61,16 @@ const CvProfile = () => {
   useEffect(() => {
     //Getting user Dtls
     axios
-      .get(`http://localhost:4000/api/profile/user/find/${email}`)
+      .get(
+        `https://instar-resume-bakend.onrender.com/api/profile/user/find/${email}`
+      )
       .then((response) => {
         setUser(response.data.user[0]);
 
         //Getting personal dtls
         axios
           .get(
-            `http://localhost:4000/api/profile/personal/find/${response.data.user[0].user_id}`
+            `https://instar-resume-bakend.onrender.com/api/profile/personal/find/${response.data.user[0].user_id}`
           )
           .then((personal_response) => {
             setPersonal(personal_response.data.personal[0]);
@@ -79,7 +81,7 @@ const CvProfile = () => {
         //Getting contact dtls
         axios
           .get(
-            `http://localhost:4000/api/profile/contact/find/${response.data.user[0].user_id}`
+            `https://instar-resume-bakend.onrender.com/api/profile/contact/find/${response.data.user[0].user_id}`
           )
           .then((contact_response) => {
             setContact(contact_response.data.contact[0]);
@@ -90,7 +92,7 @@ const CvProfile = () => {
         //Getting Work exp dtls
         axios
           .get(
-            `http://localhost:4000/api/profile/exp/find/${response.data.user[0].user_id}`
+            `https://instar-resume-bakend.onrender.com/api/profile/exp/find/${response.data.user[0].user_id}`
           )
           .then((exp_response) => {
             setExp(exp_response.data.exp);
@@ -102,7 +104,7 @@ const CvProfile = () => {
         //Getting Education dtls
         axios
           .get(
-            `http://localhost:4000/api/profile/edu/find/${response.data.user[0].user_id}`
+            `https://instar-resume-bakend.onrender.com/api/profile/edu/find/${response.data.user[0].user_id}`
           )
           .then((edu_response) => {
             setEdu(edu_response.data.edu);
@@ -114,7 +116,7 @@ const CvProfile = () => {
         //Getting Language dtls
         axios
           .get(
-            `http://localhost:4000/api/profile/lan/find/${response.data.user[0].user_id}`
+            `https://instar-resume-bakend.onrender.com/api/profile/lan/find/${response.data.user[0].user_id}`
           )
           .then((lan_response) => {
             console.log(lan_response.data.lan);
@@ -127,7 +129,7 @@ const CvProfile = () => {
         //Getting Other dtls
         axios
           .get(
-            `http://localhost:4000/api/profile/other/find/${response.data.user[0].user_id}`
+            `https://instar-resume-bakend.onrender.com/api/profile/other/find/${response.data.user[0].user_id}`
           )
           .then((other_response) => {
             console.log(other_response.data.other);

@@ -29,7 +29,10 @@ const Home = () => {
       navigate("/login");
     } else {
       axios
-        .get(`http://localhost:4000/api/user/find/${token}`, { headers })
+        .get(
+          `https://instar-resume-bakend.onrender.com/api/user/find/${token}`,
+          { headers }
+        )
         .then((response) => {
           setFetchUser(response.data.user[0]);
         })

@@ -33,7 +33,10 @@ const Login = () => {
     event.preventDefault();
     const data = qs.stringify(inputData);
     await axios
-      .post("http://localhost:4000/api/user_login/login", data)
+      .post(
+        "https://instar-resume-bakend.onrender.com/api/user_login/login",
+        data
+      )
       .then((response) => {
         if (response.data.success) {
           sessionStorage.setItem("token", response.data.token);

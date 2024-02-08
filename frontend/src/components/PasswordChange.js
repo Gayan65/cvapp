@@ -37,7 +37,7 @@ const PasswordChange = (props) => {
     const userData = qs.stringify(user);
     await axios
       .put(
-        `http://localhost:4000/api/user/change_pw/${props.userId}`,
+        `https://instar-resume-bakend.onrender.com/api/user/change_pw/${props.userId}`,
         userData,
         { headers }
       )

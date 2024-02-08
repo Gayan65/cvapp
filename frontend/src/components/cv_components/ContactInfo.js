@@ -48,9 +48,13 @@ const ContactInfo = () => {
     const data = qs.stringify(fetchContact);
     // axios call
     await axios
-      .post("http://localhost:4000/api/contact/create", data, {
-        headers,
-      })
+      .post(
+        "https://instar-resume-bakend.onrender.com/api/contact/create",
+        data,
+        {
+          headers,
+        }
+      )
       .then((response) => {
         setMessage(response.data.message);
         console.log(response.data);
@@ -66,9 +70,13 @@ const ContactInfo = () => {
     const data = qs.stringify(fetchContact);
     // axios call
     await axios
-      .put("http://localhost:4000/api/contact/update", data, {
-        headers,
-      })
+      .put(
+        "https://instar-resume-bakend.onrender.com/api/contact/update",
+        data,
+        {
+          headers,
+        }
+      )
       .then((response) => {
         setMessage(response.data.message);
         console.log(response.data);
@@ -91,7 +99,10 @@ const ContactInfo = () => {
 
       //Getting existing contact information
       axios
-        .get(`http://localhost:4000/api/contact/find/${token}`, { headers })
+        .get(
+          `https://instar-resume-bakend.onrender.com/api/contact/find/${token}`,
+          { headers }
+        )
         .then((response) => {
           console.log(response.data.contact[0]);
           setFetchContact(response.data.contact[0]);

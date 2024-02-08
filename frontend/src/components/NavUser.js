@@ -26,7 +26,9 @@ const NavUser = () => {
   // Fetching the user data from the backend via token
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/api/user/find/${token}`, { headers })
+      .get(`https://instar-resume-bakend.onrender.com/api/user/find/${token}`, {
+        headers,
+      })
       .then((response) => {
         setFetchUser(response.data.user[0]);
         console.log(response.data.user[0]);

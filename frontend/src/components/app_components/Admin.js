@@ -25,9 +25,12 @@ const Admin = () => {
       window.location.reload();
     } else {
       await axios
-        .delete(`http://localhost:4000/api/user/delete/${user_id}`, {
-          headers,
-        })
+        .delete(
+          `https://instar-resume-bakend.onrender.com/api/user/delete/${user_id}`,
+          {
+            headers,
+          }
+        )
         .then((response) => {
           setMessage(response.data.message);
         })
@@ -46,12 +49,17 @@ const Admin = () => {
       navigate("/login");
     } else {
       axios
-        .get(`http://localhost:4000/api/user/find/${token}`, { headers })
+        .get(
+          `https://instar-resume-bakend.onrender.com/api/user/find/${token}`,
+          { headers }
+        )
         .then((response) => {
           const user = response.data.user[0];
           if (user.admin) {
             axios
-              .get(`http://localhost:4000/api/user/all`, { headers })
+              .get(`https://instar-resume-bakend.onrender.com/api/user/all`, {
+                headers,
+              })
               .then((response) => {
                 setUsers(response.data);
               })

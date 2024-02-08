@@ -36,7 +36,10 @@ const Register = () => {
     event.preventDefault();
     const data = qs.stringify(inputData);
     await axios
-      .post("http://localhost:4000/api/user_login/create", data)
+      .post(
+        "https://instar-resume-bakend.onrender.com/api/user_login/create",
+        data
+      )
       .then((response) => {
         if (response.data.success) {
           console.log(response.data);

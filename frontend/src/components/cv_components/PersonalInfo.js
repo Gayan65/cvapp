@@ -66,9 +66,13 @@ const PersonalInfo = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     axios
-      .put(`http://localhost:4000/api/personal/update/${token}`, formData, {
-        headers,
-      })
+      .put(
+        `https://instar-resume-bakend.onrender.com/api/personal/update/${token}`,
+        formData,
+        {
+          headers,
+        }
+      )
       .then((response) => {
         setMessage(response.data.message);
         //window.location.reload();
@@ -87,9 +91,13 @@ const PersonalInfo = () => {
     //Getting token to the form data
     formData.append("user_token", token);
     axios
-      .post("http://localhost:4000/api/personal/create", formData, {
-        headers,
-      })
+      .post(
+        "https://instar-resume-bakend.onrender.com/api/personal/create",
+        formData,
+        {
+          headers,
+        }
+      )
       .then((response) => {
         setMessage(response.data.message);
       })
@@ -112,7 +120,10 @@ const PersonalInfo = () => {
       navigate("/login");
     } else {
       axios
-        .get(`http://localhost:4000/api/personal/find/${token}`, { headers })
+        .get(
+          `https://instar-resume-bakend.onrender.com/api/personal/find/${token}`,
+          { headers }
+        )
         .then((response) => {
           setFetchPersonal(response.data.personal[0]);
         })

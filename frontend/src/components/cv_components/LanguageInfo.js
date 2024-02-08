@@ -44,9 +44,12 @@ const LanguageInfo = () => {
       window.location.reload();
     } else {
       axios
-        .delete(`http://localhost:4000/api/lan/delete/${lan_id}`, {
-          headers,
-        })
+        .delete(
+          `https://instar-resume-bakend.onrender.com/api/lan/delete/${lan_id}`,
+          {
+            headers,
+          }
+        )
         .then((response) => {
           setMessage(response.data.message);
         })
@@ -66,7 +69,7 @@ const LanguageInfo = () => {
     // axios call
 
     await axios
-      .post("http://localhost:4000/api/lan/create", data, {
+      .post("https://instar-resume-bakend.onrender.com/api/lan/create", data, {
         headers,
       })
       .then((response) => {
@@ -87,7 +90,7 @@ const LanguageInfo = () => {
     } else {
       //getting all languages api to get all languages
       axios
-        .get("http://localhost:4000/api/rest_language", {
+        .get("https://instar-resume-bakend.onrender.com/api/rest_language", {
           headers,
         })
         .then((response) => {
@@ -101,9 +104,12 @@ const LanguageInfo = () => {
         });
       //Getting language information fro the DB
       axios
-        .get(`http://localhost:4000/api/lan/user/${token}`, {
-          headers,
-        })
+        .get(
+          `https://instar-resume-bakend.onrender.com/api/lan/user/${token}`,
+          {
+            headers,
+          }
+        )
         .then((response) => {
           if (response.data.success) {
             setLanguageDataDB(response.data.languages);

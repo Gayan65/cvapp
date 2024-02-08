@@ -47,7 +47,7 @@ const EducationInfo = () => {
     const data = qs.stringify(EduInfo);
     // axios call
     await axios
-      .post("http://localhost:4000/api/edu/create", data, {
+      .post("https://instar-resume-bakend.onrender.com/api/edu/create", data, {
         headers,
       })
       .then((response) => {
@@ -77,9 +77,12 @@ const EducationInfo = () => {
       window.location.reload();
     } else {
       axios
-        .delete(`http://localhost:4000/api/edu/delete/${edu_id}`, {
-          headers,
-        })
+        .delete(
+          `https://instar-resume-bakend.onrender.com/api/edu/delete/${edu_id}`,
+          {
+            headers,
+          }
+        )
         .then((response) => {
           if (response.data.success) {
             setMessage(response.data.message);
@@ -104,9 +107,12 @@ const EducationInfo = () => {
       console.log("Good to go!");
       //Getting language information fro the DB
       axios
-        .get(`http://localhost:4000/api/edu/user/${token}`, {
-          headers,
-        })
+        .get(
+          `https://instar-resume-bakend.onrender.com/api/edu/user/${token}`,
+          {
+            headers,
+          }
+        )
         .then((response) => {
           if (response.data.success) {
             setEduDataDB(response.data.education);

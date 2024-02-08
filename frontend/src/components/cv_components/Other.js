@@ -41,9 +41,13 @@ const Other = () => {
     const data = qs.stringify(other);
     // axios call
     await axios
-      .post("http://localhost:4000/api/other/create", data, {
-        headers,
-      })
+      .post(
+        "https://instar-resume-bakend.onrender.com/api/other/create",
+        data,
+        {
+          headers,
+        }
+      )
       .then((response) => {
         console.log(response.data);
         setMessage(response.data.message);
@@ -63,9 +67,12 @@ const Other = () => {
       window.location.reload();
     } else {
       await axios
-        .delete(`http://localhost:4000/api/other/delete/${other_id}`, {
-          headers,
-        })
+        .delete(
+          `https://instar-resume-bakend.onrender.com/api/other/delete/${other_id}`,
+          {
+            headers,
+          }
+        )
         .then((response) => {
           setMessage(response.data.message);
         })
@@ -96,9 +103,12 @@ const Other = () => {
     } else {
       //Getting other information from the DB
       axios
-        .get(`http://localhost:4000/api/other/user/${token}`, {
-          headers,
-        })
+        .get(
+          `https://instar-resume-bakend.onrender.com/api/other/user/${token}`,
+          {
+            headers,
+          }
+        )
         .then((response) => {
           if (response.data.success) {
             setOtherDataDB(response.data.other_info);
