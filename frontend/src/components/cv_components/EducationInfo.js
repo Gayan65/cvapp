@@ -399,7 +399,7 @@ const EducationInfo = () => {
                   htmlFor="e_year"
                   className="form-label font-custom-color"
                 >
-                  End Year
+                  End Year or Expected year..
                 </label>
                 <input
                   type="text"
@@ -419,8 +419,9 @@ const EducationInfo = () => {
                 <label htmlFor="about" className="form-label font-custom-color">
                   Content covered
                 </label>
-                <input
+                <textarea
                   type="text"
+                  rows={5}
                   className="form-control custom-login-input"
                   id="about"
                   placeholder="Add your program content "

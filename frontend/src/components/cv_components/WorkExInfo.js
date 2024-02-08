@@ -239,7 +239,7 @@ const WorkExInfo = () => {
                   type="text"
                   className="form-control custom-login-input"
                   id="position"
-                  placeholder="Program name"
+                  placeholder="Position"
                   required
                   name="position"
                   onChange={handleInputChange}
@@ -259,7 +259,7 @@ const WorkExInfo = () => {
                   type="text"
                   className="form-control custom-login-input"
                   id="employer"
-                  placeholder="Program name"
+                  placeholder="Employer"
                   required
                   name="employer"
                   onChange={handleInputChange}
@@ -382,7 +382,7 @@ const WorkExInfo = () => {
                   htmlFor="e_year"
                   className="form-label font-custom-color"
                 >
-                  End Year or Expected year..
+                  End Year or Type "Current" if you are still working
                 </label>
                 <input
                   type="text"
@@ -407,7 +407,7 @@ const WorkExInfo = () => {
                   rows={5}
                   className="form-control custom-login-input"
                   id="task"
-                  placeholder="Add your program content "
+                  placeholder="Add your Tasks, Achievements "
                   required
                   name="task"
                   onChange={handleInputChange}
