@@ -359,9 +359,7 @@ const EducationInfo = () => {
                   name="s_year"
                   onChange={handleInputChange}
                 />
-                <div className="invalid-feedback">
-                  Valid last name is required.
-                </div>
+                <div className="invalid-feedback">Valid year is required.</div>
               </div>
 
               <div className="col-md-6">
