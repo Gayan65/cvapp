@@ -402,10 +402,7 @@ const EducationInfo = () => {
                   End Year
                 </label>
                 <input
-                  type="number"
-                  min={1900}
-                  max={2100}
-                  step={1}
+                  type="text"
                   className="form-control custom-login-input"
                   id="e_year"
                   placeholder="End year"

@@ -382,13 +382,10 @@ const WorkExInfo = () => {
                   htmlFor="e_year"
                   className="form-label font-custom-color"
                 >
-                  End Year
+                  End Year or Expected year..
                 </label>
                 <input
-                  type="number"
-                  min={1900}
-                  max={2100}
-                  step={1}
+                  type="text"
                   className="form-control custom-login-input"
                   id="e_year"
                   placeholder="End Year"
@@ -405,8 +402,9 @@ const WorkExInfo = () => {
                 <label htmlFor="task" className="form-label font-custom-color">
                   Tasks, Achievements
                 </label>
-                <input
+                <textarea
                   type="text"
+                  rows={5}
                   className="form-control custom-login-input"
                   id="task"
                   placeholder="Add your program content "
