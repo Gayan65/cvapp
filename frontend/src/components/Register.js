@@ -64,7 +64,7 @@ const Register = () => {
 
           <div className="form-floating fw-light">
             <input
-              type="text"
+              type="email"
               className="form-control mb-4 custom-login-input"
               id="floatingInput"
               placeholder="name@example.com"
@@ -87,6 +87,7 @@ const Register = () => {
               name="password"
               onChange={handleInputChange}
               value={inputData.password}
+              minLength={8}
             />
             <label htmlFor="floatingPassword" className="floatingInput">
               <FontAwesomeIcon icon={faKey} /> Password

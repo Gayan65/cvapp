@@ -61,7 +61,7 @@ const Login = () => {
 
           <div className="form-floating fw-light">
             <input
-              type="text"
+              type="email"
               className="form-control mb-4 custom-login-input"
               id="floatingInput"
               placeholder="name@example.com"
@@ -82,6 +82,7 @@ const Login = () => {
               placeholder="Password"
               required
               name="password"
+              minLength={8}
               onChange={handleInputChange}
               value={inputData.password}
             />
